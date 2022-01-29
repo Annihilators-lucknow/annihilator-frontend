@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 import { useMediaQuery } from 'react-responsive'
@@ -6,14 +6,48 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import winlogo from "../backgrounds/teamlogo2.png";
+import axios from "axios";
 
 const Home = ({ setShowModal }) => {
 
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
+    const [userData, setUserData] = useState([]);
+
+    const getMatchdata = async () => {
+        try {
+            const res = await axios.get('https://annihilator-backend.herokuapp.com/get-allmatch', {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                // credentials: "include"
+            });
+            setUserData(res.data.matchData);
+
+            if (!res.status === 200) {
+                const error = new Error(res.error);
+                throw error;
+            }
+
+            return res
+
+        } catch (err) {
+            console.log(err);
+            // history.push('/login');
+        }
+    }
 
     useEffect(() => {
         setShowModal(false);
+        getMatchdata();
     }, [setShowModal])
+
+    useEffect(() => {
+
+    }, [userData])
+    console.log("🚀 ~ file: Home.js ~ line 49 ~ Home ~ userData", userData)
+
 
     return (
         <div className="home">
