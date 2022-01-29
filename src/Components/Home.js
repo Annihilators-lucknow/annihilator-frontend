@@ -6,48 +6,27 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import winlogo from "../backgrounds/teamlogo2.png";
-import axios from "axios";
+import {useSelector , useDispatch} from 'react-redux'
+import {getAllCricketMatch} from '../Store/Actions/cricket.action'
 
 const Home = ({ setShowModal }) => {
-
+    const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
-    const [userData, setUserData] = useState([]);
-
-    const getMatchdata = async () => {
-        try {
-            const res = await axios.get('https://annihilator-backend.herokuapp.com/get-allmatch', {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                },
-                // credentials: "include"
-            });
-            setUserData(res.data.matchData);
-
-            if (!res.status === 200) {
-                const error = new Error(res.error);
-                throw error;
-            }
-
-            return res
-
-        } catch (err) {
-            console.log(err);
-            // history.push('/login');
-        }
-    }
-
+    const tempAllMatch = useSelector((state)=> state.cricketReducer.cricketData)
+    const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
+    
     useEffect(() => {
         setShowModal(false);
-        getMatchdata();
+        dispatch(getAllCricketMatch())
     }, [setShowModal])
 
     useEffect(() => {
+      setAllCricketMatch(tempAllMatch)
+    }, [tempAllMatch])
 
-    }, [userData])
-    console.log("🚀 ~ file: Home.js ~ line 49 ~ Home ~ userData", userData)
 
+    console.log("allCricketMatch==",allCricketMatch)
+   
 
     return (
         <div className="home">

@@ -19,7 +19,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import signpic from "./signup.png";
 import Fade from 'react-reveal/Fade';
+import { updateCricketMatchData } from '../../Store/Actions/cricket.action';
+import {useSelector , useDispatch} from 'react-redux'
 import "./fund.css"
+
 
 const useStyles = makeStyles({
     root: {
@@ -49,7 +52,7 @@ const useStyles = makeStyles({
 });
 
 const Fund = ({ setShowModal }) => {
-
+    const dispatch = useDispatch();
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
 
@@ -74,36 +77,7 @@ const Fund = ({ setShowModal }) => {
 
     const PostData = async (e) => {
         e.preventDefault();
-        const res = await fetch("https://annihilator-backend.herokuapp.com/submit", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user)
-        });
-
-        const data = await res.json();
-        if (res.status === 409 || !data) {
-            // toast.error("Email already exists", {
-            //     position: "top-center"
-            // });
-            console.log("error")
-        }
-        else if (res.status === 422 || !data) {
-            // toast.error("Please fill all the details", {
-            //     position: "top-center"
-            // });
-            console.log("Please fill all the details");
-        } else {
-            // toast.success("Registration Successful", {
-            //     position: "top-center",
-            //     autoClose: 2000
-            // });
-            console.log("detail submitted successfully");
-            // setTimeout(() => {
-            //     history.push('/login');
-            // }, 2000);
-        }
+        dispatch(updateCricketMatchData(user))
     }
 
     return (
