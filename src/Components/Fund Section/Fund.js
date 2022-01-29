@@ -62,7 +62,7 @@ const Fund = ({ setShowModal }) => {
     // const navigate = useNavigate();
 
     const [user, setUser] = useState({
-        teamName: "", date: "", tossResult: "", matchResult: "", matchCost: "", opponentScore: "", opponentOver: "", annihilatorScore: "", annihilatorOver: "", playerName: "", category: "", runScored: "", ballPlayed: "", sixes: "", fours: "", overBowled: "", runGiven: "", wicketTaken: "",
+        teamName: "", date: "", tossResult: "", matchResult: "", matchCost: "", opponentScore: "", opponentOver: "", annihilatorScore: "", annihilatorOver: "", playerName: "", category: "", runScored: "", ballPlayed: "", sixes: "", fours: "", overBowled: "", runGiven: "", wicketTaken: "", ManofTheMatch: {}
     });
 
     let name, value;
@@ -74,17 +74,12 @@ const Fund = ({ setShowModal }) => {
 
     const PostData = async (e) => {
         e.preventDefault();
-
-        const { teamName, date, tossResult, matchResult, matchCost, opponentScore, opponentOver, annihilatorScore, annihilatorOver, playerName, category, runScored, ballPlayed, sixes, fours, overBowled, runGiven, wicketTaken } = user;
-
-        const res = await fetch("https://cricket-annihilators.herokuapp.com/submit", {
+        const res = await fetch("https://annihilator-backend.herokuapp.com/submit", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                teamName, date, tossResult, matchResult, matchCost, opponentScore, opponentOver, annihilatorScore, annihilatorOver, playerName, category, runScored, ballPlayed, sixes, fours, overBowled, runGiven, wicketTaken
-            })
+            body: JSON.stringify(user)
         });
 
         const data = await res.json();
