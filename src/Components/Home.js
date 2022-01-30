@@ -8,6 +8,7 @@ import cricketbg from "../backgrounds/cricketbg.jpg";
 import winlogo from "../backgrounds/teamlogo2.png";
 import {useSelector , useDispatch} from 'react-redux'
 import {getAllCricketMatch} from '../Store/Actions/cricket.action'
+import MatchCard from './MatchCard';
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
@@ -23,10 +24,6 @@ const Home = ({ setShowModal }) => {
     useEffect(() => {
       setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
-
-
-    console.log("allCricketMatch==",allCricketMatch)
-   
 
     return (
         <div className="home">
@@ -50,51 +47,7 @@ const Home = ({ setShowModal }) => {
                     <div className="match-container">
                         <h1>Last Match Result</h1>
                         <div className="result">
-                            <Fade left>
-                                <div className="last">
-                                    <time> Nov 24, 2021 </time>
-                                    <div className="score">
-                                        <div className="win">
-                                            <img src={winlogo} alt="winlogo" />
-                                            <div className="win-score">
-                                                <h2>80/1</h2>
-                                                <span>6.1 over</span>
-                                            </div>
-                                        </div>
-                                        <div className="lose">
-                                            <div className="lose-score">
-                                                <h2>77/5</h2>
-                                                <span>8 over</span>
-                                            </div>
-                                            <img src={Opponent[0].url} alt="winlogo" />
-                                        </div>
-                                    </div>
-                                    <span>Annihilators Won by 9 wickets</span>
-                                </div>
-                            </Fade>
-
-                            <Fade right>
-                                <div className="second-last">
-                                    <time> Nov 21, 2021 </time>
-                                    <div className="score">
-                                        <div className="lose">
-                                            <img src={winlogo} alt="winlogo" />
-                                            <div className="lose-score">
-                                                <h2>71/2</h2>
-                                                <span>6 over</span>
-                                            </div>
-                                        </div>
-                                        <div className="win">
-                                            <div className="win-score">
-                                                <h2>70/5</h2>
-                                                <span>8 over</span>
-                                            </div>
-                                            <img src={Opponent[6].url} alt="winlogo" />
-                                        </div>
-                                    </div>
-                                    <span>Annihilators Won by 8 wickets</span>
-                                </div>
-                            </Fade>
+                            <MatchCard allCricketMatch={allCricketMatch} />
                         </div>
                     </div>
                 </div>

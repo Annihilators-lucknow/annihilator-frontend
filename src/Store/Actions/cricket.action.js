@@ -13,7 +13,7 @@ export const getAllCricketMatch = () => {
      const res = await axios.get(`${apiconfig.baseURL}/get-allmatch` ,  {
       headers: authHeader(),
      })
-      dispatch({ type: GET_CRICKET_MATCH_DATA_SUCCESS, payload: res.data.matchData });
+      dispatch({ type: GET_CRICKET_MATCH_DATA_SUCCESS, payload: res.data.data });
     } catch (err) {
       dispatch({type :GET_CRICKET_MATCH_DATA_FAILED , payload: err})
     }
