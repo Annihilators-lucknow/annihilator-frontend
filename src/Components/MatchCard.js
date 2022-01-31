@@ -4,6 +4,7 @@ import winlogo from "../backgrounds/teamlogo2.png";
 import { Opponent } from "./Oppenent";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import moment from 'moment'
 
 
 const MatchCard = ({allCricketMatch}) => {
@@ -30,7 +31,7 @@ const MatchCard = ({allCricketMatch}) => {
                                 {allCricketMatch && allCricketMatch.map((item)=>{
                                 return   <Fade left>
                                 <div className="last">
-                                    <time>{item.data}</time>
+                                    <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
                                     <div className="score">
                                         <div className="win">
                                             <img src={winlogo} alt="winlogo" />
