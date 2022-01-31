@@ -6,27 +6,33 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import winlogo from "../backgrounds/teamlogo2.png";
-import {useSelector , useDispatch} from 'react-redux'
-import {getAllCricketMatch} from '../Store/Actions/cricket.action'
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllCricketMatch, getFundBalance } from '../Store/Actions/cricket.action'
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
-    const tempAllMatch = useSelector((state)=> state.cricketReducer.cricketData)
+    const tempAllMatch = useSelector((state) => state.cricketReducer.cricketData)
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
-    
+    const tempfundBalace = useSelector(state => state.cricketReducer.fundbalance)
+    const [fundbalance, setfundbalance] = useState(tempfundBalace)
+
+
     useEffect(() => {
         setShowModal(false);
         dispatch(getAllCricketMatch())
+        dispatch(getFundBalance())
     }, [setShowModal])
 
     useEffect(() => {
-      setAllCricketMatch(tempAllMatch)
-    }, [tempAllMatch])
+        setAllCricketMatch(tempAllMatch)
+        setfundbalance(tempfundBalace)
+    }, [tempAllMatch, tempfundBalace])
 
 
-    console.log("allCricketMatch==",allCricketMatch)
-   
+    console.log("allCricketMatch==", allCricketMatch)
+    console.log("fundBalace===", tempfundBalace)
+
 
     return (
         <div className="home">
