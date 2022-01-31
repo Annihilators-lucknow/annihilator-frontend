@@ -36,13 +36,13 @@ const MatchCard = ({allCricketMatch}) => {
                                             <img src={winlogo} alt="winlogo" />
                                             <div className="win-score">
                                                 <h2>{`${item.annihilatorScore}`}</h2>
-                                                <span>{item.annihilatorOver}</span>
+                                                <span>{`${item.annihilatorOver} over`}</span>
                                             </div>
                                         </div>
                                         <div className="lose">
                                             <div className="lose-score">
                                                 <h2>{item.opponentScore}</h2>
-                                                <span>{item.opponentOver}</span>
+                                                <span>{`${item.opponentOver} over`}</span>
                                             </div>
                                             <img src={Opponent[0].url} alt="winlogo" />
                                         </div>
