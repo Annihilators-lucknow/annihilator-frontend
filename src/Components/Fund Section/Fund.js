@@ -20,7 +20,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import signpic from "./signup.png";
 import Fade from 'react-reveal/Fade';
 import { updateCricketMatchData } from '../../Store/Actions/cricket.action';
-import {useSelector , useDispatch} from 'react-redux'
+import { getFundBalance } from '../../Store/Actions/cricket.action'
+import { useSelector, useDispatch } from 'react-redux'
 import "./fund.css"
 
 
@@ -55,12 +56,22 @@ const Fund = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
+    const tempFundBalance = useSelector((state) => state.cricketReducer.fundBalance)
+    const [fundBalance, setfundBalance] = useState(tempFundBalance);
 
     const classes = useStyles();
 
+    // react-hooks/exhaustive-deps
     useEffect(() => {
         setShowModal(false);
+        dispatch(getFundBalance())
     }, [setShowModal])
+
+    useEffect(() => {
+        setfundBalance(tempFundBalance)
+    }, [tempFundBalance])
+
+    console.log(fundBalance);
 
     // const navigate = useNavigate();
 
@@ -85,7 +96,7 @@ const Fund = ({ setShowModal }) => {
 
             {(!scoreCard && !showMom) && (
                 <div className="fund">
-                    <h1>Our fund: 3945</h1>
+                    <h1>Our fund: 3392</h1>
                     <div className='button-section'>
                         <button className="btn edit-score" onClick={() => setScoreCard(!scoreCard)}>Update Score</button>
                         <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button>

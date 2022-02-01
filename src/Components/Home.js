@@ -5,24 +5,26 @@ import { useMediaQuery } from 'react-responsive'
 import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
-import winlogo from "../backgrounds/teamlogo2.png";
-import {useSelector , useDispatch} from 'react-redux'
-import {getAllCricketMatch} from '../Store/Actions/cricket.action'
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllCricketMatch } from '../Store/Actions/cricket.action'
 import MatchCard from './MatchCard';
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
-    const tempAllMatch = useSelector((state)=> state.cricketReducer.cricketData)
+    const tempAllMatch = useSelector((state) =>
+        // console.log(state)
+        state.cricketReducer.cricketData)
+
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
-    
+
     useEffect(() => {
         setShowModal(false);
         dispatch(getAllCricketMatch())
     }, [setShowModal])
 
     useEffect(() => {
-      setAllCricketMatch(tempAllMatch)
+        setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
 
     return (
