@@ -21,6 +21,7 @@ const Home = ({ setShowModal }) => {
     useEffect(() => {
         setShowModal(false);
         dispatch(getAllCricketMatch())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setShowModal])
 
     useEffect(() => {

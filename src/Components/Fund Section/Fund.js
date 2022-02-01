@@ -61,15 +61,16 @@ const Fund = ({ setShowModal }) => {
 
     const classes = useStyles();
 
-    // react-hooks/exhaustive-deps
     useEffect(() => {
         setShowModal(false);
         dispatch(getFundBalance())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setShowModal])
 
     useEffect(() => {
         setfundBalance(tempFundBalance)
-    }, [tempFundBalance])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [setfundBalance])
 
     console.log(fundBalance);
 
