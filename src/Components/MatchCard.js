@@ -18,8 +18,7 @@ const MatchCard = ({ allCricketMatch }) => {
             showThumbs={true}
             showStatus={false}
             infiniteLoop
-            // emulateTouch
-            // autoPlay
+            emulateTouch={true}
             useKeyboardArrows
             transitionTime={1000}
             // axis="vertical"
