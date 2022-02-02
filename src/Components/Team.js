@@ -22,15 +22,17 @@ const Team = ({ showModal, setShowModal }) => {
 
                         {Players.map((player) => {
                             return (
-                                <Flip right><div className="card-container noSelect" key={player.id} onClick={() => { setShowModal(!showModal); setPlayerData(player) }}>
+                               player.isActive ?  <Flip right><div className="card-container noSelect" key={player.id} onClick={() => { setShowModal(!showModal); setPlayerData(player) }}>
                                     <div className="player-card">
                                         <div className="profile">
                                             <img src={player.image} alt="Profile Pic" />
                                         </div>
                                         {(player.speciality === 'Bowler') ? <GiTennisBall className='ball' /> : (player.speciality === 'Batsman' ? <img src={bat} alt="Batsman" className='bat' /> : <img src={batball} alt="All Rounder" className='batball' />)}
                                         <span className="player-card-name">{player.name}</span>
+                                        </div>
                                     </div>
-                                </div></Flip>
+                                </Flip> : null
+                                
 
                             )
                         })}

@@ -9,7 +9,9 @@ export const Players = [
         facebook: "https://www.facebook.com/minhaj.a.khan.14",
         twitter: "https://twitter.com/MinhajAhmadKha7",
         phone: "8423544136",
-        email: "minhaj.space@gmail.com"
+        isActive:true,
+        email: "minhaj.space@gmail.com",
+        
     },
     {
         id: 2,
@@ -20,6 +22,7 @@ export const Players = [
         facebook: "https://www.facebook.com/zainkhanbly",
         twitter: "#",
         phone: "8081953847",
+        isActive:true,
         email: "suleman.khan@turtlelimited.com"
     },
     {
@@ -31,6 +34,7 @@ export const Players = [
         facebook: "https://www.facebook.com/profile.php?id=100010625177535",
         twitter: "https://twitter.com/Osamahannan1",
         phone: "8181007105",
+        isActive:true,
         email: "osamahannan7@gmail.com"
     },
     {
@@ -42,6 +46,7 @@ export const Players = [
         facebook: "https://www.facebook.com/mdfaiz.06",
         twitter: "https://twitter.com/mohdfaiz714",
         phone: "9956536117",
+        isActive:true,
         email: "faizxtylish@gmail.com"
     },
     {
@@ -53,6 +58,7 @@ export const Players = [
         facebook: "#",
         twitter: "#",
         phone: "8181079906",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -64,6 +70,7 @@ export const Players = [
         facebook: "https://www.facebook.com/faraz.ahmad.73550",
         twitter: "#",
         phone: "9369912431",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -75,6 +82,7 @@ export const Players = [
         facebook: "https://www.facebook.com/sha.nu.3192",
         twitter: "#",
         phone: "9140444476",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -86,6 +94,7 @@ export const Players = [
         facebook: "https://www.facebook.com/profile.php?id=100009438409984",
         twitter: "#",
         phone: "8429398248",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -97,6 +106,7 @@ export const Players = [
         facebook: "https://www.facebook.com/shahbazahmedkhan.sak.1",
         twitter: "#",
         phone: "7080337727",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -108,6 +118,7 @@ export const Players = [
         facebook: "https://www.facebook.com/profile.php?id=100012420880461",
         twitter: "#",
         phone: "9696255752",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -119,6 +130,7 @@ export const Players = [
         facebook: "https://www.facebook.com/profile.php?id=100005248029914",
         twitter: "https://twitter.com/KhanStylash?t=D7SRZFlngcFc7NU0oAUzjg&s=08",
         phone: "7348196441",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -130,6 +142,7 @@ export const Players = [
         facebook: "https://www.facebook.com/shaina.khatoon.1428",
         twitter: "#",
         phone: "7398069754",
+        isActive:true,
         email: "dummyemail@gmail.com"
     },
     {
@@ -141,6 +154,7 @@ export const Players = [
         facebook: "https://www.facebook.com/people/Abu-Talib/100027192752298/",
         twitter: "https://twitter.com/Abutali55373948?t=gUzOWq_5cIXjlxrkXROWEQ&s=08",
         phone: "7985086452",
+        isActive:false,
         email: "samtalib251@gmail.com"
     },
     {
@@ -152,6 +166,7 @@ export const Players = [
         facebook: "#",
         twitter: "#",
         phone: "9795106463",
+        isActive:false,
         email: "dummyemail@gmail.com"
     },
     {
@@ -163,6 +178,7 @@ export const Players = [
         facebook: "#",
         twitter: "#",
         phone: "+966595378927",
+        isActive:true,
         email: "dummyemail@gmail.com"
     }
 
