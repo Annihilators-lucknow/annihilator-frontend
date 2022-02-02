@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        fundBalance: action.payload
+        fundBalance: action.payload.fundBalance
       }
 
     case GET_FUND_BALANCE_DATA_FAILED:

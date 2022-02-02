@@ -56,25 +56,19 @@ const Fund = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
-    const tempFundBalance = useSelector((state) => state.cricketReducer.fundBalance)
-    const [fundBalance, setfundBalance] = useState(tempFundBalance);
+    const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
+    
+
 
     const classes = useStyles();
 
     useEffect(() => {
         setShowModal(false);
         dispatch(getFundBalance())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [setShowModal])
 
-    useEffect(() => {
-        setfundBalance(tempFundBalance)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [setfundBalance])
+  
 
-    console.log(fundBalance);
-
-    // const navigate = useNavigate();
 
     const [user, setUser] = useState({
         teamName: "", date: "", tossResult: "", matchResult: "", matchCost: "", opponentScore: "", opponentOver: "", annihilatorScore: "", annihilatorOver: "", playerName: "", category: "", runScored: "", ballPlayed: "", sixes: "", fours: "", overBowled: "", runGiven: "", wicketTaken: "", ManofTheMatch: {}
@@ -97,7 +91,7 @@ const Fund = ({ setShowModal }) => {
 
             {(!scoreCard && !showMom) && (
                 <div className="fund">
-                    <h1>Our fund: 3392</h1>
+                    <h1>Our fund: {FundBalance}</h1>
                     <div className='button-section'>
                         <button className="btn edit-score" onClick={() => setScoreCard(!scoreCard)}>Update Score</button>
                         <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button>
