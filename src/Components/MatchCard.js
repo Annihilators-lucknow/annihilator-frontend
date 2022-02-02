@@ -18,7 +18,7 @@ const MatchCard = ({ allCricketMatch }) => {
             showThumbs={true}
             showStatus={false}
             infiniteLoop
-            // emulateTouch
+            emulateTouch={true}
             // autoPlay
             useKeyboardArrows
             transitionTime={1000}
