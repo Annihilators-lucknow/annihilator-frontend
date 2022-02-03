@@ -57,7 +57,7 @@ const Fund = ({ setShowModal }) => {
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
     const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
-    
+
 
 
     const classes = useStyles();
@@ -67,7 +67,7 @@ const Fund = ({ setShowModal }) => {
         dispatch(getFundBalance())
     }, [setShowModal])
 
-  
+
 
 
     const [user, setUser] = useState({
@@ -91,7 +91,7 @@ const Fund = ({ setShowModal }) => {
 
             {(!scoreCard && !showMom) && (
                 <div className="fund">
-                    <h1>Our fund: {FundBalance}</h1>
+                    <h1>Our fund: {FundBalance} &#8377;</h1>
                     <div className='button-section'>
                         <button className="btn edit-score" onClick={() => setScoreCard(!scoreCard)}>Update Score</button>
                         <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button>
