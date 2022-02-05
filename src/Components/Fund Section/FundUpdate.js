@@ -117,7 +117,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
     const displayRenderButton = () =>{
         const label = { inputProps: { 'aria-label': 'Switch demo' } };
         return <>
-        <p style={{display:"inline"}}>Would you like to add Mon of the match ?</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
+        <p style={{display:"inline"}}>Would you like to add Man of the match ?</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
        
         </>
     }

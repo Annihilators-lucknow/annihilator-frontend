@@ -48,6 +48,7 @@ const FundHistory = ({ fundHistory ,fundBalance}) => {
                         <div className="score">
                             <div className="histroy-card">
                                 <div>Type : <span className={item.expenseType === "credit" ? "font-green":"font-red"}>{item.expenseType}</span></div>
+                                <div>Amount : {item.amout}</div>
                                  <div>Expense Details : <span>{item.expenseDetails}</span></div>
                                  <div>Current Balance : <span className='current-balance'>{`${item.fundBalance} ₹`}</span></div>
                                

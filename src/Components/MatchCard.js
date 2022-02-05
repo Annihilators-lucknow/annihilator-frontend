@@ -29,7 +29,7 @@ const MatchCard = ({ allCricketMatch }) => {
             centerSlidePercentage={detectMob() ? 100 : 50}
         >
             {allCricketMatch && allCricketMatch.map((item) => {
-                return <Fade left>
+                return <div >
                     <div className="last">
                         <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
                         <div className="score">
@@ -50,7 +50,7 @@ const MatchCard = ({ allCricketMatch }) => {
                         </div>
                         <span>{`Annihilators ${item.matchResult}`}</span>
                     </div>
-                </Fade>
+                </div>
 
             })}
 
