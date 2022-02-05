@@ -1431,6 +1431,9 @@
   .footer-heading h1 {
     font-size: 1.5rem;
   }
+  .css-1wnsr1i{
+    width: 80%  !important;
+  }
 }
 
 @media only screen and (max-width: 400px) {

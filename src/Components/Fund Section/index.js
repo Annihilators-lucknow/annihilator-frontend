@@ -18,6 +18,7 @@ const Fund = ({setShowModal}) => {
     return <> 
     <div style={{marginTop:"2%"}}>
        <FundHistory fundHistory={fundHistory} fundBalance={fundBalance}/>
+       
 
     </div>
     

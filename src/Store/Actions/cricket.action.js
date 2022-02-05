@@ -8,6 +8,10 @@ import {
   GET_ALL_CRICKET_MATCH_START,
   GET_ALL_CRICKET_MATCH_SUCCESS,
   GET_ALL_CRICKET_MATCH_FAILED,
+  UPDATE_FUND_BALANCE_START,
+  UPDATE_FUND_BALANCE_SUCCESS,
+  UPDATE_FUND_BALANCE_FAILED
+
 } from "../../constant/actiontype";
 import apiconfig from "../../constant/apiconfig";
 import { authHeader } from '../../constant/header'
@@ -87,6 +91,24 @@ export const getfundhistory = (data) => {
     }
     catch (err) {
       dispatch({ type: GET_FUND_HISTORY_FAILED, payload: err })
+    }
+  }
+}
+
+
+export const updateFund = (data) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_FUND_BALANCE_START });
+    try {
+      const res = await axios.post(`${apiconfig.baseURL}/update-found`, data, {
+        headers: authHeader(),
+      })
+      console.log("res===",res)
+      dispatch({ type: UPDATE_FUND_BALANCE_SUCCESS, payload: res.data.data.matchDetails });
+      toast.success("fund update successfully")
+    } catch (err) {
+      dispatch({ type: UPDATE_FUND_BALANCE_FAILED, payload: err })
+        toast.warn("something went wrong")
     }
   }
 }

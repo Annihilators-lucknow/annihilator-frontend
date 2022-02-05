@@ -6,7 +6,7 @@ import expense from './expense.png'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
-
+import FundModal from './FundModal.js'
 
 const FundHistory = ({ fundHistory ,fundBalance}) => {
     function detectMob() {
@@ -22,7 +22,8 @@ const FundHistory = ({ fundHistory ,fundBalance}) => {
          <div className="history-heading">
          <h1 className='h1-sm'>Fund histroy</h1>  
        
-         <button className="btn edit-score mt-none"> <img className='inside-btn-img' src={expense} /> Add Other Expense</button>
+         {/* <button className="btn edit-score mt-none"> <img className='inside-btn-img' src={expense} /> Add Other Expense</button> */}
+         <FundModal/>
          </div>
         <Carousel
             showThumbs={true}
@@ -41,7 +42,7 @@ const FundHistory = ({ fundHistory ,fundBalance}) => {
 
             {fundHistory && fundHistory.map((item) => {
                 console.log(item)
-                return <Fade left>
+                return <div >
                     <div className="last">
                         <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
                         <div className="score">
@@ -55,7 +56,7 @@ const FundHistory = ({ fundHistory ,fundBalance}) => {
                         </div>
                         
                     </div>
-                </Fade>
+                </div>
 
             })}
 
