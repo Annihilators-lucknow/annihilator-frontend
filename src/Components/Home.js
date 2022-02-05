@@ -12,9 +12,7 @@ import MatchCard from './MatchCard';
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
-    const tempAllMatch = useSelector((state) =>
-        // console.log(state)
-        state.cricketReducer.cricketData)
+    const tempAllMatch = useSelector((state) => state.cricketReducer.cricketData)
 
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
 

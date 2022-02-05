@@ -732,6 +732,7 @@
   border-radius: 100px;
   box-shadow: 0 7px 8px 0 rgb(0 0 0 / 60%), 0 4px 20px 0 rgb(0 0 0 / 19%);
   background-color: white;
+  min-width: 100px;
 }
 
 .profile img {

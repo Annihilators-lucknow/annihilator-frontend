@@ -12,7 +12,7 @@ export const getAllCricketMatch = () => {
   return async (dispatch) => {
     dispatch({ type: GET_CRICKET_MATCH_DATA_START });
     try {
-      const res = await axios.get(`${apiconfig.baseURL}/get-allmatch`, {
+      const res = await axios.get(`${apiconfig.baseURL}/latest-match`, {
         headers: authHeader(),
       })
       dispatch({ type: GET_CRICKET_MATCH_DATA_SUCCESS, payload: res.data.data });

@@ -19,7 +19,7 @@ const Footer = ({ setShowLink, showModal }) => {
                         <img src={logo} alt="Annihilators" />
                         <h1>ANNIHILATORS</h1>
                     </Link>
-                    <p>Since 2021, we have been offering travel services of the highest quality, combining our energy and enthusiasm.</p>
+                    <p>Since 2021, we have been offering cricket services of the highest quality, combining our energy and enthusiasm.</p>
                 </div></Fade>
                 <Fade up><div className="footer-contact">
                     <div className="footer-heading">
