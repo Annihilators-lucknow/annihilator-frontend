@@ -3,7 +3,6 @@
   justify-content: space-evenly;
   align-items: center;
   width: 54vw;
-  height: 700px;
   margin: 4rem auto;
   background-color: rgb(250 253 253);
   border-radius: 16px;
@@ -139,7 +138,7 @@
 @media only screen and (max-width: 670px) {
   .register {
     flex-direction: column;
-    height: 900px;
+    /* height: 900px; */
     margin: 40px auto;
   }
 

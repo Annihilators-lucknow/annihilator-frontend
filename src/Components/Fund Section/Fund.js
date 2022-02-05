@@ -22,7 +22,33 @@ import Fade from 'react-reveal/Fade';
 import { updateCricketMatchData } from '../../Store/Actions/cricket.action';
 import { getFundBalance } from '../../Store/Actions/cricket.action'
 import { useSelector, useDispatch } from 'react-redux'
+import Switch from '@mui/material/Switch';
+import { useNavigate  } from "react-router-dom";
 import "./fund.css"
+
+ const initialStateMatchData = {
+        teamName:"",
+        date:"",
+        tossResult:"",
+        matchResult:"",
+        matchCost:"",
+        opponentScore:"",
+        opponentOver:"",
+        annihilatorScore:"",
+        annihilatorOver:"",
+    }
+
+    const initaiStateMom = {
+        ballPlayed:"",
+        category:"",
+        fours: "",
+        overBowled: "",
+        playerName: "",
+        runGiven: "",
+        runScored: "",
+        sixes: "",
+        wicketTaken: "", 
+    }
 
 
 const useStyles = makeStyles({
@@ -57,6 +83,9 @@ const Fund = ({ setShowModal }) => {
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
     const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
+    const [user, setUser] = useState(initialStateMatchData);
+    const [momData ,setMomData] = useState(initaiStateMom)
+    const navigate = useNavigate ()
 
 
 
@@ -68,33 +97,51 @@ const Fund = ({ setShowModal }) => {
     }, [setShowModal])
 
 
+   
 
 
-    const [user, setUser] = useState({
-        teamName: "", date: "", tossResult: "", matchResult: "", matchCost: "", opponentScore: "", opponentOver: "", annihilatorScore: "", annihilatorOver: "", playerName: "", category: "", runScored: "", ballPlayed: "", sixes: "", fours: "", overBowled: "", runGiven: "", wicketTaken: "", ManofTheMatch: {}
-    });
 
-    let name, value;
+    
+
+
     const handleInputs = (e) => {
-        name = e.target.name;
-        value = e.target.value;
-        setUser({ ...user, [name]: value })
+        const {name,value} = e.target
+        setUser({ ...user, [name]: value }) 
+    }
+
+    const handleMomInputs = (e) => {
+           const {name,value} = e.target
+           setMomData({ ...momData, [name]: value }) 
     }
 
     const PostData = async (e) => {
         e.preventDefault();
-        dispatch(updateCricketMatchData(user))
+        user.ManofTheMatch = momData
+        console.log(user)
+        //dispatch(updateCricketMatchData(user))
+        setTimeout(()=>{
+        navigate('/')
+        })
     }
 
+    console.log(showMom)
+
+    const displayRenderButton = () =>{
+        const label = { inputProps: { 'aria-label': 'Switch demo' } };
+        return <>
+        <p style={{display:"inline"}}>Would you like to add Mon of the match ?</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
+       
+        </>
+    }
     return (
         <>
 
-            {(!scoreCard && !showMom) && (
+            {(!showMom) && (
                 <div className="fund">
                     <h1>Our fund: {FundBalance} &#8377;</h1>
                     <div className='button-section'>
                         <button className="btn edit-score" onClick={() => setScoreCard(!scoreCard)}>Update Score</button>
-                        <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button>
+                        {/* <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button> */}
                     </div>
                 </div>
             )}
@@ -203,6 +250,122 @@ const Fund = ({ setShowModal }) => {
                                     onChange={handleInputs}
                                     placeholder="Annihilator's over" />
                             </div>
+                            {displayRenderButton()}
+                            {showMom && <>
+                          
+                            <div className="form-group">
+                                    <label htmlFor="playerName">
+                                        <IoPersonOutline />
+                                    </label>
+                                    <TextField
+                                        className={classes.root}
+                                        value={momData.playerName}
+                                        onChange={handleMomInputs}
+                                        variant="outlined"
+                                        label="Player Name"
+                                        name="playerName"
+                                        select
+                                    >
+
+                                        {Players.map((player) => {
+                                            return (
+                                                <MenuItem value={player.name}>{player.name}</MenuItem>
+                                            )
+                                        })}
+                                    </TextField>
+                                </div>
+                                 <div className="form-group">
+                                    <label htmlFor="category">
+                                        <MdOutlineCategory />
+                                    </label>
+                                    <TextField
+                                        className={classes.root}
+                                        value={momData.category}
+                                        onChange={handleMomInputs}
+                                        variant="outlined"
+                                        label="Category"
+                                        name="category"
+                                        select
+                                    >
+                                        <MenuItem value="Batting">Batting</MenuItem>
+                                        <MenuItem value="Bowling">Bowling</MenuItem>
+                                        <MenuItem value="Both">Both</MenuItem>
+                                    </TextField>
+                                </div>
+                                  {(momData.category === "Batting" || momData.category === "Both") && (
+                                    <>
+                                        <div className="form-group">
+                                            <label htmlFor="runScored">
+                                                <MdOutlineSportsCricket />
+                                            </label>
+                                            <input type="number" name="runScored" id="runScored" autoComplete="off"
+                                                value={momData.runScored}
+                                                onChange={handleMomInputs}
+                                                placeholder="Run Scored" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="ballPlayed">
+                                                <IoTennisballOutline />
+                                            </label>
+                                            <input type="number" name="ballPlayed" id="ballPlayed" autoComplete="off"
+                                                value={momData.ballPlayed}
+                                                onChange={handleMomInputs}
+                                                placeholder="Balls Played" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="sixes">
+                                                <FaDiceSix />
+                                            </label>
+                                            <input type="number" name="sixes" id="sixes" autoComplete="off"
+                                                value={momData.sixes}
+                                                onChange={handleMomInputs}
+                                                placeholder="Sixes" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="fours">
+                                                <FaDiceFour />
+                                            </label>
+                                            <input type="number" name="fours" id="fours" autoComplete="off"
+                                                value={momData.fours}
+                                                onChange={handleMomInputs}
+                                                placeholder="Fours" />
+                                        </div>
+                                    </>
+                                )}
+                                 {(momData.category === "Bowling" || momData.category === "Both") && (
+                                    <>
+                                        <div className="form-group">
+                                            <label htmlFor="overBowled">
+                                                <IoTennisball />
+                                            </label>
+                                            <input type="number" name="overBowled" id="overBowled" autoComplete="off"
+                                                value={momData.overBowled}
+                                                onChange={handleMomInputs}
+                                                placeholder="Over" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="runGiven">
+                                                <GrScorecard />
+                                            </label>
+                                            <input type="number" name="runGiven" id="runGiven" autoComplete="off"
+                                                value={momData.runGiven}
+                                                onChange={handleMomInputs}
+                                                placeholder="Run" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="wicketTaken">
+                                                <GiCannonBall />
+                                            </label>
+                                            <input type="number" name="wicketTaken" id="wicketTaken" autoComplete="off"
+                                                value={momData.wicketTaken}
+                                                onChange={handleMomInputs}
+                                                placeholder="Wicket" />
+                                        </div>
+
+                                    </>
+                                )}
+                                </>}
+
 
                         </form>
 
@@ -210,6 +373,7 @@ const Fund = ({ setShowModal }) => {
                             <button type="submit" name="signup" id="signup" className="btn" value="submit" onClick={PostData}>Submit</button>
                             <button className="btn cancel" onClick={() => setScoreCard(!scoreCard)}>Cancel</button>
                         </div>
+                        {/* <div>  <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button></div> */}
 
                     </div>
 
@@ -223,7 +387,7 @@ const Fund = ({ setShowModal }) => {
                 </div>
             </Fade>)}
 
-            {showMom && (
+            {/* {showMom && (
 
                 <Fade up>
                     <div className="register" id="mom">
@@ -253,98 +417,11 @@ const Fund = ({ setShowModal }) => {
                                         })}
                                     </TextField>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="category">
-                                        <MdOutlineCategory />
-                                    </label>
-                                    <TextField
-                                        className={classes.root}
-                                        value={user.category}
-                                        onChange={handleInputs}
-                                        variant="outlined"
-                                        label="Category"
-                                        name="category"
-                                        select
-                                    >
-                                        <MenuItem value="Batting">Batting</MenuItem>
-                                        <MenuItem value="Bowling">Bowling</MenuItem>
-                                    </TextField>
-                                </div>
+                               
 
-                                {(user.category === "Batting") && (
-                                    <>
-                                        <div className="form-group">
-                                            <label htmlFor="runScored">
-                                                <MdOutlineSportsCricket />
-                                            </label>
-                                            <input type="number" name="runScored" id="runScored" autoComplete="off"
-                                                value={user.runScored}
-                                                onChange={handleInputs}
-                                                placeholder="Run Scored" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="ballPlayed">
-                                                <IoTennisballOutline />
-                                            </label>
-                                            <input type="number" name="ballPlayed" id="ballPlayed" autoComplete="off"
-                                                value={user.ballPlayed}
-                                                onChange={handleInputs}
-                                                placeholder="Balls Played" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="sixes">
-                                                <FaDiceSix />
-                                            </label>
-                                            <input type="number" name="sixes" id="sixes" autoComplete="off"
-                                                value={user.sixes}
-                                                onChange={handleInputs}
-                                                placeholder="Sixes" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="fours">
-                                                <FaDiceFour />
-                                            </label>
-                                            <input type="number" name="fours" id="fours" autoComplete="off"
-                                                value={user.fours}
-                                                onChange={handleInputs}
-                                                placeholder="Fours" />
-                                        </div>
-                                    </>
-                                )}
+                              
 
-                                {(user.category === "Bowling") && (
-                                    <>
-                                        <div className="form-group">
-                                            <label htmlFor="overBowled">
-                                                <IoTennisball />
-                                            </label>
-                                            <input type="number" name="overBowled" id="overBowled" autoComplete="off"
-                                                value={user.overBowled}
-                                                onChange={handleInputs}
-                                                placeholder="Over" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="runGiven">
-                                                <GrScorecard />
-                                            </label>
-                                            <input type="number" name="runGiven" id="runGiven" autoComplete="off"
-                                                value={user.runGiven}
-                                                onChange={handleInputs}
-                                                placeholder="Run" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="wicketTaken">
-                                                <GiCannonBall />
-                                            </label>
-                                            <input type="number" name="wicketTaken" id="wicketTaken" autoComplete="off"
-                                                value={user.wicketTaken}
-                                                onChange={handleInputs}
-                                                placeholder="Wicket" />
-                                        </div>
-
-                                    </>
-                                )}
-
+                               
                             </form>
 
                             <div className="button">
@@ -357,7 +434,7 @@ const Fund = ({ setShowModal }) => {
                     </div>
                 </Fade>
 
-            )}
+            )} */}
 
             {/* <ToastContainer /> */}
         </>
