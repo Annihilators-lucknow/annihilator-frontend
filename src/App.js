@@ -5,6 +5,7 @@ import Home from "./Components/Home";
 import Fund from "./Components/Fund Section/index";
 import Team from "./Components/Team";
 import Footer from "./Components/Footer";
+import MatchHistory from "./Components/MatchHistory";
 import ScrollToTop from "./Components/ScrollToTop";
 import ScrollButton from "./Components/ScrollButton";
   import { ToastContainer } from 'react-toastify';
@@ -32,6 +33,8 @@ function App() {
           <Route exact path="/funds" element={<Fund setShowModal={setShowModal} />} />
 
           <Route exact path="/team" element={<Team showModal={showModal} setShowModal={setShowModal} />} />
+
+          <Route exact path="/match-history" element={<MatchHistory showModal={showModal} setShowModal={setShowModal} />} />
 
         </Routes>
 

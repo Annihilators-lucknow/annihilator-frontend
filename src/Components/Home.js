@@ -6,7 +6,7 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllCricketMatch } from '../Store/Actions/cricket.action'
+import { getlatestMatch } from '../Store/Actions/cricket.action'
 import MatchCard from './MatchCard';
 
 const Home = ({ setShowModal }) => {
@@ -18,7 +18,7 @@ const Home = ({ setShowModal }) => {
 
     useEffect(() => {
         setShowModal(false);
-        dispatch(getAllCricketMatch())
+        dispatch(getlatestMatch())
     }, [setShowModal])
 
     useEffect(() => {

@@ -18,7 +18,7 @@ const FundHistory = ({ fundHistory }) => {
         <div className='content-center flex-col'>
          <div className="history-heading">
          <h1>Fund histroy</h1>  
-         <button className="btn edit-score mt-none"> <img style={{width:"20px",height:"20px",objectFit:"contain",}} src={expense} /> Add Other Expense</button>
+         <button className="btn edit-score mt-none"> <img className='inside-btn-img' src={expense} /> Add Other Expense</button>
          </div>
         <Carousel
             showThumbs={true}

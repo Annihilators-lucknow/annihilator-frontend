@@ -1507,3 +1507,16 @@
 .flex-col{
   flex-direction: column;
 }
+
+.mt-l {
+  margin-top: 1%;
+}
+
+.inside-btn-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  position: relative;
+  top: 0.2rem;
+  left: -0.3rem;
+}

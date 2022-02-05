@@ -4,7 +4,10 @@ import {
   UPDATE_CRICKET_RECORD_START, UPDATE_CRICKET_RECORD_SUCCESS, UPDATE_CRICKET_RECORD_FAILED, GET_FUND_BALANCE_DATA_START, GET_FUND_BALANCE_DATA_SUCCESS, GET_FUND_BALANCE_DATA_FAILED,
   GET_FUND_HISTORY_START,
   GET_FUND_HISTORY_SUCCESS,
-  GET_FUND_HISTORY_FAILED
+  GET_FUND_HISTORY_FAILED,
+  GET_ALL_CRICKET_MATCH_START,
+  GET_ALL_CRICKET_MATCH_SUCCESS,
+  GET_ALL_CRICKET_MATCH_FAILED,
 } from "../../constant/actiontype";
 import apiconfig from "../../constant/apiconfig";
 import { authHeader } from '../../constant/header'
@@ -13,7 +16,7 @@ import {toast } from 'react-toastify';
 
 
 
-export const getAllCricketMatch = () => {
+export const getlatestMatch = () => {
   return async (dispatch) => {
     dispatch({ type: GET_CRICKET_MATCH_DATA_START });
     try {
@@ -26,6 +29,21 @@ export const getAllCricketMatch = () => {
     }
   }
 }
+
+export const getAllCricketMatch = () => {
+  return async (dispatch) => {
+    dispatch({ type: GET_ALL_CRICKET_MATCH_START });
+    try {
+      const res = await axios.get(`${apiconfig.baseURL}/allmatch`, {
+        headers: authHeader(),
+      })
+      dispatch({ type: GET_ALL_CRICKET_MATCH_SUCCESS, payload: res.data.data });
+    } catch (err) {
+      dispatch({ type: GET_ALL_CRICKET_MATCH_FAILED, payload: err })
+    }
+  }
+}
+
 
 export const updateCricketMatchData = (data) => {
   return async (dispatch) => {

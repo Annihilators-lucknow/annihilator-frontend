@@ -41,6 +41,9 @@ const Navbar = ({ showModal }) => {
                     <li>
                         <Link to="/funds" onClick={() => { setShowLink(3); setShowMenu(false); }} className={(showLink === 3) ? "noSelect active-link" : "noSelect"}> Our Funds </Link>
                     </li>
+                     <li>
+                        <Link to="/match-history" onClick={() => { setShowLink(4); setShowMenu(false); }} className={(showLink === 4) ? "noSelect active-link" : "noSelect"}>Matches</Link>
+                    </li>
                     <li onClick={() => { setShowMenu(false); scrollToBottom(); }} className="noSelect li-contact"> Contact
                     </li>
                 </div>

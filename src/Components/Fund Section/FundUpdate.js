@@ -25,6 +25,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Switch from '@mui/material/Switch';
 import { useNavigate  } from "react-router-dom";
 import "./fund.css"
+import plusIcon from '../../backgrounds/addition.png'
 
  const initialStateMatchData = {
         teamName:"",
@@ -78,9 +79,8 @@ const useStyles = makeStyles({
     }
 });
 
-const FundUpdate = ({ setShowModal }) => {
+const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
     const dispatch = useDispatch();
-    const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
     const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
     const [user, setUser] = useState(initialStateMatchData);
@@ -123,17 +123,6 @@ const FundUpdate = ({ setShowModal }) => {
     }
     return (
         <>
-
-            {(!showMom) && (
-                <div className="fund">
-                    <h1>Our fund: {FundBalance} &#8377;</h1>
-                    <div className='button-section'>
-                        <button className="btn edit-score" onClick={() => setScoreCard(!scoreCard)}>Update Score</button>
-                        {/* <button className="btn edit-mom" onClick={() => setShowMom(!showMom)}>Update Mom</button> */}
-                    </div>
-                </div>
-            )}
-
             {scoreCard && (<Fade up>
                 <div className="register">
 
