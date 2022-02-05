@@ -205,3 +205,15 @@
     margin: 0 1.5rem;
     flex-direction: column;
 }
+
+.history-heading {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 5%;
+  align-items: center;
+  width: 100%;
+}
+
+.mt-none{
+  margin-top: unset !important;
+}

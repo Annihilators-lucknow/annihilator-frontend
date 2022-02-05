@@ -2,6 +2,7 @@ import React from 'react';
 import Fade from 'react-reveal/Fade';
 import winlogo from "../../backgrounds/teamlogo2.png";
 import { Opponent } from "./../Oppenent";
+import expense from './expense.png'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
@@ -14,7 +15,11 @@ const FundHistory = ({ fundHistory }) => {
 
     
     return <>
-        <div className='content-center'>
+        <div className='content-center flex-col'>
+         <div className="history-heading">
+         <h1>Fund histroy</h1>  
+         <button className="btn edit-score mt-none"> <img style={{width:"20px",height:"20px",objectFit:"contain",}} src={expense} /> Add Other Expense</button>
+         </div>
         <Carousel
             showThumbs={true}
             showStatus={false}

@@ -14,8 +14,12 @@ const Fund = ({setShowModal}) => {
     }, [])
 
     return <> 
-    <FundUpdate setShowModal={setShowModal}/>
-    <FundHistory fundHistory={fundHistory}/>
+    <div style={{marginTop:"2%"}}>
+        {/* <FundUpdate setShowModal={setShowModal}/> */}
+       <FundHistory fundHistory={fundHistory}/>
+
+    </div>
+    
      </>
 }
 
