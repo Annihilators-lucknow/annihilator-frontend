@@ -14,8 +14,8 @@ const Fund = ({setShowModal}) => {
     }, [])
 
     return <> 
-    <FundHistory fundHistory={fundHistory}/>
     <FundUpdate setShowModal={setShowModal}/>
+    <FundHistory fundHistory={fundHistory}/>
      </>
 }
 
