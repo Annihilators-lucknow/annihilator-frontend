@@ -1305,6 +1305,9 @@
   .rank {
     flex-direction: row;
   }
+  .h1-sm{
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-width: 450px) {

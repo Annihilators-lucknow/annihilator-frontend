@@ -8,7 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
 
 
-const FundHistory = ({ fundHistory }) => {
+const FundHistory = ({ fundHistory ,fundBalance}) => {
     function detectMob() {
         return (window.innerWidth <= 800);
     }
@@ -16,8 +16,12 @@ const FundHistory = ({ fundHistory }) => {
     
     return <>
         <div className='content-center flex-col'>
+             <div className="history-heading">
+         <h1 className='h1-sm'>Current Balance : {fundBalance}</h1>  
+         </div>
          <div className="history-heading">
-         <h1>Fund histroy</h1>  
+         <h1 className='h1-sm'>Fund histroy</h1>  
+       
          <button className="btn edit-score mt-none"> <img className='inside-btn-img' src={expense} /> Add Other Expense</button>
          </div>
         <Carousel
