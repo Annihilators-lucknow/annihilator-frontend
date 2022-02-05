@@ -18,13 +18,13 @@ const FundHistory = ({ fundHistory }) => {
         <Carousel
             showThumbs={true}
             showStatus={false}
-            infiniteLoop
+            infiniteLoop ={false}
             emulateTouch={true}
             // autoPlay
             useKeyboardArrows
             transitionTime={1000}
             // axis="vertical"
-            // selectedItem={1}
+            selectedItem={1}
             width={detectMob() ? "95vw" : "80vw"}
             centerMode={true}
             centerSlidePercentage={detectMob() ? 100 : 35}

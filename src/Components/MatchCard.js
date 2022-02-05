@@ -17,7 +17,7 @@ const MatchCard = ({ allCricketMatch }) => {
         <Carousel
             showThumbs={true}
             showStatus={false}
-            infiniteLoop
+            infiniteLoop={false}
             emulateTouch={true}
             // autoPlay
             useKeyboardArrows
