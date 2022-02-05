@@ -27,7 +27,7 @@ const FundHistory = ({ fundHistory }) => {
             selectedItem={1}
             width={detectMob() ? "95vw" : "80vw"}
             centerMode={true}
-            centerSlidePercentage={detectMob() ? 100 : 35}
+            centerSlidePercentage={detectMob() ? 100 : 30}
         >
 
             {fundHistory && fundHistory.map((item) => {
