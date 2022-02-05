@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
-import Fund from "./Components/Fund Section/Fund";
+import Fund from "./Components/Fund Section/index";
 import Team from "./Components/Team";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
 import ScrollButton from "./Components/ScrollButton";
+  import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
+  
   const [activeLink, setActiveLink] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
   // comment 
   return (
     <div className="App">
-
+      <ToastContainer autoClose={2000} />
       <Router>
 
         <ScrollToTop />

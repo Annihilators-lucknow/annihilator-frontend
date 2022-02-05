@@ -179,3 +179,29 @@
     height: 150px;
   }
 }
+
+.font-red{
+  color: red !important;
+  font-weight: 700;
+}
+
+.font-green{
+  color: green !important;
+  font-weight: 700;
+}
+
+.current-balance{
+  color: black !important;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+
+
+.histroy-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1.5rem;
+    flex-direction: column;
+}

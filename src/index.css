@@ -1497,3 +1497,9 @@
     height: 95px;
   }
 }
+
+.content-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

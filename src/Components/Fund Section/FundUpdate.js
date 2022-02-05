@@ -20,7 +20,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import signpic from "./signup.png";
 import Fade from 'react-reveal/Fade';
 import { updateCricketMatchData } from '../../Store/Actions/cricket.action';
-import { getFundBalance } from '../../Store/Actions/cricket.action'
+import { getFundBalance,getfundhistory } from '../../Store/Actions/cricket.action'
 import { useSelector, useDispatch } from 'react-redux'
 import Switch from '@mui/material/Switch';
 import { useNavigate  } from "react-router-dom";
@@ -78,7 +78,7 @@ const useStyles = makeStyles({
     }
 });
 
-const Fund = ({ setShowModal }) => {
+const FundUpdate = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const [scoreCard, setScoreCard] = useState(false);
     const [showMom, setShowMom] = useState(false);
@@ -86,23 +86,14 @@ const Fund = ({ setShowModal }) => {
     const [user, setUser] = useState(initialStateMatchData);
     const [momData ,setMomData] = useState(initaiStateMom)
     const navigate = useNavigate ()
-
+    
 
 
     const classes = useStyles();
-
     useEffect(() => {
         setShowModal(false);
         dispatch(getFundBalance())
     }, [setShowModal])
-
-
-   
-
-
-
-    
-
 
     const handleInputs = (e) => {
         const {name,value} = e.target
@@ -122,8 +113,6 @@ const Fund = ({ setShowModal }) => {
         navigate('/')
         },[1000])
     }
-
-    console.log(showMom)
 
     const displayRenderButton = () =>{
         const label = { inputProps: { 'aria-label': 'Switch demo' } };
@@ -385,60 +374,9 @@ const Fund = ({ setShowModal }) => {
                     </Fade>
                 </div>
             </Fade>)}
-
-            {/* {showMom && (
-
-                <Fade up>
-                    <div className="register" id="mom">
-
-                        <div className="register-container" id='mom-container'>
-                            <h1>MOM Card</h1>
-
-                            <form method="POST" className="register-form" id="register-form">
-                                <div className="form-group">
-                                    <label htmlFor="playerName">
-                                        <IoPersonOutline />
-                                    </label>
-                                    <TextField
-                                        className={classes.root}
-                                        value={user.playerName}
-                                        onChange={handleInputs}
-                                        variant="outlined"
-                                        label="Player Name"
-                                        name="playerName"
-                                        select
-                                    >
-
-                                        {Players.map((player) => {
-                                            return (
-                                                <MenuItem value={player.name}>{player.name}</MenuItem>
-                                            )
-                                        })}
-                                    </TextField>
-                                </div>
-                               
-
-                              
-
-                               
-                            </form>
-
-                            <div className="button">
-                                <button type="submit" name="signup" id="signup" className="btn" value="submit" >Submit</button>
-                                <button className="btn cancel" onClick={() => setShowMom(!showMom)}>Cancel</button>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </Fade>
-
-            )} */}
-
-            {/* <ToastContainer /> */}
         </>
 
     )
 }
 
-export default Fund
+export default FundUpdate

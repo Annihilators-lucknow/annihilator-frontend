@@ -1,11 +1,16 @@
-import { GET_CRICKET_MATCH_DATA_START, GET_CRICKET_MATCH_DATA_SUCCESS, GET_CRICKET_MATCH_DATA_FAILED, GET_FUND_BALANCE_DATA_START, GET_FUND_BALANCE_DATA_SUCCESS, GET_FUND_BALANCE_DATA_FAILED } from '../../constant/actiontype';
+import { GET_CRICKET_MATCH_DATA_START, GET_CRICKET_MATCH_DATA_SUCCESS, GET_CRICKET_MATCH_DATA_FAILED, GET_FUND_BALANCE_DATA_START, GET_FUND_BALANCE_DATA_SUCCESS, GET_FUND_BALANCE_DATA_FAILED,
+  GET_FUND_HISTORY_START,
+  GET_FUND_HISTORY_SUCCESS,
+  GET_FUND_HISTORY_FAILED ,
+} from '../../constant/actiontype';
 
 const initialState = {
   cricketData: [],
   tokens: [],
   isLoading: false,
   error: [],
-  fundBalance: []
+  fundBalance: [],
+  fundHistory:[]
 }
 
 export default (state = initialState, action) => {
@@ -43,6 +48,25 @@ export default (state = initialState, action) => {
       }
 
     case GET_FUND_BALANCE_DATA_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      }
+       case GET_FUND_HISTORY_START:
+      return {
+        ...state,
+        isLoading: true
+      }
+
+    case GET_FUND_HISTORY_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        fundHistory: action.payload
+      }
+
+    case GET_FUND_HISTORY_FAILED:
       return {
         ...state,
         isLoading: false,
