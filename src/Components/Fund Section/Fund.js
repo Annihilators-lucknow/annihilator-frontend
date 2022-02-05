@@ -117,11 +117,10 @@ const Fund = ({ setShowModal }) => {
     const PostData = async (e) => {
         e.preventDefault();
         user.ManofTheMatch = momData
-        console.log(user)
-        //dispatch(updateCricketMatchData(user))
+        dispatch(updateCricketMatchData(user))
         setTimeout(()=>{
         navigate('/')
-        })
+        },[1000])
     }
 
     console.log(showMom)
