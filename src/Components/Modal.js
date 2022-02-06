@@ -126,7 +126,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
                                                   <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
                                              </div>
                                              <div className="d-flex flex-row w-100 justify-between">
-                                             <div>{`${momDataItem.annihilatorScore} - ${momDataItem.annihilatorOver} / ${momDataItem.opponentScore} - ${momDataItem.opponentOver} `}</div>
+                                             <div>{`${momDataItem.annihilatorScore.split('/').shift()} - ${momDataItem.annihilatorOver} / ${momDataItem.opponentScore.split('/').shift()} - ${momDataItem.opponentOver} `}</div>
                                              <div>{`Annihilators ${momDataItem.matchResult}`}</div>
                                              </div>
                                               {momDataItem.ManofTheMatch.category === "Both" ?
