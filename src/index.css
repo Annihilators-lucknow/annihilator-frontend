@@ -1519,10 +1519,32 @@
 }
 
 .inside-btn-img {
-  width: 20px;
-  height: 20px;
+  width: 20px !important;
+  height: 20px !important;
   object-fit: contain;
   position: relative;
   top: 0.2rem;
   left: -0.3rem;
+}
+
+.w-100{
+  width: 100%;
+}
+.flex-row{
+  flex-direction: row !important;
+}
+.d-flex{
+  display: flex;
+}
+
+.justify-between{
+  justify-content: space-between;
+}
+
+.ml-unset{
+  margin-left: unset;
+}
+
+.flex-2{
+  flex: 2;
 }

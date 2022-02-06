@@ -67,7 +67,6 @@ export default function FundModal() {
     }
 
     const onsubmit = () =>{
-     console.log("FundUpdate===",FundUpdate)
      dispatch(updateFund(FundUpdate))
     }
   return (
@@ -81,10 +80,10 @@ export default function FundModal() {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+          <Typography  id="keep-mounted-modal-title" variant="h6" component="h2">
             Add Other Expense
           </Typography>
-          <div className="form-group">
+          <div style={{marginBottom:"2%"}} className="form-group">
             <label htmlFor="date">
               <BsCalendar2Date />
           </label>

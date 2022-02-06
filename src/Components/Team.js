@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 import { Players } from "./Players"
@@ -6,10 +6,25 @@ import Modal from "./Modal";
 import { GiTennisBall } from "react-icons/gi";
 import bat from "../backgrounds/bat.png";
 import batball from "../backgrounds/batball.png";
+import { getAllCricketMatch } from '../Store/Actions/cricket.action'
+import { useDispatch,useSelector } from 'react-redux';
+
+
 
 const Team = ({ showModal, setShowModal }) => {
-
+    const dispatch = useDispatch()
     const [playerData, setPlayerData] = useState({});
+    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches)
+    const [momData,setMomData] = useState()
+
+
+   useEffect(()=>{
+     dispatch(getAllCricketMatch())
+   },[])
+
+   useEffect(()=>{
+      setMomData(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name))
+   },[playerData])
 
     return (
         <>
@@ -42,7 +57,7 @@ const Team = ({ showModal, setShowModal }) => {
                 </div>
             </div >
 
-            {showModal && <Modal showModal={showModal} setShowModal={setShowModal} playerData={playerData} />}
+            {showModal && <Modal showModal={showModal} setShowModal={setShowModal} playerData={playerData} tempAllMatch={tempAllMatch} momData={momData} />}
 
         </>
 

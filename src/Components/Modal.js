@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import Fade from 'react-reveal/Fade';
+import winlogo from "../backgrounds/teamlogo2.png";
+import moment from 'moment';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import batting from "../backgrounds/bating.png";
+import bowling from '../backgrounds/bowling.png';
 
-const Modal = ({ setShowModal, playerData }) => {
+const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
 
     const [toggleState, setToggleState] = useState(1);
-
     const toggleTab = (index) => {
         setToggleState(index);
     }
+    function detectMob() {
+        return (window.innerWidth <= 800);
+    }
+
 
     return (
         <Fade up>
@@ -73,8 +82,9 @@ const Modal = ({ setShowModal, playerData }) => {
                             </div>
 
                             <div className={toggleState === 2 ? "second-slide active" : "hide"}>
-
-                                <div className="detail-field">
+                             {momData.length === 0 ? <>
+                            
+                             <div className="detail-field">
                                     <label className="userid">Experience</label>
                                     <p className="profession">Expert</p>
                                 </div>
@@ -94,11 +104,73 @@ const Modal = ({ setShowModal, playerData }) => {
                                     <label className="userid">Availability</label>
                                     <p className="profession">Weekends</p>
                                 </div>
+                                 </> :  <Carousel
+                                            showThumbs={true}
+                                            showStatus={false}
+                                            infiniteLoop={false}
+                                            emulateTouch={true}
+                                            // autoPlay
+                                            swipeScrollTolerance={5}
+                                            useKeyboardArrows
+                                            transitionTime={1000}
+                                            // axis="vertical"
+                                            // selectedItem={1}
+                                            width={detectMob() ? "95vw" : "30vw"}
+                                            centerMode={true}
+                                            centerSlidePercentage={detectMob() ? 100 : 50}
+                                        >
+                                 {momData && momData.map((momDataItem)=>{
+                                    console.log("momDataItem==",momDataItem)
+                                    return  <div className="last ml-unset" >
+                                             <div>
+                                                  <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
+                                             </div>
+                                             <div className="d-flex flex-row w-100 justify-between">
+                                             <div>{`${momDataItem.annihilatorScore} - ${momDataItem.annihilatorOver} / ${momDataItem.opponentScore} - ${momDataItem.opponentOver} `}</div>
+                                             <div>{`Annihilators ${momDataItem.matchResult}`}</div>
+                                             </div>
+                                              {momDataItem.ManofTheMatch.category === "Both" ?
+                                              <>
+                                               <div className="d-flex flex-row w-100 ">
+                                                <img className="inside-btn-img" src={batting} />
+                                              <div className=""> {`${momDataItem.ManofTheMatch.runScored} run - ${momDataItem.ManofTheMatch.ballPlayed} ball (6 X ${ momDataItem.ManofTheMatch.sixes || 0} & 4 X ${ momDataItem.ManofTheMatch.fours || 0}) `}    </div>
+                                              </div>
+                                               <div className="d-flex flex-row w-100 ">
+                                                <img className="inside-btn-img" src={bowling} />
+                                                <div>{ ` ${momDataItem.ManofTheMatch.overBowled} over - ${momDataItem.ManofTheMatch.runGiven} run - ${momDataItem.ManofTheMatch.wicketTaken} wicket` }   </div>
+                                              </div>
+                                              </> :  momDataItem.ManofTheMatch.category === "Batting" ?
+                                              <>
+                                               <div className="d-flex flex-row w-100 ">
+                                                <img className="inside-btn-img" src={batting} />
+                                              <div className=""> {`${momDataItem.ManofTheMatch.runScored} run - ${momDataItem.ManofTheMatch.ballPlayed} ball (6 X ${ momDataItem.ManofTheMatch.sixes || 0} & 4 X ${ momDataItem.ManofTheMatch.fours || 0}) `}    </div>
+                                              </div>
+                                              </> : 
+                                              <>
+                                               <div className="d-flex flex-row w-100 ">
+                                                <img className="inside-btn-img" src={bowling} />
+                                                <div>{ ` ${momDataItem.ManofTheMatch.overBowled} over - ${momDataItem.ManofTheMatch.runGiven} run - ${momDataItem.ManofTheMatch.wicketTaken} wicket` }   </div>
+                                              </div>
+                                              </>
 
-                            </div>
-                        </div>
+                                              }
+                                             
+                        
+                                            </div>
+                                })}
+                                
+                                 </Carousel>}
 
-                    </div>
+                              
+                                
+                                
+                                <div > 
+                   
+                    </div> 
+                            </div> 
+                        </div> 
+
+                    </div> 
                 </form>
             </div>
         </Fade>
