@@ -46,6 +46,7 @@ export default (state = initialState, action) => {
         isLoading: true
       }
     case GET_ALL_CRICKET_MATCH_SUCCESS:
+      console.log(action.payload)
       return {
         ...state,
         isLoading: false,

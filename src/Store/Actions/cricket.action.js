@@ -41,7 +41,7 @@ export const getAllCricketMatch = () => {
       const res = await axios.get(`${apiconfig.baseURL}/allmatch`, {
         headers: authHeader(),
       })
-      dispatch({ type: GET_ALL_CRICKET_MATCH_SUCCESS, payload: res.data.data });
+      dispatch({ type: GET_ALL_CRICKET_MATCH_SUCCESS, payload: res.data });
     } catch (err) {
       dispatch({ type: GET_ALL_CRICKET_MATCH_FAILED, payload: err })
     }
@@ -104,7 +104,7 @@ export const updateFund = (data) => {
         headers: authHeader(),
       })
       console.log("res===",res)
-      dispatch({ type: UPDATE_FUND_BALANCE_SUCCESS, payload: res.data.data.matchDetails });
+      dispatch({ type: UPDATE_FUND_BALANCE_SUCCESS, payload: res.data.data });
       toast.success("fund update successfully")
     } catch (err) {
       dispatch({ type: UPDATE_FUND_BALANCE_FAILED, payload: err })
