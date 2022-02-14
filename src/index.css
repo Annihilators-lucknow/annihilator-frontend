@@ -1009,6 +1009,13 @@
 
 /* Responsive */
 
+@media only screen and (min-width: 1024px) {
+ .res-d-flex{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 @media only screen and (max-width: 1350px) {
   .about-details {
     width: 400px;
@@ -1036,6 +1043,7 @@
   .about-form {
     width: 65vw;
   }
+  
 }
 
 @media only screen and (max-width: 950px) {
@@ -1308,6 +1316,10 @@
   .h1-sm{
     font-size: 16px;
   }
+  .res-d-flex{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -1434,6 +1446,10 @@
   .css-1wnsr1i{
     width: 80%  !important;
   }
+  .res-d-flex{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -1548,3 +1564,19 @@
 .flex-2{
   flex: 2;
 }
+
+.text-red {
+  color: red !important;
+}
+.text-orange {
+  color: orange !important;
+}
+
+.text-yellow {
+  color: #e7bb38 !important;
+}
+
+.text-green{
+  color: green !important;
+}
+
