@@ -14,10 +14,9 @@ const HistoryCard = ({historyRecord}) => {
  return <div className='res-d-flex'>
        
         <div className="last">
-                        <div>{`Total matches ${historyRecord?.totalmatch}`}</div> 
+                         <span>{`Match Record`}</span>
                         <div className="score">
                             <div className="win">
-                              
                                 <img src={winning} alt="winlogo" />
                                 <div className="lose-score">
                                     <h2>{historyRecord?.totalmatchWon}</h2>
@@ -32,10 +31,10 @@ const HistoryCard = ({historyRecord}) => {
                                 <img src={lose} alt="winlogo" />
                             </div>
                         </div>
-                        <span>{`Match Record`}</span>
+                         <div>{`Total matches ${historyRecord?.totalmatch}`}</div> 
          </div>
          <div className="last">
-                         <div>{`Total matches ${historyRecord?.totalmatch}`}</div> 
+                           <span>{`Toss record`}</span>
                         <div className="score">
                             <div className="win">
                                 <img src={thumbsup} alt="winlogo" />
@@ -52,7 +51,7 @@ const HistoryCard = ({historyRecord}) => {
                                 <img src={thumbsdown} alt="winlogo" />
                             </div>
                         </div>
-                        <span>{`Toss record`}</span>
+                        <div>{`Total matches ${historyRecord?.totalmatch}`}</div> 
          </div>
        </div>
 }
