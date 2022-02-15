@@ -92,8 +92,8 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
     const classes = useStyles();
     useEffect(() => {
         setShowModal(false);
-        dispatch(getFundBalance())
-    }, [setShowModal])
+        // dispatch(getFundBalance())
+    }, [])
 
     const handleInputs = (e) => {
         const {name,value} = e.target
@@ -121,6 +121,8 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
        
         </>
     }
+
+
     return (
         <>
             {scoreCard && (<Fade up>

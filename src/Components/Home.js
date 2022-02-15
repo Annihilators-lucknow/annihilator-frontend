@@ -8,11 +8,13 @@ import cricketbg from "../backgrounds/cricketbg.jpg";
 import { useSelector, useDispatch } from 'react-redux'
 import { getlatestMatch } from '../Store/Actions/cricket.action'
 import MatchCard from './MatchCard';
+import Loader from './Loader'
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
     const tempAllMatch = useSelector((state) => state.cricketReducer.cricketData)
+     const isLoading = useSelector((state) => state.cricketReducer.isLoading)
 
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
 
@@ -42,7 +44,7 @@ const Home = ({ setShowModal }) => {
                 </div>
             </Fade>
 
-            <Fade up>
+            {isLoading ? <Loader/> : <Fade up>
                 <div className="parent">
                     <div className="match-container">
                         <h1>Last Match Result</h1>
@@ -51,7 +53,7 @@ const Home = ({ setShowModal }) => {
                         </div>
                     </div>
                 </div>
-            </Fade>
+            </Fade>}
 
             <div className="about-section">
                 <div className="about-container">

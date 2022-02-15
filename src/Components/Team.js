@@ -8,13 +8,15 @@ import bat from "../backgrounds/bat.png";
 import batball from "../backgrounds/batball.png";
 import { getAllCricketMatch } from '../Store/Actions/cricket.action'
 import { useDispatch,useSelector } from 'react-redux';
+import Loader from './Loader'
 
 
 
 const Team = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch()
     const [playerData, setPlayerData] = useState({});
-    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches)
+    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
+    const isLoading = useSelector((state) => state.cricketReducer.isLoading)
     const [momData,setMomData] = useState()
 
 
@@ -26,8 +28,8 @@ const Team = ({ showModal, setShowModal }) => {
       setMomData(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name))
    },[playerData])
 
-    return (
-        <>
+    return (<>
+        {isLoading ? <Loader/> :<>
             <div className={showModal ? "team active-blur" : "team"}>
                 <Fade up><div className="team-intro">
                     <h1>Our Team</h1>
@@ -60,7 +62,8 @@ const Team = ({ showModal, setShowModal }) => {
             {showModal && <Modal showModal={showModal} setShowModal={setShowModal} playerData={playerData} tempAllMatch={tempAllMatch} momData={momData} />}
 
         </>
-
+    }
+</>
 
     )
 }
