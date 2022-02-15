@@ -19,7 +19,6 @@ const Team = ({ showModal, setShowModal }) => {
     const isLoading = useSelector((state) => state.cricketReducer.isLoading)
     const [momData,setMomData] = useState()
 
-
    useEffect(()=>{
      dispatch(getAllCricketMatch())
    },[])
