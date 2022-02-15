@@ -14,9 +14,8 @@ import { useDispatch,useSelector } from 'react-redux';
 const Team = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch()
     const [playerData, setPlayerData] = useState({});
-    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches)
+    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
     const [momData,setMomData] = useState()
-
 
    useEffect(()=>{
      dispatch(getAllCricketMatch())

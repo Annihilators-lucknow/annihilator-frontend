@@ -120,7 +120,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
                                             centerSlidePercentage={detectMob() ? 100 : 50}
                                         >
                                  {momData && momData.map((momDataItem)=>{
-                                    console.log("momDataItem==",momDataItem)
+                                   
                                     return  <div className="last ml-unset" >
                                              <div>
                                                   <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>

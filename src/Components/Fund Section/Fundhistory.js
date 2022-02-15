@@ -41,7 +41,6 @@ const FundHistory = ({ fundHistory ,fundBalance}) => {
         >
 
             {fundHistory && fundHistory.map((item) => {
-                console.log(item)
                 return <div >
                     <div className="last">
                         <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
