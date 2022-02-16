@@ -8,8 +8,10 @@ import Footer from "./Components/Footer";
 import MatchHistory from "./Components/MatchHistory";
 import ScrollToTop from "./Components/ScrollToTop";
 import ScrollButton from "./Components/ScrollButton";
-  import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from "./Components/Dashboard.js";
+
 
 function App() {
   
@@ -20,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <ToastContainer autoClose={2000} />
-      <Router>
+      {/* <Router>
 
         <ScrollToTop />
 
@@ -35,14 +37,20 @@ function App() {
           <Route exact path="/team" element={<Team showModal={showModal} setShowModal={setShowModal} />} />
 
           <Route exact path="/match-history" element={<MatchHistory showModal={showModal} setShowModal={setShowModal} />} />
-
         </Routes>
 
         <ScrollButton />
 
         <Footer setShowLink={setActiveLink} showModal={showModal} />
 
+      </Router> */}
+       <Router>
+
+        <Routes>
+           <Route exact path="/dashboard" element={<Dashboard showModal={showModal} setShowModal={setShowModal} />} />
+        </Routes>
       </Router>
+
 
     </div >
   );
