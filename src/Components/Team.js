@@ -17,14 +17,14 @@ const Team = ({ showModal, setShowModal }) => {
     const [playerData, setPlayerData] = useState({});
     const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
     const isLoading = useSelector((state) => state.cricketReducer.isLoading)
-    const [momData,setMomData] = useState()
+    const [momData,setMomData] = useState(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name))
 
    useEffect(()=>{
      dispatch(getAllCricketMatch())
    },[])
 
    useEffect(()=>{
-      setMomData(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name))
+      setMomData(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name) : [])
    },[playerData])
 
     return (<>
