@@ -25,14 +25,15 @@ const MatchHistory = ({setShowModal}) => {
 
     return <>
         {isLoading ? <Loader/> :
-         <div className='content-center flex-col mt-l'>
-            <HistoryCard historyRecord={historyRecord}/>
+         <div className='content-center flex-col mt-l match-history'>
+           
                 <div className="history-heading">
                 <h1>Match histroy</h1>  
                 <button className="btn edit-score mt-none" onClick={()=>setScoreCard(!scoreCard)}> <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button>
                 </div>
             <MatchCard allCricketMatch={tempAllMatch}/>
             <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard}/>
+             <HistoryCard historyRecord={historyRecord}/>
         </div>}
     </>
 }

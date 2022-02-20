@@ -1664,3 +1664,10 @@
 
 /* loader css end here  */
 
+.match-history .control-dots{
+  display: none;
+}
+
+.fund-history .control-dots{
+  display: none;
+}

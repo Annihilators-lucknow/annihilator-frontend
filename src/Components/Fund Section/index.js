@@ -16,12 +16,12 @@ const Fund = ({setShowModal}) => {
         dispatch(getFundBalance())
     }, [])
 
-    return <> 
+    return <div className='fund-history'> 
     {isLoading ? <Loader/> : <div style={{marginTop:"2%"}}>
        <FundHistory fundHistory={fundHistory} fundBalance={fundBalance}/>
     </div>}
     
-     </>
+     </div>
 }
 
 export default Fund

@@ -28,6 +28,7 @@ const MatchCard = ({ allCricketMatch }) => {
             width={detectMob() ? "95vw" : "80vw"}
             centerMode={true}
             centerSlidePercentage={detectMob() ? 100 : 50}
+            dots={true}
         >
             {allCricketMatch && allCricketMatch.map((item) => {
                 return <div >
