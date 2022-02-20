@@ -108,10 +108,13 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
     const PostData = async (e) => {
         e.preventDefault();
         user.ManofTheMatch = momData
-        dispatch(updateCricketMatchData(user))
-        setTimeout(()=>{
-        navigate('/')
-        },[1000])
+        const payload = {
+            data : user , 
+            successCallBack : () => {
+             navigate('/')
+            }
+        }
+        dispatch(updateCricketMatchData(payload))
     }
 
     const displayRenderButton = () =>{

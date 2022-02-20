@@ -49,15 +49,18 @@ export const getAllCricketMatch = () => {
 }
 
 
-export const updateCricketMatchData = (data) => {
+export const updateCricketMatchData = (payload) => {
   return async (dispatch) => {
     dispatch({ type: UPDATE_CRICKET_RECORD_START });
     try {
-      const res = await axios.post(`${apiconfig.baseURL}/submit`, data, {
+      const res = await axios.post(`${apiconfig.baseURL}/submit`, payload.data, {
         headers: authHeader(),
       })
       dispatch({ type: UPDATE_CRICKET_RECORD_SUCCESS, payload: res.data.matchData });
-      toast.success("match record update successfully")
+       toast.success("match record update successfully")
+      if(payload.successCallBack){
+        payload.successCallBack()
+      }
     } catch (err) {
       dispatch({ type: UPDATE_CRICKET_RECORD_FAILED, payload: err })
         toast.warn("something went wrong")
@@ -96,16 +99,20 @@ export const getfundhistory = (data) => {
 }
 
 
-export const updateFund = (data) => {
+export const updateFund = (payload) => {
   return async (dispatch) => {
     dispatch({ type: UPDATE_FUND_BALANCE_START });
     try {
-      const res = await axios.post(`${apiconfig.baseURL}/update-found`, data, {
+      const res = await axios.post(`${apiconfig.baseURL}/update-found`, payload.data, {
         headers: authHeader(),
       })
-      console.log("res===",res)
       dispatch({ type: UPDATE_FUND_BALANCE_SUCCESS, payload: res.data.data });
       toast.success("fund update successfully")
+      if(payload.successCallBack){
+        payload.successCallBack()
+        getfundhistory()
+        getFundBalance()
+      }
     } catch (err) {
       dispatch({ type: UPDATE_FUND_BALANCE_FAILED, payload: err })
         toast.warn("something went wrong")

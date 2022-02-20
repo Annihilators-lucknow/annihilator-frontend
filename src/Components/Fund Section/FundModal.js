@@ -67,10 +67,13 @@ export default function FundModal() {
     }
 
     const onsubmit = () =>{
-     dispatch(updateFund(FundUpdate))
-     setTimeout(()=>{
-      handleClose()
-     },1000)
+       const payload = {
+            data :  FundUpdate ,
+            successCallBack : () => {
+               handleClose()
+            }
+        }
+     dispatch(updateFund(payload))
     }
   return (
     <div>
