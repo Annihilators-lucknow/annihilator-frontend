@@ -6,17 +6,26 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import { useSelector, useDispatch } from 'react-redux'
-import { getlatestMatch } from '../Store/Actions/cricket.action'
+import { getlatestMatch ,updatePlayersRecord} from '../Store/Actions/cricket.action'
 import MatchCard from './MatchCard';
 import Loader from './Loader'
+import Individualrecoed from './individualRecord';
+import FundUpdate from './Fund Section/FundUpdate'
+import plusIcon from '../backgrounds/addition.png'
+import { useNavigate  } from "react-router-dom";
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
     const tempAllMatch = useSelector((state) => state.cricketReducer.cricketData)
      const isLoading = useSelector((state) => state.cricketReducer.isLoading)
-
+    const [scoreCard, setScoreCard] = useState(false);
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
+    const [cardItem , setCardItem] = useState("")
+    const navigate = useNavigate()
+
+
+    console.log("scoreCard===",scoreCard)
 
     useEffect(() => {
         setShowModal(false);
@@ -26,6 +35,26 @@ const Home = ({ setShowModal }) => {
     useEffect(() => {
         setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
+
+      const onSaveClick = (data) => {
+       const tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord  , data.ManofTheMatch] })
+        const payload = {
+                data : tempData , 
+                successCallBack : () => {
+                      setScoreCard(false)
+                    }
+                }
+            dispatch(updatePlayersRecord(payload))
+        
+    }      
+    
+    
+    const onCardClick = (item) => {
+        setScoreCard(!scoreCard)
+        setCardItem(item)
+    }
+    
+
 
     return (
         <div className="home">
@@ -49,11 +78,12 @@ const Home = ({ setShowModal }) => {
                     <div className="match-container">
                         <h1>Last Match Result</h1>
                         <div className="result">
-                            <MatchCard allCricketMatch={allCricketMatch} />
+                            <MatchCard allCricketMatch={allCricketMatch} setScoreCard={onCardClick}  />
                         </div>
                     </div>
                 </div>
             </Fade>}
+            <><FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} individualrecord={true} onSaveClick={onSaveClick} headers="Player's match record" radioText="individual record"/></>
 
             <div className="about-section">
                 <div className="about-container">
@@ -108,9 +138,18 @@ const Home = ({ setShowModal }) => {
 
                 </div>
             </div>
+            <div>
+                {/* <Individualrecoed/> */}
+                {/* <div className="history-heading">
+                <h1>Match histroy</h1>  
+                <button className="btn edit-score mt-none" onClick={()=>setScoreCard(!scoreCard)}> <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button>
+                </div> */}
+
+            </div>
 
         </div>
     )
 }
 
 export default Home
+

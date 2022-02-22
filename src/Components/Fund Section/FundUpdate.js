@@ -26,6 +26,7 @@ import Switch from '@mui/material/Switch';
 import { useNavigate  } from "react-router-dom";
 import "./fund.css"
 import plusIcon from '../../backgrounds/addition.png'
+import Individualrecoed from '../individualRecord';
 
  const initialStateMatchData = {
         teamName:"",
@@ -79,7 +80,7 @@ const useStyles = makeStyles({
     }
 });
 
-const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
+const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord ,onSaveClick ,headers ,radioText}) => {
     const dispatch = useDispatch();
     const [showMom, setShowMom] = useState(false);
     const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
@@ -108,33 +109,29 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
     const PostData = async (e) => {
         e.preventDefault();
         user.ManofTheMatch = momData
-        const payload = {
-            data : user , 
-            successCallBack : () => {
-             navigate('/')
-            }
-        }
-        dispatch(updateCricketMatchData(payload))
+        onSaveClick(user)
     }
 
     const displayRenderButton = () =>{
         const label = { inputProps: { 'aria-label': 'Switch demo' } };
         return <>
-        <p style={{display:"inline"}}>Would you like to add Man of the match ?</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
+        <p style={{display:"inline"}}>{`Would you like to add ${radioText} ?`}</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
        
         </>
     }
 
-
+ 
     return (
         <>
             {scoreCard && (<Fade up>
                 <div className="register">
 
                     <div className="register-container">
-                        <h1>Score Card</h1>
+                        <h1>{headers}</h1>
 
                         <form method="POST" className="register-form" id="register-form">
+                            {all && <>
+                           
                             <div className="form-group">
                                 <label htmlFor="teamName">
                                     <AiOutlineTeam />
@@ -232,8 +229,9 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
                                     onChange={handleInputs}
                                     placeholder="Annihilator's over" />
                             </div>
+                            </>}
                             {displayRenderButton()}
-                            {showMom && <>
+                            { showMom && <>
                           
                             <div className="form-group">
                                     <label htmlFor="playerName">
@@ -374,3 +372,5 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard }) => {
 }
 
 export default FundUpdate
+
+FundUpdate.defaultProps = { headers: 'Score Card', radioText : "add Man of the match"}

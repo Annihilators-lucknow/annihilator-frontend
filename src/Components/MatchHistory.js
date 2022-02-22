@@ -1,11 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import MatchCard from './MatchCard'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllCricketMatch } from '../Store/Actions/cricket.action'
+import { getAllCricketMatch,updateCricketMatchData } from '../Store/Actions/cricket.action'
 import FundUpdate from './Fund Section/FundUpdate'
 import plusIcon from '../backgrounds/addition.png'
 import HistoryCard from './Historycard'
 import Loader from './Loader'
+import { useNavigate  } from "react-router-dom";
 
 
 
@@ -17,6 +18,19 @@ const MatchHistory = ({setShowModal}) => {
     const  historyRecord = useSelector((state) => state.cricketReducer.allMatches.matchHistoy)
     const isLoading = useSelector((state)=>state.cricketReducer.isLoading)
     const [scoreCard, setScoreCard] = useState(false);
+    const navigate = useNavigate()
+
+
+    
+      const onSaveClick = async (user) => {
+        const payload = {
+                data : user , 
+                successCallBack : () => {
+                     navigate('/')
+                    }
+                }
+        dispatch(updateCricketMatchData(payload))
+    }
 
 
     useEffect(()=>{
@@ -32,7 +46,7 @@ const MatchHistory = ({setShowModal}) => {
                 <button className="btn edit-score mt-none" onClick={()=>setScoreCard(!scoreCard)}> <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button>
                 </div>
             <MatchCard allCricketMatch={tempAllMatch}/>
-            <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard}/>
+            <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} all={true} individualrecord={false} onSaveClick={onSaveClick}/>
              <HistoryCard historyRecord={historyRecord}/>
         </div>}
     </>

@@ -7,7 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
 
 
-const MatchCard = ({ allCricketMatch }) => {
+const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
     function detectMob() {
         return (window.innerWidth <= 800);
     }
@@ -29,9 +29,10 @@ const MatchCard = ({ allCricketMatch }) => {
             centerMode={true}
             centerSlidePercentage={detectMob() ? 100 : 50}
             dots={true}
+            onClickItem={(index)=>setScoreCard(allCricketMatch[index])}
         >
             {allCricketMatch && allCricketMatch.map((item) => {
-                return <div >
+                return <div> 
                     <div className="last">
                         <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
                         <div className="score">

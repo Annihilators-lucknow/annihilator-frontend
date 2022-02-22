@@ -10,7 +10,10 @@ import {
   GET_ALL_CRICKET_MATCH_FAILED,
   UPDATE_FUND_BALANCE_START,
   UPDATE_FUND_BALANCE_SUCCESS,
-  UPDATE_FUND_BALANCE_FAILED
+  UPDATE_FUND_BALANCE_FAILED,
+  UPDATE_PLAYERS_RECORD_START,
+  UPDATE_PLAYERS_RECORD_SUCCESS,
+  UPDATE_PLAYERS_RECORD_FAILED
 
 } from "../../constant/actiontype";
 import apiconfig from "../../constant/apiconfig";
@@ -120,3 +123,23 @@ export const updateFund = (payload) => {
   }
 }
 
+
+export const updatePlayersRecord = (payload) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_PLAYERS_RECORD_START });
+    try {
+      const res = await axios.patch(`${apiconfig.baseURL}/update-players-record`, payload.data, {
+        headers: authHeader(),
+      })
+      dispatch({ type: UPDATE_PLAYERS_RECORD_SUCCESS, payload: res.data.data });
+      toast.success("fund update successfully")
+      if(payload.successCallBack){
+        payload.successCallBack()
+        getlatestMatch()
+      }
+    } catch (err) {
+      dispatch({ type: UPDATE_PLAYERS_RECORD_FAILED, payload: err })
+        toast.warn("something went wrong")
+    }
+  }
+}
