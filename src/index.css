@@ -978,6 +978,14 @@
   display: none;
 }
 
+.second-slide h4 {
+  margin: -15px 0;
+}
+
+.no-data {
+  margin-top: 20px;
+}
+
 .active {
   display: flex;
   flex-direction: column;
@@ -1010,11 +1018,10 @@
 /* Responsive */
 
 @media only screen and (min-width: 1024px) {
- .res-d-flex{
+  .res-d-flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
   }
 }
 
@@ -1045,7 +1052,6 @@
   .about-form {
     width: 65vw;
   }
-  
 }
 
 @media only screen and (max-width: 950px) {
@@ -1315,10 +1321,10 @@
   .rank {
     flex-direction: row;
   }
-  .h1-sm{
+  .h1-sm {
     font-size: 16px;
   }
-  .res-d-flex{
+  .res-d-flex {
     display: flex;
     flex-direction: column;
   }
@@ -1445,10 +1451,10 @@
   .footer-heading h1 {
     font-size: 1.5rem;
   }
-  .css-1wnsr1i{
-    width: 80%  !important;
+  .css-1wnsr1i {
+    width: 80% !important;
   }
-  .res-d-flex{
+  .res-d-flex {
     display: flex;
     flex-direction: column;
   }
@@ -1522,13 +1528,13 @@
   }
 }
 
-.content-center{
+.content-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.flex-col{
+.flex-col {
   flex-direction: column;
 }
 
@@ -1545,25 +1551,25 @@
   left: -0.3rem;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
-.flex-row{
+.flex-row {
   flex-direction: row !important;
 }
-.d-flex{
+.d-flex {
   display: flex;
 }
 
-.justify-between{
+.justify-between {
   justify-content: space-between;
 }
 
-.ml-unset{
+.ml-unset {
   margin-left: unset;
 }
 
-.flex-2{
+.flex-2 {
   flex: 2;
 }
 
@@ -1578,18 +1584,17 @@
   color: #e7bb38 !important;
 }
 
-.text-green{
+.text-green {
   color: green !important;
 }
 
-
 /* loader css start from here  */
 
-.loader-container{
+.loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; 
+  height: 50vh;
 }
 
 .lds-grid {
@@ -1603,7 +1608,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background:#e7bb38;
+  background: #e7bb38;
   animation: lds-grid 1.2s linear infinite;
 }
 .lds-grid div:nth-child(1) {
@@ -1652,7 +1657,8 @@
   animation-delay: -1.6s;
 }
 @keyframes lds-grid {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -1660,7 +1666,4 @@
   }
 }
 
-
-
 /* loader css end here  */
-
