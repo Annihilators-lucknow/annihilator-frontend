@@ -127,7 +127,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                  <div className="detail-field">
                                     <label className="userid">Economy</label>
-                                    <p className="profession">{isNaN(bowlingEconomy) || !isFinite(average)? 0 : bowlingEconomy}</p>
+                                    <p className="profession">{isNaN(bowlingEconomy) || !isFinite(bowlingEconomy)? 0 : bowlingEconomy}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">No of 3 and more wicket taken</label>
