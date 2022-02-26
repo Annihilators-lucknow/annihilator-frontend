@@ -98,6 +98,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                     <p className="profession">{parseInt(playerRecords?.length)}</p>
                                 </div>
                                 <div className="detail-field">
+                                    <label className="userid card-heading">Bating Record</label>
+                                   
+                                </div>
+                                <div className="detail-field">
                                     <label className="userid">Runs</label>
                                     <p className="profession">{totalRuns}</p>
                                 </div>
@@ -116,6 +120,9 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <div className="detail-field">
                                     <label className="userid">Number of 6 hit</label>
                                     <p className="profession">{isNaN(numberOf6Sixes) ? 0 : numberOf6Sixes}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid card-heading">Bowling Record</label>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Wicket</label>

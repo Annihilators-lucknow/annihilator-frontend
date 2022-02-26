@@ -1687,3 +1687,9 @@
   width: 10px;
 }
 
+.card-heading{
+  font-weight: 700;
+  text-decoration: underline;
+  color: rgb(43, 128, 238);
+}
+
