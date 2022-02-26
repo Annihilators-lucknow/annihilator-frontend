@@ -20,7 +20,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
 
     return (
         <Fade up>
-            <div id="about" key={playerData.id} >
+            <div id="about" key={playerData.id} className="player-modal">
                 <form className="about-form" >
 
                     <div className="about-link">
@@ -122,7 +122,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                         >
                                  {momData && momData.map((momDataItem)=>{
                                    
-                                    return  <div className="last ml-unset" >
+                                    return  <div className="last ml-unset" style={{marginLeft:"0.5rem"}}>
                                              <div>
                                                   <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
                                              </div>

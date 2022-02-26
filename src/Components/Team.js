@@ -19,7 +19,7 @@ const Team = ({ showModal, setShowModal }) => {
     const isLoading = useSelector((state) => state.cricketReducer.isLoading)
     const [momData,setMomData] = useState(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.playerName))
     const tempPlayersRecord = tempAllMatch?.map((item)=>( item.individualrecord))
-    // console.log("tempPlayersRecord===",tempPlayersRecord)
+     console.log("tempPlayersRecord===",tempPlayersRecord)
     const [playerRecords,setPlayerRecords] = useState(tempPlayersRecord?.filter(x => x.playerName === playerData.playerName))
     const result = [...new Set(tempPlayersRecord?.flat())]
    useEffect(()=>{

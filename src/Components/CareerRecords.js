@@ -33,7 +33,7 @@ const CareerRecords = ({momData,toggleState}) => {
                                         >
                                  {momData && momData.map((momDataItem)=>{
                                    
-                                    return  <div className="last ml-unset" >
+                                    return  <div className="last ml-unset" style={{marginLeft:"0.5rem"}}>
                                              <div>
                                                   {/* <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time> */}
                                              </div>
