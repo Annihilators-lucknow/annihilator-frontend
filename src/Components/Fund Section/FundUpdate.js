@@ -109,7 +109,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
     const PostData = async (e) => {
         e.preventDefault();
         user.ManofTheMatch = momData
-        user.individualrecord = momData
+        user.individualrecord = [momData]
         onSaveClick(user)
     }
 
