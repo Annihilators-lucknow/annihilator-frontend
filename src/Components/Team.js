@@ -17,14 +17,20 @@ const Team = ({ showModal, setShowModal }) => {
     const [playerData, setPlayerData] = useState({});
     const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
     const isLoading = useSelector((state) => state.cricketReducer.isLoading)
-    const [momData,setMomData] = useState(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name))
-
+    const [momData,setMomData] = useState(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.playerName))
+    const tempPlayersRecord = tempAllMatch?.map((item)=>( item.individualrecord))
+    // console.log("tempPlayersRecord===",tempPlayersRecord)
+    const [playerRecords,setPlayerRecords] = useState(tempPlayersRecord?.filter(x => x.playerName === playerData.playerName))
+    const result = [...new Set(tempPlayersRecord?.flat())]
    useEffect(()=>{
      dispatch(getAllCricketMatch())
    },[])
 
+//    console.log("playerRecords===",playerRecords)
+
    useEffect(()=>{
       setMomData(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name) : [])
+      setPlayerRecords(result?.filter(x => x.playerName === playerData.name))
    },[playerData])
 
     return (<>
@@ -58,7 +64,7 @@ const Team = ({ showModal, setShowModal }) => {
                 </div>
             </div >
 
-            {showModal && <Modal showModal={showModal} setShowModal={setShowModal} playerData={playerData} tempAllMatch={tempAllMatch} momData={momData} />}
+            {showModal && <Modal showModal={showModal} setShowModal={setShowModal} playerData={playerData} tempAllMatch={tempAllMatch} momData={momData} playerRecords={playerRecords}/>}
 
         </>
     }

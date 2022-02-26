@@ -6,8 +6,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
+import CareerRecords from './CareerRecords';
 
-const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
+const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}) => {
     const [toggleState, setToggleState] = useState(1);
     const toggleTab = (index) => {
         setToggleState(index);
@@ -53,7 +54,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
                             <nav className="timeline-navbar">
                                 <ul>
                                     <li><label onClick={() => toggleTab(1)} className={toggleState === 1 ? "default default-active" : "default"}>About</label></li>
-                                    <li><label onClick={() => toggleTab(2)} className={toggleState === 2 ? "timeline timeline-active" : "timeline"}>Timeline</label></li>
+                                    <li><label onClick={() => toggleTab(2)} className={toggleState === 2 ? "timeline timeline-active" : "timeline"}>{detectMob() ? `Mom` : `Man of the matches`}</label></li>
+                                     <li><label onClick={() => toggleTab(3)} className={toggleState === 3 ? "timeline timeline-active" : "timeline"}>Career record</label></li>
                                 </ul>
                             </nav>
 
@@ -163,10 +165,13 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData}) => {
                               
                                 
                                 
-                                <div > 
+                                    <div > 
                    
-                    </div> 
+                             </div> 
                             </div> 
+                            {toggleState === 3 && <>
+                             <CareerRecords momData={playerRecords} toggleState={toggleState}/>
+                            </>}
                         </div> 
 
                     </div> 
