@@ -1675,3 +1675,15 @@
 .about-form .control-dots{
   display: none;
 }
+
+.overflow-y{
+  overflow-y: scroll;
+}
+
+
+/* scrollbar css  */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+

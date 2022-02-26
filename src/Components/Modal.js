@@ -7,9 +7,40 @@ import { Carousel } from "react-responsive-carousel";
 import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
 import CareerRecords from './CareerRecords';
+import { Players } from './Players';
+
+function add(accumulator, a) {
+    return accumulator + a;
+    }
 
 const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}) => {
+    const totalRuns = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).reduce(add, 0)
+    const totalInnings = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).length
+    const strikeRate = Math.round(totalRuns /  (playerRecords?.map(player => parseInt(player.ballPlayed)).filter(value => !Number.isNaN(value)).reduce(add, 0)) * 100  ) 
+    const totalWicket = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).reduce(add , 0)
+    const totalInningBowl = playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).length
+    const runGiven = playerRecords?.map(player => parseInt(player.runGiven)).filter(value => !Number.isNaN(value)).reduce(add,0)
+    const numberOf50 = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).filter(x => x > 49).length
+    const numberOf3WicketTaken = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).filter(x => x > 3).length
+    const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
+    const average = Math.round(totalRuns / totalInnings )
+    const bowlingAverage =   Math.round(runGiven / totalWicket)
+    const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
+
+    console.log("runGiven===",runGiven)
+
+
+
+ 
+
+
+
+
+    
+
+
+
     const toggleTab = (index) => {
         setToggleState(index);
     }
@@ -17,6 +48,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
         return (window.innerWidth <= 800);
     }
 
+
+    console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
 
     return (
         <Fade up>
@@ -59,26 +92,46 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </ul>
                             </nav>
 
-                            <div className={toggleState === 1 ? "first-slide active" : "hide"}>
+                            <div id="" className={` overflow-y  ${toggleState === 1 ? "first-slide active" : "hide"}`}>
                                 <div className="detail-field">
-                                    <label className="userid">User Id</label>
-                                    <p className="profession">102364597</p>
+                                    <label className="userid">Matches</label>
+                                    <p className="profession">{parseInt(playerRecords?.length)}</p>
                                 </div>
                                 <div className="detail-field">
-                                    <label className="userid">Name</label>
-                                    <p className="profession">{playerData.name}</p>
+                                    <label className="userid">Runs</label>
+                                    <p className="profession">{totalRuns}</p>
                                 </div>
                                 <div className="detail-field">
-                                    <label className="userid">Email</label>
-                                    <p className="profession">{playerData.email}</p>
+                                    <label className="userid">Average</label>
+                                    <p className="profession">{isNaN(average) ? 0 : average}</p>
                                 </div>
                                 <div className="detail-field">
-                                    <label className="userid">Phone</label>
-                                    <a href={`tel:${playerData.phone}`} cm_dontconvertlink>{playerData.phone}</a>
+                                    <label className="userid">No of 50's</label>
+                                    <p className="profession">{numberOf50 ? numberOf50 : 0}</p>
                                 </div>
                                 <div className="detail-field">
-                                    <label className="userid">Profession</label>
-                                    <p className="profession">Cricketer</p>
+                                    <label className="userid">Strike Rate</label>
+                                    <p className="profession">{isNaN(strikeRate) ? 0 : strikeRate}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">Number of 6 hit</label>
+                                    <p className="profession">{isNaN(numberOf6Sixes) ? 0 : numberOf6Sixes}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">Wicket</label>
+                                    <p className="profession">{totalWicket}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">Bowling Average</label>
+                                    <p className="profession">{isNaN(bowlingAverage) ? 0 : bowlingAverage}</p>
+                                </div>
+                                 <div className="detail-field">
+                                    <label className="userid">Economy</label>
+                                    <p className="profession">{isNaN(bowlingEconomy) ? 0 : bowlingEconomy}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">No of 3 and more wicket taken</label>
+                                    <p className="profession">{isNaN(numberOf3WicketTaken) ? 0 : numberOf3WicketTaken}</p>
                                 </div>
                             </div>
 
