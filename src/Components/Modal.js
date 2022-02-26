@@ -27,8 +27,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const average = Math.round(totalRuns / totalInnings )
     const bowlingAverage =   Math.round(runGiven / totalWicket)
     const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
-
-    console.log("runGiven===",runGiven)
+    
+    
 
 
 
@@ -103,7 +103,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Average</label>
-                                    <p className="profession">{isNaN(average) ? 0 : average}</p>
+                                    <p className="profession">{isNaN(average) || !isFinite(average) ? 0 : average}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">No of 50's</label>
@@ -111,7 +111,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Strike Rate</label>
-                                    <p className="profession">{isNaN(strikeRate) ? 0 : strikeRate}</p>
+                                    <p className="profession">{isNaN(strikeRate) || !isFinite(average) ? 0 : strikeRate}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Number of 6 hit</label>
@@ -123,11 +123,11 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Bowling Average</label>
-                                    <p className="profession">{isNaN(bowlingAverage) ? 0 : bowlingAverage}</p>
+                                    <p className="profession">{isNaN(bowlingAverage) || !isFinite(bowlingAverage) ? 0 : bowlingAverage}</p>
                                 </div>
                                  <div className="detail-field">
                                     <label className="userid">Economy</label>
-                                    <p className="profession">{isNaN(bowlingEconomy) ? 0 : bowlingEconomy}</p>
+                                    <p className="profession">{isNaN(bowlingEconomy) || !isFinite(average)? 0 : bowlingEconomy}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">No of 3 and more wicket taken</label>
