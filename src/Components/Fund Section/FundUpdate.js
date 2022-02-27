@@ -110,7 +110,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
         e.preventDefault();
         user.ManofTheMatch = momData
         user.individualrecord = [momData]
-        onSaveClick(user)
+        onSaveClick(user ,initaiStateMom ,setMomData )
     }
 
     const displayRenderButton = () =>{

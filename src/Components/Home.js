@@ -13,6 +13,7 @@ import Individualrecoed from './individualRecord';
 import FundUpdate from './Fund Section/FundUpdate'
 import plusIcon from '../backgrounds/addition.png'
 import { useNavigate  } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
@@ -36,15 +37,26 @@ const Home = ({ setShowModal }) => {
         setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
 
-      const onSaveClick = (data) => {
-       const tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord  , data.ManofTheMatch] })
-        const payload = {
-                data : tempData , 
-                successCallBack : () => {
-                      setScoreCard(false)
+      const onSaveClick = (data ,initaiStateMom ,setMomData) => {
+        const tempObject = Object.assign({},...data.individualrecord)
+        let tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord ] })
+        if(tempData.individualrecord.some(x => x?.playerName === tempObject?.playerName)){
+            toast.warning("Your date for this match is already exist please contact to admin")
+            
+        } else {
+            tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord ,data.ManofTheMatch]})
+             const payload = {
+                 data : tempData , 
+                 successCallBack : () => {
+                     setScoreCard(false)
+                     setMomData(initaiStateMom)
                     }
                 }
-            dispatch(updatePlayersRecord(payload))
+               dispatch(updatePlayersRecord(payload))
+
+         }
+     
+       
         
     }      
     
