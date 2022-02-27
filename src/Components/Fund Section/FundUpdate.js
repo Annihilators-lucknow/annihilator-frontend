@@ -279,7 +279,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                             <label htmlFor="runScored">
                                                 <MdOutlineSportsCricket />
                                             </label>
-                                            <input type="number" name="runScored" id="runScored" autoComplete="off"
+                                            <input type="" name="runScored" id="runScored" autoComplete="off"
                                                 value={momData.runScored}
                                                 onChange={handleMomInputs}
                                                 placeholder="Run Scored" />

@@ -13,8 +13,9 @@ function add(accumulator, a) {
     return accumulator + a;
     }
 
+
 const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}) => {
-    const totalRuns = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).reduce(add, 0)
+    const totalRuns = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value)).reduce(add, 0)
     const totalInnings = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).length
     const strikeRate = Math.round(totalRuns /  (playerRecords?.map(player => parseInt(player.ballPlayed)).filter(value => !Number.isNaN(value)).reduce(add, 0)) * 100  ) 
     const totalWicket = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).reduce(add , 0)
@@ -24,15 +25,13 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const numberOf3WicketTaken = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).filter(x => x > 3).length
     const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
-    const average = Math.round(totalRuns / totalInnings )
+    const totalNotOutInnings = playerRecords?.filter(value => value.runScored ? value.runScored.includes("*") : "").length
+    const average = Math.round(totalRuns / (totalInnings -totalNotOutInnings) )
     const bowlingAverage =   Math.round(runGiven / totalWicket)
     const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
     
-    
+   
 
-
-
- 
 
 
 
@@ -49,7 +48,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     }
 
 
-    console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
+    // console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
 
     return (
         <Fade up>
