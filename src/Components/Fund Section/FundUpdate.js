@@ -50,6 +50,7 @@ import Individualrecoed from '../individualRecord';
         runScored: "",
         sixes: "",
         wicketTaken: "", 
+        status:"approved",
     }
 
 
@@ -111,6 +112,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
         user.ManofTheMatch = momData
         user.individualrecord = [momData]
         onSaveClick(user ,initaiStateMom ,setMomData )
+
     }
 
     const displayRenderButton = () =>{
