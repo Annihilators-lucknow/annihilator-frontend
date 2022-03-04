@@ -42,7 +42,6 @@ const Home = ({ setShowModal }) => {
         let tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord ] })
         if(tempData.individualrecord.some(x => x?.playerName === tempObject?.playerName)){
             toast.warning("Your date for this match is already exist please contact to admin")
-            
         } else {
             tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord ,data.ManofTheMatch]})
              const payload = {

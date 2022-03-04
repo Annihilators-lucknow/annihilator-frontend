@@ -51,6 +51,7 @@ import Individualrecoed from '../individualRecord';
         sixes: "",
         wicketTaken: "", 
         status:"approved",
+        notOut:"",
     }
 
 
@@ -104,6 +105,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
 
     const handleMomInputs = (e) => {
            const {name,value} = e.target
+           console.log("name===",name  , "value===",value)
            setMomData({ ...momData, [name]: value }) 
     }
 
@@ -281,7 +283,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                             <label htmlFor="runScored">
                                                 <MdOutlineSportsCricket />
                                             </label>
-                                            <input type="" name="runScored" id="runScored" autoComplete="off"
+                                            <input type="number" name="runScored" id="runScored" autoComplete="off"
                                                 value={momData.runScored}
                                                 onChange={handleMomInputs}
                                                 placeholder="Run Scored" />
@@ -295,6 +297,24 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                                 onChange={handleMomInputs}
                                                 placeholder="Balls Played" />
                                         </div>
+                                                    <div className="form-group">
+                                            <label htmlFor="notOut">
+                                                <MdSportsCricket />
+                                            </label>
+                                            <TextField
+                                                className={classes.root}
+                                                value={user.notOut}
+                                                onChange={handleMomInputs}
+                                                variant="outlined"
+                                                label="Out / Not"
+                                                name="notOut"
+                                                select
+                                            >
+                                                <MenuItem value="false">Out</MenuItem>
+                                                <MenuItem value="true">NotOut</MenuItem>
+                                            </TextField>
+                                        </div>
+                                         
                                         <div className="form-group">
                                             <label htmlFor="sixes">
                                                 <FaDiceSix />
