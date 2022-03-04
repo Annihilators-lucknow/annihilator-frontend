@@ -25,10 +25,12 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const numberOf3WicketTaken = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).filter(x => x > 3).length
     const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
-    const totalNotOutInnings = playerRecords?.filter(value => value.runScored ? value.runScored.includes("*") : "").length
+    const totalNotOutInnings = playerRecords?.filter(value => value.notOut ? value.notOut.includes("true") : "").length
     const average = Math.round(totalRuns / (totalInnings -totalNotOutInnings) )
     const bowlingAverage =   Math.round(runGiven / totalWicket)
     const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
+  
+
     
    
 
@@ -96,9 +98,14 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                     <label className="userid">Matches</label>
                                     <p className="profession">{parseInt(playerRecords?.length)}</p>
                                 </div>
+                                 
                                 <div className="detail-field">
                                     <label className="userid card-heading">Bating Record</label>
                                    
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">Innings Played</label>
+                                    <p className="profession">{parseInt(totalInnings - totalNotOutInnings)}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Runs</label>
