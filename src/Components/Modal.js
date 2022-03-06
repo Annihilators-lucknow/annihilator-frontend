@@ -130,7 +130,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                     <p className="profession">{isNaN(numberOf6Sixes) ? 0 : numberOf6Sixes}</p>
                                 </div>
                                 <div className="detail-field">
-                                    <label className="userid">highest score</label>
+                                    <label className="userid">Highest score</label>
                                     <p className="profession">{bestBatingScore}</p>
                                 </div>
                                 <div className="detail-field">
