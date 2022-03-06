@@ -8,6 +8,7 @@ import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
 import CareerRecords from './CareerRecords';
 import { Players } from './Players';
+import _ from 'lodash'
 
 function add(accumulator, a) {
     return accumulator + a;
@@ -31,7 +32,13 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
     const tempbestBatingScore = playerRecords?.map(player => parseInt(player?.runScored)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
     const bestBatingScore = tempbestBatingScore[tempbestBatingScore.length -1]
+    const tempWicketTaken =  playerRecords?.map(player => parseInt(player?.wicketTaken)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
+    const wicketTaken = tempWicketTaken[tempWicketTaken.length -1]
+    const bowlingBestPerformance = playerRecords?.filter(x => x.wicketTaken == wicketTaken)
+    const addBowlingEconomy = bowlingBestPerformance.map(x => ({...x , economy : x.runGiven / x.overBowled}))
+    const bestBowling = Object.assign({},_.orderBy(addBowlingEconomy, ['economy'],['asc'])[0])
 
+   
 
     
    
@@ -151,6 +158,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <div className="detail-field">
                                     <label className="userid">No of 3 and more wicket taken</label>
                                     <p className="profession">{isNaN(numberOf3WicketTaken) ? 0 : numberOf3WicketTaken}</p>
+                                </div>
+                                 <div className="detail-field">
+                                    <label className="userid">Best Bowling Performance</label>
+                                    <p className="profession "> <abbr title="Over / Run / Wicket">{!_.isEmpty(bestBowling) ? `${bestBowling.overBowled} / ${bestBowling.runGiven} / ${bestBowling.wicketTaken}` : "" }</abbr></p>
                                 </div>
                             </div>
 
