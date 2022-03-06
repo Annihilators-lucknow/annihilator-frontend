@@ -105,7 +105,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Innings Played</label>
-                                    <p className="profession">{parseInt(totalInnings - totalNotOutInnings)}</p>
+                                    <p className="profession">{parseInt(totalInnings)}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Runs</label>
