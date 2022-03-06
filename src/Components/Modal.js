@@ -49,6 +49,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
         return (window.innerWidth <= 800);
     }
 
+    console.log((average) || (average) )
+
 
     // console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
 
@@ -113,7 +115,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Average</label>
-                                    <p className="profession">{isNaN(average) || !isFinite(average) ? 0 : average}</p>
+                                    <p className="profession">{isNaN(average) || !isFinite(average) ? totalRuns : average}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">No of 50's</label>
