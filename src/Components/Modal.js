@@ -37,6 +37,9 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bowlingBestPerformance = playerRecords?.filter(x => x.wicketTaken == wicketTaken)
     const addBowlingEconomy = bowlingBestPerformance.map(x => ({...x , economy : x.runGiven / x.overBowled}))
     const bestBowling = Object.assign({},_.orderBy(addBowlingEconomy, ['economy'],['asc'])[0])
+    const bestBatingPerformanceObj = playerRecords?.filter(x => x.runScored == bestBatingScore)
+    const bestBating = Object.assign({},_.orderBy(bestBatingPerformanceObj, ['runScored'],['dsc'])[0])
+    
 
    
 
@@ -138,7 +141,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid">Highest score</label>
-                                    <p className="profession">{bestBatingScore}</p>
+                                    <p className="profession">{!_.isEmpty(bestBating) ? `${bestBating.runScored} run / ${bestBating.ballPlayed} ball` : "" }</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid card-heading">Bowling Record</label>
