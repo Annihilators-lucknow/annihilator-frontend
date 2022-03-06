@@ -22,14 +22,16 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const totalInningBowl = playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).length
     const runGiven = playerRecords?.map(player => parseInt(player.runGiven)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const numberOf50 = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).filter(x => x > 49).length
-    const numberOf3WicketTaken = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).filter(x => x > 3).length
+    const numberOf3WicketTaken = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).filter(x => x > 2).length
     const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
     const totalNotOutInnings = playerRecords?.filter(value => value.notOut ? value.notOut.includes("true") : "").length
     const average = Math.round(totalRuns / (totalInnings -totalNotOutInnings) )
     const bowlingAverage =   Math.round(runGiven / totalWicket)
     const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
-  
+    const tempbestBatingScore = playerRecords?.map(player => parseInt(player?.runScored)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
+    const bestBatingScore = tempbestBatingScore[tempbestBatingScore.length -1]
+
 
     
    
@@ -48,8 +50,6 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     function detectMob() {
         return (window.innerWidth <= 800);
     }
-
-    console.log((average) || (average) )
 
 
     // console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
@@ -128,6 +128,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <div className="detail-field">
                                     <label className="userid">Number of 6 hit</label>
                                     <p className="profession">{isNaN(numberOf6Sixes) ? 0 : numberOf6Sixes}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">highest score</label>
+                                    <p className="profession">{bestBatingScore}</p>
                                 </div>
                                 <div className="detail-field">
                                     <label className="userid card-heading">Bowling Record</label>
