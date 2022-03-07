@@ -81,97 +81,73 @@ const Modal = ({ setShowModal, playerData, tempAllMatch, momData }) => {
                             </div>
 
                             <div className={toggleState === 2 ? "second-slide active" : "hide"}>
-                                {momData.length === 0 ? <>
+                                {momData.length === 0 ?
+                                    <>
+                                        <h4>Man Of The Match</h4>
+                                        <div className='no-data'>Oops! No Record yet</div>
+                                    </> :
 
-                                    <h4>Man Of The Match</h4>
-                                    <div className='no-data'>Oops! No Data</div>
-                                    {/* <div className="detail-field">
-                                    <label className="userid">Experience</label>
-                                    <p className="profession">Expert</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Hourly Rate</label>
-                                    <p className="profession">10$/hr</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Total Projects</label>
-                                    <p className="profession">16</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">English Level</label>
-                                    <p className="profession">Expert</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Availability</label>
-                                    <p className="profession">Weekends</p>
-                                </div> */}
-                                </> : <>
-                                    <h4>Man Of The Match</h4>
-                                    <Carousel
-                                        showThumbs={true}
-                                        showStatus={false}
-                                        infiniteLoop={false}
-                                        emulateTouch={true}
-                                        // autoPlay
-                                        swipeScrollTolerance={5}
-                                        useKeyboardArrows
-                                        transitionTime={1000}
-                                        // axis="vertical"
-                                        // selectedItem={1}
-                                        width={detectMob() ? "95vw" : "30vw"}
-                                        centerMode={true}
-                                        centerSlidePercentage={detectMob() ? 100 : 50}
-                                    >
-                                        {momData && momData.map((momDataItem) => {
+                                    <>
+                                        <h4>Man Of The Match</h4>
+                                        <Carousel
+                                            showThumbs={true}
+                                            showStatus={false}
+                                            infiniteLoop={false}
+                                            emulateTouch={true}
+                                            // autoPlay
+                                            swipeScrollTolerance={5}
+                                            useKeyboardArrows
+                                            transitionTime={1000}
+                                            // axis="vertical"
+                                            // selectedItem={1}
+                                            width={detectMob() ? "95vw" : "30vw"}
+                                            centerMode={true}
+                                            centerSlidePercentage={detectMob() ? 100 : 50}
+                                        >
+                                            {momData && momData.map((momDataItem) => {
 
-                                            return <div className="last ml-unset" >
-                                                <div>
-                                                    <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
-                                                </div>
-                                                <div className="d-flex flex-row w-100 justify-between">
-                                                    <div>{`${momDataItem.annihilatorScore.split('/').shift()} - ${momDataItem.annihilatorOver} / ${momDataItem.opponentScore.split('/').shift()} - ${momDataItem.opponentOver} `}</div>
-                                                    <div>{`Annihilators ${momDataItem.matchResult}`}</div>
-                                                </div>
-                                                {momDataItem.ManofTheMatch.category === "Both" ?
-                                                    <>
-                                                        <div className="d-flex flex-row w-100 ">
-                                                            <img className="inside-btn-img" src={batting} />
-                                                            <div className=""> {`${momDataItem.ManofTheMatch.runScored} run - ${momDataItem.ManofTheMatch.ballPlayed} ball (6 X ${momDataItem.ManofTheMatch.sixes || 0} & 4 X ${momDataItem.ManofTheMatch.fours || 0}) `}    </div>
-                                                        </div>
-                                                        <div className="d-flex flex-row w-100 ">
-                                                            <img className="inside-btn-img" src={bowling} />
-                                                            <div>{` ${momDataItem.ManofTheMatch.overBowled} over - ${momDataItem.ManofTheMatch.runGiven} run - ${momDataItem.ManofTheMatch.wicketTaken} wicket`}   </div>
-                                                        </div>
-                                                    </> : momDataItem.ManofTheMatch.category === "Batting" ?
+                                                return <div className="last ml-unset" >
+                                                    <div>
+                                                        <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
+                                                    </div>
+                                                    <div className="d-flex flex-row w-100 justify-between">
+                                                        <div>{`${momDataItem.annihilatorScore.split('/').shift()} - ${momDataItem.annihilatorOver} / ${momDataItem.opponentScore.split('/').shift()} - ${momDataItem.opponentOver} `}</div>
+                                                        <div>{`Annihilators ${momDataItem.matchResult}`}</div>
+                                                    </div>
+                                                    {momDataItem.ManofTheMatch.category === "Both" ?
                                                         <>
                                                             <div className="d-flex flex-row w-100 ">
                                                                 <img className="inside-btn-img" src={batting} />
                                                                 <div className=""> {`${momDataItem.ManofTheMatch.runScored} run - ${momDataItem.ManofTheMatch.ballPlayed} ball (6 X ${momDataItem.ManofTheMatch.sixes || 0} & 4 X ${momDataItem.ManofTheMatch.fours || 0}) `}    </div>
                                                             </div>
-                                                        </> :
-                                                        <>
                                                             <div className="d-flex flex-row w-100 ">
                                                                 <img className="inside-btn-img" src={bowling} />
                                                                 <div>{` ${momDataItem.ManofTheMatch.overBowled} over - ${momDataItem.ManofTheMatch.runGiven} run - ${momDataItem.ManofTheMatch.wicketTaken} wicket`}   </div>
                                                             </div>
-                                                        </>
+                                                        </> : momDataItem.ManofTheMatch.category === "Batting" ?
+                                                            <>
+                                                                <div className="d-flex flex-row w-100 ">
+                                                                    <img className="inside-btn-img" src={batting} />
+                                                                    <div className=""> {`${momDataItem.ManofTheMatch.runScored} run - ${momDataItem.ManofTheMatch.ballPlayed} ball (6 X ${momDataItem.ManofTheMatch.sixes || 0} & 4 X ${momDataItem.ManofTheMatch.fours || 0}) `}    </div>
+                                                                </div>
+                                                            </> :
+                                                            <>
+                                                                <div className="d-flex flex-row w-100 ">
+                                                                    <img className="inside-btn-img" src={bowling} />
+                                                                    <div>{` ${momDataItem.ManofTheMatch.overBowled} over - ${momDataItem.ManofTheMatch.runGiven} run - ${momDataItem.ManofTheMatch.wicketTaken} wicket`}   </div>
+                                                                </div>
+                                                            </>
 
-                                                }
+                                                    }
 
 
-                                            </div>
-                                        })}
+                                                </div>
+                                            })}
 
-                                    </Carousel>
-                                </>
+                                        </Carousel>
+                                    </>
                                 }
 
-
-
-
-                                <div >
-
-                                </div>
                             </div>
                         </div>
 
