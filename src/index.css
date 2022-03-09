@@ -341,6 +341,11 @@
   width: 100%;
 }
 
+.score-details {
+  display: flex;
+  width: 100%;
+}
+
 .win,
 .lose {
   display: flex;
@@ -1693,3 +1698,18 @@
   color: rgb(43, 128, 238);
 }
 
+.text-900{
+  font-weight: 900;
+}
+
+.text-800{
+  font-weight: 700;
+}
+
+.text-700{
+  font-weight: 700;
+}
+
+.mb-24{
+  margin-bottom: 2rem;
+}

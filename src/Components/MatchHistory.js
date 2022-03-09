@@ -37,6 +37,17 @@ const MatchHistory = ({setShowModal}) => {
      dispatch(getAllCricketMatch())
     },[])
 
+
+      const onCardClick = (matchData) => {
+            //navigate( `/match-details/${id}`)
+             navigate(`/match-details/${matchData._id}`, {
+            state: { matchData}
+             });
+    }
+    
+
+
+ 
     return <>
         {isLoading ? <Loader/> :
          <div className='content-center flex-col mt-l match-history'>
@@ -45,7 +56,7 @@ const MatchHistory = ({setShowModal}) => {
                 <h1>Match histroy</h1>  
                 <button className="btn edit-score mt-none" onClick={()=>setScoreCard(!scoreCard)}> <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button>
                 </div>
-            <MatchCard allCricketMatch={tempAllMatch}/>
+            <MatchCard allCricketMatch={tempAllMatch} setScoreCard={onCardClick}/>
             <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} all={true} individualrecord={false} onSaveClick={onSaveClick}/>
              <HistoryCard historyRecord={historyRecord}/>
         </div>}
