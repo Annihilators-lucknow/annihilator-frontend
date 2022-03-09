@@ -47,7 +47,7 @@ const MatchDetails = () => {
                 </TableHead>
                 
          <TableBody>
-          {MatchDetails.individualrecord.filter(ball => ball.overBowled > 0).map((row) => (
+          {MatchDetails.individualrecord?.filter(ball => ball.overBowled > 0).map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -87,7 +87,7 @@ const MatchDetails = () => {
                 </TableHead>
                 
          <TableBody>
-          {MatchDetails.individualrecord.filter(ball => ball.ballPlayed > 0).map((row) => (
+          {MatchDetails.individualrecord?.filter(ball => ball.ballPlayed > 0).map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -117,9 +117,9 @@ const MatchDetails = () => {
                          {/* <div> <span style={{fontWeight:800}}>Pitch Report   </span>Not a lot of grass on this surface, looks like a belter. Looks like a good surface with a bit of moisture in it. Once the early moisture is gone, it'll be good for batting.</div> */}
                          <div className='d-flex'>  { displayTitleText()} </div>
                       
-                        {renderOpponentBatingRecord()}
+                        {/* {renderOpponentBatingRecord()}
                         {renderAnnihilatorBatingRecord()}
-                        {renderAnnihilatorBowlingRecord()}
+                        {renderAnnihilatorBowlingRecord()} */}
                        
                         </div>
                         
