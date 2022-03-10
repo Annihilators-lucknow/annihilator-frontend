@@ -72,7 +72,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                     <div className="about-link">
                         <div className="image">
                             <div className="profile-info">
-                                <img src={playerData.image} alt="profile pic" />
+                                <img style={{borderRadius:"50%"}} src={playerData.image} alt="profile pic" />
                             </div>
                         </div>
                         <div className="link-container">

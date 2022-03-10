@@ -180,7 +180,19 @@ export const Players = [
         phone: "+966595378927",
         isActive:true,
         email: "dummyemail@gmail.com"
-    }
+    },
+    {
+        id: 14,
+        name: "Idrees Ahmad",
+        image: "Assets/Profile pics/idress.jpg",
+        speciality: "Batsman",
+        instagram: "#",
+        facebook: "#",
+        twitter: "#",
+        phone: "9795106463",
+        isActive:true,
+        email: "dummyemail@gmail.com"
+    },
 
 
 ]
