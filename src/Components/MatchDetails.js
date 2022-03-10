@@ -19,7 +19,6 @@ const MatchDetails = () => {
     useEffect(()=>{
        setMatchDetails(location.state.matchData)
     },[location.state.matchData])
-    console.log("location ===",MatchDetails)
 
     const displayTitleText = () => {
         return <div  style={{fontSize:"24px"}}> <p>{`${MatchDetails.tossResult === "Lose"  ? MatchDetails.teamName : "Annihilator"} won the toss and choose to bat first`} </p></div>
@@ -71,7 +70,7 @@ const MatchDetails = () => {
     
     const renderAnnihilatorBatingRecord = () => {
          return   <div className='d-flex flex-col'>
-             <div className='text-800 '>Bating Record</div>
+             <div className='text-800 mt-10'>Bating Record</div>
              {/* <div className='mb-24'><span>Annihilator Score </span> <span> {MatchDetails.annihilatorScore} / {MatchDetails.annihilatorOver}</span></div> */}
              <div className='mb-24' style={{fontSize:"24px",margin:"2rem 0 "}}>  <span style={{marginRight:"1rem"}}>Team Name : Annihilator Score  </span>   <span style={{marginRight:"1rem"}}> Run Scored : {MatchDetails.annihilatorScore} </span> <span> Over Played  : {MatchDetails.annihilatorOver}</span> </div>
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -96,7 +95,7 @@ const MatchDetails = () => {
               <TableCell component="th" scope="row">
                 {row.playerName}
               </TableCell>
-              <TableCell>{row.runScored}</TableCell>
+              <TableCell>{row.notOut === "true" ?  `${row.runScored}*` : row.runScored} </TableCell>
               <TableCell>{row.ballPlayed}</TableCell>
               <TableCell>{row.sixes}</TableCell>
               <TableCell>{parseInt(row.runScored / row.ballPlayed * 100)}</TableCell>
