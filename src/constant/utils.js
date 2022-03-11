@@ -7,7 +7,7 @@ export const displayConclusionText = (MatchDetails ,fontSize) => {
         let text = "" ;
         if(MatchDetails.tossResult === "Lose"){
             if(MatchDetails.matchResult === "Lose"){
-                text = <p className="text-red"> {`${MatchDetails.teamName} Won by ${parseInt(MatchDetails.opponentScore.split('/').pop() - MatchDetails.annihilatorScore.split('/').pop())} run` } </p>
+                text = <p className="text-red"> {`${MatchDetails.teamName} Won by ${parseInt( MatchDetails.opponentScore.substring(0,MatchDetails.opponentScore.indexOf("/")).replace("/","") - MatchDetails.annihilatorScore.substring(0,MatchDetails.annihilatorScore.indexOf("/")).replace("/",""))} run` } </p>
             }else{
                 text = <p className="text-green">{`Annihilators Won by ${parseInt(10 - getWicket(MatchDetails.annihilatorScore))} Wicket` }</p> 
             }
