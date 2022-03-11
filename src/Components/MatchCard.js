@@ -35,7 +35,11 @@ const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
             {allCricketMatch && allCricketMatch.map((item) => {
                 return <div> 
                     <div className="last">
-                        <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
+                        <div className='d-flex justify-between w-100'>
+                             <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
+                             {item.matchResult === "Win" &&<div className='text-green'>{item.ManofTheMatch?.playerName}</div>}
+                        
+                        </div> 
                         <div className="score">
                             <div className="win">
                                 <img src={winlogo} alt="winlogo" />
