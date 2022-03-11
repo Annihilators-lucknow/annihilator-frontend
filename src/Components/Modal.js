@@ -171,25 +171,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                             <div className={toggleState === 2 ? "second-slide active" : "hide"}>
                              {momData.length === 0 ? <>
                             
-                             <div className="detail-field">
-                                    <label className="userid">Experience</label>
-                                    <p className="profession">Expert</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Hourly Rate</label>
-                                    <p className="profession">10$/hr</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Total Projects</label>
-                                    <p className="profession">16</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">English Level</label>
-                                    <p className="profession">Expert</p>
-                                </div>
-                                <div className="detail-field">
-                                    <label className="userid">Availability</label>
-                                    <p className="profession">Weekends</p>
+                             <div className="detail-field align-center">
+                                  Nothing to Display
                                 </div>
                                  </> :  <Carousel
                                             showThumbs={true}
