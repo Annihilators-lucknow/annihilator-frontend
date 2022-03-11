@@ -35,13 +35,13 @@ const MatchDetails = () => {
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                  <TableContainer sx={{ maxHeight: 440 }}>
                  <Table  stickyHeader aria-label="sticky table">
-                <TableHead>
-                    <TableRow style={{minWidth:"150px"}}>
-                    <TableCell>Player Name</TableCell>
-                    <TableCell>Overs</TableCell>
-                    <TableCell>Run Giver</TableCell>
-                    <TableCell>Economy</TableCell>
-                    <TableCell>Wicket Taken</TableCell>
+                <TableHead style={{color:"color: #06083b"}}>
+                    <TableRow>
+                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b"}}>Player Name</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Overs</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Run Giver</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Economy</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Wicket Taken</TableCell>
                     </TableRow>
                 </TableHead>
                 
@@ -78,11 +78,11 @@ const MatchDetails = () => {
                  <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
-                    <TableCell>Player Name</TableCell>
-                    <TableCell>Runs</TableCell>
-                    <TableCell>Ball taken</TableCell>
-                    <TableCell>No of 6's</TableCell>
-                    <TableCell>Strike Rate</TableCell>
+                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b"}}>Player Name</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Runs</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Ball taken</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>No of 6's</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Strike Rate</TableCell>
                     </TableRow>
                 </TableHead>
                 
