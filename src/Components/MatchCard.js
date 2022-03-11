@@ -5,6 +5,7 @@ import { Opponent } from "./Oppenent";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
+import {displayConclusionText} from '../constant/utils'
 
 
 const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
@@ -51,7 +52,7 @@ const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
                                 <img src={Opponent[0].url} alt="winlogo" />
                             </div>
                         </div>
-                        <span>{`Annihilators ${item.matchResult}`}</span>
+                        <span>{displayConclusionText(item ,"14px")}</span>
                     </div>
                 </div>
 

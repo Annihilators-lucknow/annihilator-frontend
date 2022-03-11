@@ -10,6 +10,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import {displayConclusionText} from '../constant/utils'
 
 
 const MatchDetails = () => {
@@ -24,24 +25,65 @@ const MatchDetails = () => {
         return <div  style={{fontSize:"24px"}}> <p>{`${MatchDetails.tossResult === "Lose"  ? MatchDetails.teamName : "Annihilator"} won the toss and choose to bat first`} </p></div>
     }
 
-    const renderOpponentBatingRecord = () => {
-            return <div className='d-flex' style={{fontSize:"24px",margin:"2rem 0 "}}>  <span style={{marginRight:"1rem"}}>Team Name : {MatchDetails.teamName}  </span>   <span style={{marginRight:"1rem"}}> Run Scored : {MatchDetails.opponentScore} </span> <span> Over Played  : {MatchDetails.opponentOver}</span> </div>
+  
+
+  const renderOpponentBatingRecord = () => {
+            return <div className='oponentCard'>
+                 <div className='d-flex justify-center w-100 br-bottom min-height-50'>
+                 <div className='pl-3p text-800'>Opponent Score </div>
+                </div>
+                <div className='d-flex justify-between w-100 br-bottom min-height-50'>
+                 <div className='pl-3p'>Team </div>
+                <div className='pr-3p'>{MatchDetails.teamName}</div>
+                </div>
+                <div className="d-flex justify-between w-100 br-bottom min-height-50">
+                <div className='pl-3p'>Run Scored </div>
+                <div className='pr-3p'>{MatchDetails.opponentScore}</div>
+                </div>
+                <div className="d-flex justify-between w-100 br-bottom min-height-50">
+                <div className='pl-3p'>Over Played</div>
+                <div className='pr-3p'>{MatchDetails.opponentOver}</div>
+                </div>
+                 
+                 </div>
+        
+    }
+
+    const renderAnnilatoresBatingRecord = () => {
+            return <div className='oponentCard'>
+                <div className='d-flex justify-center w-100 br-bottom min-height-50'>
+                 <div className='pl-3p text-800'>Our Score</div>
+                </div>
+                <div className='d-flex justify-between w-100 br-bottom min-height-50'>
+                 <div className='pl-3p'>Team </div>
+                <div className='pr-3p'>Annihilator</div>
+                </div>
+                <div className="d-flex justify-between w-100 br-bottom min-height-50">
+                <div className='pl-3p'>Run Scored </div>
+                <div className='pr-3p'>{MatchDetails.annihilatorScore} </div>
+                </div>
+                <div className="d-flex justify-between w-100 br-bottom min-height-50">
+                <div className='pl-3p'>Over Played</div>
+                <div className='pr-3p'>{MatchDetails.annihilatorOver}</div>
+                </div>
+                 
+                 </div>
         
     }
 
     const renderAnnihilatorBowlingRecord = () => {
          return   <div className='d-flex flex-col'>
-             <div className='text-800 '>Annihilator Bowling Record</div>
+             <div className='text-800 mx-1'>Annihilator Bowling Record</div>
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                  <TableContainer sx={{ maxHeight: 440 }}>
                  <Table  stickyHeader aria-label="sticky table">
                 <TableHead style={{color:"color: #06083b"}}>
                     <TableRow>
-                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b"}}>Player Name</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Overs</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Run Giver</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Economy</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Wicket Taken</TableCell>
+                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Player Name</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Overs</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Run Giver</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Economy</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Wicket Taken</TableCell>
                     </TableRow>
                 </TableHead>
                 
@@ -70,19 +112,18 @@ const MatchDetails = () => {
     
     const renderAnnihilatorBatingRecord = () => {
          return   <div className='d-flex flex-col'>
-             <div className='text-800 mt-10'>Bating Record</div>
-             {/* <div className='mb-24'><span>Annihilator Score </span> <span> {MatchDetails.annihilatorScore} / {MatchDetails.annihilatorOver}</span></div> */}
-             <div className='mb-24' style={{fontSize:"24px",margin:"2rem 0 "}}>  <span style={{marginRight:"1rem"}}>Team Name : Annihilator Score  </span>   <span style={{marginRight:"1rem"}}> Run Scored : {MatchDetails.annihilatorScore} </span> <span> Over Played  : {MatchDetails.annihilatorOver}</span> </div>
+             {renderAnnilatoresBatingRecord()}
+              <div className='text-800 mx-1'>Annihilator Player's Record</div>
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                  <TableContainer sx={{ maxHeight: 440 }}>
                  <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow>
-                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b"}}>Player Name</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Runs</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Ball taken</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>No of 6's</TableCell>
-                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b"}}>Strike Rate</TableCell>
+                    <TableCell style={{minWidth:"150px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Player Name</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Runs</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Ball taken</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>No of 6's</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Strike Rate</TableCell>
                     </TableRow>
                 </TableHead>
                 
@@ -111,7 +152,7 @@ const MatchDetails = () => {
 
     return  _.isEmpty(MatchDetails) ? <Loader/> :
      <> 
-     <div className="last">
+     <div className="last box-shadow-none">
                        
                         <div className="score-details flex-col">
                          {/* <div> <span style={{fontWeight:800}}>Pitch Report   </span>Not a lot of grass on this surface, looks like a belter. Looks like a good surface with a bit of moisture in it. Once the early moisture is gone, it'll be good for batting.</div> */}
@@ -120,6 +161,7 @@ const MatchDetails = () => {
                           {MatchDetails.tossResult === "Lose" ? renderAnnihilatorBowlingRecord() : null}
                          {MatchDetails.tossResult === "Win" ? renderOpponentBatingRecord() :  renderAnnihilatorBatingRecord()}
                          {MatchDetails.tossResult === "Win" ? renderAnnihilatorBowlingRecord() : null}
+                          <div className='d-flex mt-10'>  { displayConclusionText(MatchDetails)} </div>
                         </div>
                         
                     </div>
