@@ -13,7 +13,7 @@ export const displayConclusionText = (MatchDetails ,fontSize) => {
             }
         } else {
              if(MatchDetails.matchResult === "Win"){
-                text = <p> { `Annihilators Won by ${parseInt( MatchDetails.annihilatorScore.substring(0,MatchDetails.annihilatorScore.indexOf("/")).replace("/","") - MatchDetails.opponentScore.substring(0,MatchDetails.opponentScore.indexOf("/")).replace("/",""))} run` }</p>
+                text = <p className="text-green"> { `Annihilators Won by ${parseInt( MatchDetails.annihilatorScore.substring(0,MatchDetails.annihilatorScore.indexOf("/")).replace("/","") - MatchDetails.opponentScore.substring(0,MatchDetails.opponentScore.indexOf("/")).replace("/",""))} run` }</p>
             }else{
                 text =  <p className="text-red"> { `${MatchDetails.teamName} Won by ${parseInt(10 - getWicket(MatchDetails.opponentScore))} Wicket` } </p>
             }
