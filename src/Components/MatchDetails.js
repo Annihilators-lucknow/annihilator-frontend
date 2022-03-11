@@ -34,9 +34,9 @@ const MatchDetails = () => {
              <div className='text-800 '>Annihilator Bowling Record</div>
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                  <TableContainer sx={{ maxHeight: 440 }}>
-                 <Table stickyHeader aria-label="sticky table">
+                 <Table  stickyHeader aria-label="sticky table">
                 <TableHead>
-                    <TableRow>
+                    <TableRow style={{minWidth:"150px"}}>
                     <TableCell>Player Name</TableCell>
                     <TableCell>Overs</TableCell>
                     <TableCell>Run Giver</TableCell>
