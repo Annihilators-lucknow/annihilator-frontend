@@ -56,7 +56,9 @@ const MatchHistory = ({setShowModal}) => {
                 <h1>Match histroy</h1>  
                 <button className="btn edit-score mt-none" onClick={()=>setScoreCard(!scoreCard)}> <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button>
                 </div>
-            <MatchCard allCricketMatch={tempAllMatch} setScoreCard={onCardClick}/>
+                <div className="result w-70">
+                <MatchCard allCricketMatch={tempAllMatch} setScoreCard={onCardClick}/>
+                </div>
             <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} all={true} individualrecord={false} onSaveClick={onSaveClick}/>
              <HistoryCard historyRecord={historyRecord}/>
         </div>}

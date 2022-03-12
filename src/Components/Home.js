@@ -26,7 +26,6 @@ const Home = ({ setShowModal }) => {
     const navigate = useNavigate()
 
 
-    console.log("scoreCard===",scoreCard)
 
     useEffect(() => {
         setShowModal(false);
@@ -87,7 +86,7 @@ const Home = ({ setShowModal }) => {
             {isLoading ? <Loader/> : <Fade up>
                 <div className="parent">
                     <div className="match-container">
-                        <h1>Last Match Result</h1>
+                        <h1>Lastest Match Result</h1>
                         <div className="result">
                             <MatchCard allCricketMatch={allCricketMatch} setScoreCard={onCardClick}  />
                         </div>

@@ -6,6 +6,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import moment from 'moment'
 import {displayConclusionText} from '../constant/utils'
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/swiper.min.css'
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
+
 
 
 const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
@@ -15,26 +19,22 @@ const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
 
     return <>
 
-        <Carousel
-            showThumbs={true}
-            showStatus={false}
-            infiniteLoop={false}
-            emulateTouch={true}
-            // autoPlay
-            swipeScrollTolerance={5}
-            useKeyboardArrows
-            transitionTime={1000}
-            // axis="vertical"
-            // selectedItem={1}
-            width={detectMob() ? "95vw" : "80vw"}
-            centerMode={true}
-            centerSlidePercentage={detectMob() ? 100 : 50}
-            dots={true}
-            onClickItem={(index)=>setScoreCard(allCricketMatch[index])}
+        <Swiper
+        slidesPerView={detectMob() ? 1 : 2}
+        spaceBetween={15}
+        cssMode={true}
+        navigation={true}
+        pagination={true}
+        mousewheel={true}
+        keyboard={true}
+        speed={500}
+        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+        className="mySwiper"
+        onClick={(swiper)=>setScoreCard(allCricketMatch[swiper.activeIndex])}
         >
             {allCricketMatch && allCricketMatch.map((item) => {
-                return <div> 
-                    <div className="last">
+                return <SwiperSlide> 
+                    <div className="last mx-auto" style={{maxWidth:"500px"}}>
                         <div className='d-flex justify-between w-100'>
                              <time>{moment(item.date).format('Do MMMM YYYY ')}</time>
                              {item.matchResult === "Win" &&<div className='text-green'>{item.ManofTheMatch?.playerName}</div>}
@@ -58,12 +58,12 @@ const MatchCard = ({ allCricketMatch ,setScoreCard}) => {
                         </div>
                         <span>{displayConclusionText(item ,"14px")}</span>
                     </div>
-                </div>
+                </SwiperSlide>
 
             })}
 
 
-        </Carousel>
+        </Swiper>
 
 
     </>

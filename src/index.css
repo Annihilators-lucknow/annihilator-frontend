@@ -1410,6 +1410,9 @@
   .scroll-button {
     right: 25px;
   }
+  .w-70{
+    width: 100% !important;
+  }
 
   .about-form {
     justify-content: space-between;
@@ -1774,4 +1777,34 @@
 
 .font-24{
   font-size: 24;
+}
+
+.modal-position {
+    /* position: absolute;
+    top: 50%; */
+     position: absolute; 
+     top: 50%;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100px; /* Need a specific value to work */
+
+}
+
+.align-center{
+  align-items: center;
+}
+
+.w-70{
+  width: 75%;
+}
+
+.swiper-container{
+  z-index: 0 !important;
+}
+
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
 }

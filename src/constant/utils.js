@@ -1,6 +1,5 @@
 
 export const displayConclusionText = (MatchDetails ,fontSize) => {
-        console.log(parseInt( MatchDetails.annihilatorScore.substring(0,MatchDetails.annihilatorScore.indexOf("/")).replace("/","") - MatchDetails.opponentScore.substring(0,MatchDetails.opponentScore.indexOf("/")).replace("/","")))
         const getWicket = (detail) => {
            return parseInt(detail.substring(detail.indexOf("/")).replace("/",""))
         }
