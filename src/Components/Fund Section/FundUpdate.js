@@ -129,7 +129,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
     return (
         <>
             {scoreCard && (<Fade up>
-                <div className="register modal-position ">
+                <div className="register  ">
 
                     <div className="register-container">
                         <h1>{headers}</h1>
