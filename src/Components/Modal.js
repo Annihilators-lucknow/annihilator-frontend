@@ -6,6 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
+import duckImg from '../backgrounds/duck.svg'
 import CareerRecords from './CareerRecords';
 import { Players } from './Players';
 import _ from 'lodash'
@@ -39,6 +40,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bestBowling = Object.assign({},_.orderBy(addBowlingEconomy, ['economy'],['asc'])[0])
     const bestBatingPerformanceObj = playerRecords?.filter(x => x.runScored == bestBatingScore)
     const bestBating = Object.assign({},_.orderBy(bestBatingPerformanceObj, ['runScored'],['dsc'])[0])
+    const totalOverBowled  = Math.round(playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
+    const numbersOfDucks = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value) && value === 0).length
+  
+
     
 
    
@@ -139,6 +144,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                     <label className="userid">Number of 6 hit</label>
                                     <p className="profession">{isNaN(numberOf6Sixes) ? 0 : numberOf6Sixes}</p>
                                 </div>
+                                 <div className="detail-field">
+                                    <label className="userid">Number's of <span><img style={{width:"20px",height:"20px"}} src={duckImg} /></span></label>
+                                    <p className="profession">{numbersOfDucks}</p>
+                                </div>
                                 <div className="detail-field">
                                     <label className="userid">Highest score</label>
                                     <p className="profession">{!_.isEmpty(bestBating) ? `${bestBating.runScored} run / ${bestBating.ballPlayed} ball` : "" }</p>
@@ -161,6 +170,10 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <div className="detail-field">
                                     <label className="userid">No of 3 and more wicket taken</label>
                                     <p className="profession">{isNaN(numberOf3WicketTaken) ? 0 : numberOf3WicketTaken}</p>
+                                </div>
+                                <div className="detail-field">
+                                    <label className="userid">Total over bowled</label>
+                                    <p className="profession">{isNaN(totalOverBowled) ? 0 : totalOverBowled}</p>
                                 </div>
                                  <div className="detail-field">
                                     <label className="userid">Best Bowling Performance</label>
