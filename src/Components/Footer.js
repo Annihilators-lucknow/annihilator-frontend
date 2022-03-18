@@ -42,11 +42,11 @@ const Footer = ({ setShowLink, showModal }) => {
                 <Fade right><div className="copyright">
                     <span>Annihilators &copy;. All Right Reserved</span>
                     <span>Build with React Js</span>
-                    <div className="social-container">
+                    {/* <div className="social-container">
                         <a href="https://github.com/osamahannan" target="_blank" rel="noreferrer" className="social"><FaGithub /></a>
                         <a href="https://twitter.com/Osamahannan1" target="_blank" rel="noreferrer" className="social"><FaTwitter /></a>
                         <a href="https://www.linkedin.com/in/osama-hannan-7337921a0/" target="_blank" rel="noreferrer" className="social"><FaLinkedin /></a>
-                    </div>
+                    </div> */}
                 </div></Fade>
             </div>
         </div>
