@@ -7,7 +7,10 @@ import { GET_CRICKET_MATCH_DATA_START, GET_CRICKET_MATCH_DATA_SUCCESS, GET_CRICK
   GET_ALL_CRICKET_MATCH_FAILED,
     UPDATE_FUND_BALANCE_START,
   UPDATE_FUND_BALANCE_SUCCESS,
-  UPDATE_FUND_BALANCE_FAILED
+  UPDATE_FUND_BALANCE_FAILED,
+  FETCH_MATCH_DETAILS_START,
+  FETCH_MATCH_DETAILS_SUCCESS,
+  FETCH_MATCH_DETAILS_FAILDED
 } from '../../constant/actiontype';
 
 const initialState = {
@@ -17,7 +20,8 @@ const initialState = {
   error: [],
   fundBalance: [],
   fundHistory:[],
-  allMatches : []
+  allMatches : [],
+  matchDetails:[]
 }
 
 export default (state = initialState, action) => {
@@ -112,6 +116,24 @@ export default (state = initialState, action) => {
       }
 
     case UPDATE_FUND_BALANCE_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      }
+    case FETCH_MATCH_DETAILS_START:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case FETCH_MATCH_DETAILS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        matchDetails: action.payload
+      }
+
+    case FETCH_MATCH_DETAILS_FAILDED:
       return {
         ...state,
         isLoading: false,

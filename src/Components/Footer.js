@@ -32,7 +32,7 @@ const Footer = ({ setShowLink, showModal }) => {
                     </div>
                     <div className="footer-icons">
                         <a href="tel:8181007105" cm_dontconvertlink><BsTelephone className="footericon" /></a>
-                        <a href="tel:8181007105" cm_dontconvertlink>8181007105</a>
+                        <a href="tel:8181007105" cm_dontconvertlink>8423554136 , 8181007105</a>
                     </div>
                     <div className="footer-icons">
                         <HiOutlineMail className="footericon" />

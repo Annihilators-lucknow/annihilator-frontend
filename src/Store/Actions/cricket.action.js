@@ -13,7 +13,10 @@ import {
   UPDATE_FUND_BALANCE_FAILED,
   UPDATE_PLAYERS_RECORD_START,
   UPDATE_PLAYERS_RECORD_SUCCESS,
-  UPDATE_PLAYERS_RECORD_FAILED
+  UPDATE_PLAYERS_RECORD_FAILED,
+  FETCH_MATCH_DETAILS_START,
+  FETCH_MATCH_DETAILS_SUCCESS,
+  FETCH_MATCH_DETAILS_FAILDED
 
 } from "../../constant/actiontype";
 import apiconfig from "../../constant/apiconfig";
@@ -140,6 +143,22 @@ export const updatePlayersRecord = (payload) => {
     } catch (err) {
       dispatch({ type: UPDATE_PLAYERS_RECORD_FAILED, payload: err })
         toast.warn("something went wrong")
+    }
+  }
+}
+
+
+export const getMatchDetails = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: FETCH_MATCH_DETAILS_START });
+    try {
+      const res = await axios.get(`${apiconfig.baseURL}/match-details/${id}`, {
+        headers: authHeader(),
+      })
+      dispatch({ type: FETCH_MATCH_DETAILS_SUCCESS, payload: res.data.data });
+      console.log("res==",res.data)
+    } catch (err) {
+      dispatch({ type: FETCH_MATCH_DETAILS_FAILDED, payload: err })
     }
   }
 }

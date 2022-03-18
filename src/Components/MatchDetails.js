@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation ,useParams } from 'react-router-dom'
 import Loader from './Loader'
 import _ from 'lodash'
-
+import { useSelector,useDispatch } from 'react-redux'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -11,15 +11,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {displayConclusionText} from '../constant/utils'
+import {getMatchDetails} from '../Store/Actions/cricket.action'
 
 
 const MatchDetails = () => {
     const location = useLocation()
+    const dispatch = useDispatch()
+    const {matchId} = useParams();
     const [MatchDetails , setMatchDetails] = useState(location.state.matchData)
-
+     console.log(matchId)
     useEffect(()=>{
        setMatchDetails(location.state.matchData)
+        // dispatch(getMatchDetails(matchId))
     },[location.state.matchData])
+
+   
 
     const displayTitleText = () => {
         return <div  style={{fontSize:"24px"}}> <p>{`${MatchDetails.tossResult === "Lose"  ? MatchDetails.teamName : "Annihilator"} won the toss and choose to bat first`} </p></div>
