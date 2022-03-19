@@ -28,9 +28,9 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
     const totalNotOutInnings = playerRecords?.filter(value => value.notOut ? value.notOut.includes("true") : "").length
-    const average = Math.round(totalRuns / (totalInnings -totalNotOutInnings) )
+    const average = (totalRuns / (totalInnings -totalNotOutInnings)).toFixed(2)
     const bowlingAverage =   Math.round(runGiven / totalWicket)
-    const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
+    const bowlingEconomy  = (runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0)).toFixed(2)
     const tempbestBatingScore = playerRecords?.map(player => parseInt(player?.runScored)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
     const bestBatingScore = tempbestBatingScore[tempbestBatingScore.length -1]
     const tempWicketTaken =  playerRecords?.map(player => parseInt(player?.wicketTaken)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
