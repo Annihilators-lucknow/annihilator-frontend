@@ -104,7 +104,7 @@ const MatchDetails = () => {
               </TableCell>
               <TableCell>{row.overBowled}</TableCell>
               <TableCell>{row.runGiven}</TableCell>
-              <TableCell>{parseInt(row.runGiven / row.overBowled)}</TableCell>
+              <TableCell>{parseInt(row.runGiven / row.overBowled).toFixed(2)}</TableCell>
               <TableCell>{parseInt(row.wicketTaken)}</TableCell>
             </TableRow>
           ))}

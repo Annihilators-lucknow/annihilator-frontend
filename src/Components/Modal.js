@@ -41,8 +41,9 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bestBatingPerformanceObj = playerRecords?.filter(x => x.runScored == bestBatingScore)
     const bestBating = Object.assign({},_.orderBy(bestBatingPerformanceObj, ['runScored'],['dsc'])[0])
     const totalOverBowled  = Math.round(playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
-    const numbersOfDucks = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value) && value === 0).length
+    const numbersOfDucks = playerRecords?.filter(player => player.runScored === "0" && player.notOut === "false").length
     const numberOf30 = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).filter(x => x > 29).length
+
   
 
     
