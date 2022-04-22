@@ -10,8 +10,9 @@ import ScrollToTop from "./Components/ScrollToTop";
 import MatchDetails from "./Components/MatchDetails";
 import PlayerDetails from "./Components/PlayerDetails";
 import ScrollButton from "./Components/ScrollButton";
-  import { ToastContainer } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PlayerDetailsPageSystem from "./Components/PlayerDetailsPageSystem";
 
 function App() {
   
@@ -38,7 +39,7 @@ function App() {
 
           <Route exact path="/match-history" element={<MatchHistory showModal={showModal} setShowModal={setShowModal} />} />
           <Route exact path="/match-details/:matchId" element={<MatchDetails showModal={showModal} setShowModal={setShowModal} />} />
-           <Route exact path="/player-details/:playerName" element={<PlayerDetails showModal={showModal} setShowModal={setShowModal} />} />
+           <Route exact path="/player-details/:playerName" element={<PlayerDetailsPageSystem showModal={showModal} setShowModal={setShowModal} />} />
 
         </Routes>
 

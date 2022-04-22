@@ -11,6 +11,7 @@ export const Players = [
         phone: "8423544136",
         isActive:true,
         email: "minhaj.space@gmail.com",
+        imageLink : "https://pbs.twimg.com/profile_images/1339577745819410432/CinNyORB_400x400.jpg"
         
     },
     {
@@ -35,7 +36,8 @@ export const Players = [
         twitter: "https://twitter.com/Osamahannan1",
         phone: "8181007105",
         isActive:true,
-        email: "osamahannan7@gmail.com"
+        email: "osamahannan7@gmail.com",
+        imageLink:"https://scontent.fknu1-2.fna.fbcdn.net/v/t1.6435-9/135059566_1280068079024019_6551271908970920219_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=e3f864&_nc_ohc=PpSnqBiOQAUAX_MN4Ub&_nc_ht=scontent.fknu1-2.fna&oh=00_AT89lYp-rLBGe4EYPCAdpW0f-LC7_LBvYV4GTAi57dxy7Q&oe=6289D502"
     },
     {
         id: 4,
@@ -47,7 +49,8 @@ export const Players = [
         twitter: "https://twitter.com/mohdfaiz714",
         phone: "9956536117",
         isActive:true,
-        email: "faizxtylish@gmail.com"
+        email: "faizxtylish@gmail.com",
+        imageLink :"https://scontent-del1-1.xx.fbcdn.net/v/t1.6435-9/136667072_1819242251561921_4280174916959543301_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OjsVzya8fPMAX8Bgf-h&tn=1yEVk4LqWja75sKO&_nc_ht=scontent-del1-1.xx&oh=00_AT_UcCviwdLNYIukd9RvGyMwN83p6lRqMF1rAFvPG6AHGg&oe=62868EBE"
     },
     {
         id: 5,
@@ -59,7 +62,8 @@ export const Players = [
         twitter: "#",
         phone: "8181079906",
         isActive:true,
-        email: "dummyemail@gmail.com"
+        email: "dummyemail@gmail.com",
+        imageLink:"https://scontent.fixr3-2.fna.fbcdn.net/v/t1.6435-9/128825862_1751949554960360_525978860648536276_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=nZ3tnbC8VZIAX9o2P2M&_nc_ht=scontent.fixr3-2.fna&oh=00_AT8DF9efAhmmYxGcFDp_6VP7u3LoxtWe_cHmsykvkX4dBg&oe=6286E7E3"
     },
     {
         id: 6,
@@ -204,6 +208,20 @@ export const Players = [
         phone: "#",
         isActive:true,
         email: "dummyemail@gmail.com"
+    },
+     {
+        id: 1,
+        name: "Mohd Imran",
+        image: "Assets/Profile pics/imran.svg",
+        speciality: "All Rounder",
+        instagram: "https://www.instagram.com/minhaj.mak/",
+        facebook: "https://www.facebook.com/minhaj.a.khan.14",
+        twitter: "https://twitter.com/MinhajAhmadKha7",
+        phone: "8423544136",
+        isActive:true,
+        email: "minhaj.space@gmail.com",
+        imageLink : "https://scontent.fknu1-4.fna.fbcdn.net/v/t39.30808-6/278347007_1430433754047307_1437913318459984063_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=tcEWyqaRy5MAX88G1Xm&_nc_ht=scontent.fknu1-4.fna&oh=00_AT_Cf0E4NXSGAJh26I8QqO4nXRUwG15MBvvpF_ebsFPx1w&oe=62677532"
+        
     },
 
 

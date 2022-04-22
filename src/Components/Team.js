@@ -22,6 +22,7 @@ import 'swiper/swiper-bundle.min.css'
 
 
 
+
 const Team = ({ showModal, setShowModal }) => {
     const dispatch = useDispatch()
     
@@ -36,8 +37,8 @@ const Team = ({ showModal, setShowModal }) => {
 
     const handleNavigate = (data) => {
         setPlayerData(data)
-        setShowModal(!showModal)
-        //navigate(`/player-details/${data.name}`)
+        //setShowModal(!showModal)
+        navigate(`/player-details/${data.name}`)
     }
    useEffect(()=>{
      dispatch(getAllCricketMatch())
@@ -47,6 +48,8 @@ const Team = ({ showModal, setShowModal }) => {
       setMomData(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerData.name) : [])
       setPlayerRecords(tempResult?.filter(x => x.playerName === playerData.name))
    },[playerData])
+
+  
 
    function groupByKey(array, key) {
    return array
@@ -58,7 +61,6 @@ const Team = ({ showModal, setShowModal }) => {
      const playerFinalData = (groupByKey(tempResult, 'playerName'))
      const hs = tempResult.map(player => parseInt(player?.runScored)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
      const bestBatingPerformanceObj = Object.assign({},tempResult?.filter(x => x.runScored == hs[hs.length-1])[0]) 
-     console.log("bestBatingPerformanceObj===",bestBatingPerformanceObj)
 
    function detectMob() {
         return (window.innerWidth <= 800);
