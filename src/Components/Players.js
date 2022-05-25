@@ -3,7 +3,7 @@ export const Players = [
     {
         id: 1,
         name: "Minhaj Ahmad Khan",
-        image: "Assets/Profile pics/Minhaj.svg",
+        image: "../Assets/Profile pics/Minhaj.svg",
         speciality: "All Rounder",
         instagram: "https://www.instagram.com/minhaj.mak/",
         facebook: "https://www.facebook.com/minhaj.a.khan.14",
@@ -17,7 +17,7 @@ export const Players = [
     {
         id: 2,
         name: "Zain Zaman Khan",
-        image: "Assets/Profile pics/zain.svg",
+        image: "../Assets/Profile pics/zain.svg",
         speciality: "Batsman",
         instagram: "https://www.instagram.com/zain.khan025/",
         facebook: "https://www.facebook.com/zainkhanbly",
@@ -29,7 +29,7 @@ export const Players = [
     {
         id: 3,
         name: "Osama Hannan",
-        image: "Assets/Profile pics/Osama.svg",
+        image: "../Assets/Profile pics/Osama.svg",
         speciality: "Batsman",
         instagram: "https://www.instagram.com/osamahannan5/",
         facebook: "https://www.facebook.com/profile.php?id=100010625177535",
@@ -42,7 +42,7 @@ export const Players = [
     {
         id: 4,
         name: "Mohd Faiz",
-        image: "Assets/Profile pics/Faiz.svg",
+        image: "../Assets/Profile pics/Faiz.svg",
         speciality: "All Rounder",
         instagram: "https://www.instagram.com/mohd.faiz06/",
         facebook: "https://www.facebook.com/mdfaiz.06",
@@ -55,7 +55,7 @@ export const Players = [
     {
         id: 5,
         name: "Asad Raiyan",
-        image: "Assets/Profile pics/asad.svg",
+        image: "../Assets/Profile pics/asad.svg",
         speciality: "Batsman",
         instagram: "#",
         facebook: "#",
@@ -68,7 +68,7 @@ export const Players = [
     {
         id: 6,
         name: "Syed Faraz",
-        image: "Assets/Profile pics/syed.svg",
+        image: "../Assets/Profile pics/syed.svg",
         speciality: "All Rounder",
         instagram: "https://instagram.com/syedfaraz36?utm_medium=copy_link",
         facebook: "https://www.facebook.com/faraz.ahmad.73550",
@@ -80,7 +80,7 @@ export const Players = [
     {
         id: 7,
         name: "Mohd Rashid",
-        image: "Assets/Profile pics/rashid.svg",
+        image: "../Assets/Profile pics/rashid.svg",
         speciality: "All Rounder",
         instagram: "https://instagram.com/md.rashid7.86?utm_medium=copy_link",
         facebook: "https://www.facebook.com/sha.nu.3192",
@@ -92,7 +92,7 @@ export const Players = [
     {
         id: 8,
         name: "Atif Shaikh",
-        image: "Assets/Profile pics/atif.svg",
+        image: "../Assets/Profile pics/atif.svg",
         speciality: "All Rounder",
         instagram: "https://instagram.com/atifshaikh32?utm_medium=copy_link",
         facebook: "https://www.facebook.com/profile.php?id=100009438409984",
@@ -104,7 +104,7 @@ export const Players = [
     {
         id: 9,
         name: "Shahbaz Ahmad Khan",
-        image: "Assets/Profile pics/shahbaz.svg",
+        image: "../Assets/Profile pics/shahbaz.svg",
         speciality: "All Rounder",
         instagram: "https://instagram.com/shahbazahmed.k?utm_medium=copy_link",
         facebook: "https://www.facebook.com/shahbazahmedkhan.sak.1",
@@ -116,7 +116,7 @@ export const Players = [
     {
         id: 10,
         name: "Irfan Khan",
-        image: "Assets/Profile pics/Irfan.svg",
+        image: "../Assets/Profile pics/Irfan.svg",
         speciality: "All Rounder",
         instagram: "https://instagram.com/irfan_ik_pathan?utm_medium=copy_link",
         facebook: "https://www.facebook.com/profile.php?id=100012420880461",
@@ -128,7 +128,7 @@ export const Players = [
     {
         id: 11,
         name: "Intzar Khan",
-        image: "Assets/Profile pics/Intzar.svg",
+        image: "../Assets/Profile pics/Intzar.svg",
         speciality: "Bowler",
         instagram: "https://instagram.com/intzarkhanstylash?utm_medium=copy_link",
         facebook: "https://www.facebook.com/profile.php?id=100005248029914",
@@ -140,7 +140,7 @@ export const Players = [
     {
         id: 12,
         name: "Sajid Khan",
-        image: "Assets/Profile pics/sajid2.svg",
+        image: "../Assets/Profile pics/sajid2.svg",
         speciality: "Batsman",
         instagram: "https://instagram.com/mr_sid7786?utm_medium=copy_link",
         facebook: "https://www.facebook.com/shaina.khatoon.1428",
@@ -152,7 +152,7 @@ export const Players = [
     {
         id: 13,
         name: "Sameer Khan",
-        image: "Assets/Profile pics/sameer.svg",
+        image: "../Assets/Profile pics/sameer.svg",
         speciality: "Batsman",
         instagram: "https://www.instagram.com/samtalib251/?utm_medium=copy_link",
         facebook: "https://www.facebook.com/people/Abu-Talib/100027192752298/",
@@ -164,7 +164,7 @@ export const Players = [
     {
         id: 14,
         name: "Shareef Gazi",
-        image: "Assets/Profile pics/shareef.svg",
+        image: "../Assets/Profile pics/shareef.svg",
         speciality: "Batsman",
         instagram: "#",
         facebook: "#",
@@ -176,7 +176,7 @@ export const Players = [
     {
         id: 15,
         name: "Tahir Ali",
-        image: "Assets/Profile pics/tahir.svg",
+        image: "../Assets/Profile pics/tahir.svg",
         speciality: "Batsman",
         instagram: "#",
         facebook: "#",
@@ -188,7 +188,7 @@ export const Players = [
     {
         id: 14,
         name: "Idrees Ahmad",
-        image: "Assets/Profile pics/idress.jpg",
+        image: "../Assets/Profile pics/idress.jpg",
         speciality: "Batsman",
         instagram: "#",
         facebook: "#",
@@ -200,7 +200,7 @@ export const Players = [
     {
         id: 14,
         name: "Ali",
-        image: "Assets/Profile pics/dummy.png",
+        image: "../Assets/Profile pics/dummy.png",
         speciality: "Batsman",
         instagram: "#",
         facebook: "#",
@@ -212,7 +212,7 @@ export const Players = [
      {
         id: 1,
         name: "Mohd Imran",
-        image: "Assets/Profile pics/imran.svg",
+        image: "../Assets/Profile pics/imran.jpg",
         speciality: "All Rounder",
         instagram: "https://www.instagram.com/minhaj.mak/",
         facebook: "https://www.facebook.com/minhaj.a.khan.14",
@@ -220,7 +220,21 @@ export const Players = [
         phone: "8423544136",
         isActive:true,
         email: "minhaj.space@gmail.com",
-        imageLink : "https://scontent.fknu1-4.fna.fbcdn.net/v/t39.30808-6/278347007_1430433754047307_1437913318459984063_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=tcEWyqaRy5MAX88G1Xm&_nc_ht=scontent.fknu1-4.fna&oh=00_AT_Cf0E4NXSGAJh26I8QqO4nXRUwG15MBvvpF_ebsFPx1w&oe=62677532"
+        imageLink : "https://scontent.fknu1-2.fna.fbcdn.net/v/t1.6435-9/60230459_105528484017425_3311607952028205056_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Gp9yBSjB-roAX_CvyOl&_nc_ht=scontent.fknu1-2.fna&oh=00_AT9vG0zgz8oBrg8BeWv3lVtgLznxNCG8oBmSjoi6Vp9-lA&oe=62B40EEB"
+        
+    },
+    {
+        id: 1,
+        name: "Akbar",
+        image: "../Assets/Profile pics/dummy.png",
+        speciality: "All Rounder",
+        instagram: "https://www.instagram.com/minhaj.mak/",
+        facebook: "https://www.facebook.com/minhaj.a.khan.14",
+        twitter: "https://twitter.com/MinhajAhmadKha7",
+        phone: "8423544136",
+        isActive:true,
+        email: "minhaj.space@gmail.com",
+        // imageLink : "https://scontent.fknu1-2.fna.fbcdn.net/v/t1.6435-9/60230459_105528484017425_3311607952028205056_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Gp9yBSjB-roAX_CvyOl&_nc_ht=scontent.fknu1-2.fna&oh=00_AT9vG0zgz8oBrg8BeWv3lVtgLznxNCG8oBmSjoi6Vp9-lA&oe=62B40EEB"
         
     },
 

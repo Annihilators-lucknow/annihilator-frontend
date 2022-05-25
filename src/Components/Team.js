@@ -118,7 +118,7 @@ const Team = ({ showModal, setShowModal }) => {
                                player.isActive ?  <Flip right><div className="card-container noSelect" key={player.id} onClick={() => {handleNavigate(player) }}>
                                     <div className="player-card">
                                         <div className="profile">
-                                            <img style={{borderRadius:"50%"}} src={player.image} alt="Profile Pic" />
+                                            <img style={{borderRadius:"50%",width:"100%",objectFit:"cover"}} src={ player.image} alt="Profile Pic" />
                                         </div>
                                         {(player.speciality === 'Bowler') ? <GiTennisBall className='ball' /> : (player.speciality === 'Batsman' ? <img src={bat} alt="Batsman" className='bat' /> : <img src={batball} alt="All Rounder" className='batball' />)}
                                         <span className="player-card-name">{player.name}</span>

@@ -98,7 +98,7 @@ const PlayerDetailsPageSystem = () => {
                     <div className="about-link">
                          <div className="image">
                             <div className="profile-info">
-                                <img style={{borderRadius:"50%"}} src={playerData.imageLink} alt="profile pic" />
+                                <img style={{borderRadius:"50%",objectFit:"cover"}} src={playerData.imageLink || playerData.image} alt="profile pic" />
                             </div>
                         </div>
                         <div className="link-container">
