@@ -186,7 +186,7 @@ export const Players = [
         email: "dummyemail@gmail.com"
     },
     {
-        id: 14,
+        id: 16,
         name: "Idrees Ahmad",
         image: "../Assets/Profile pics/idress.jpg",
         speciality: "Batsman",
@@ -198,7 +198,7 @@ export const Players = [
         email: "dummyemail@gmail.com"
     },
     {
-        id: 14,
+        id: 17,
         name: "Ali",
         image: "../Assets/Profile pics/dummy.png",
         speciality: "Batsman",
@@ -210,7 +210,7 @@ export const Players = [
         email: "dummyemail@gmail.com"
     },
      {
-        id: 1,
+        id: 18,
         name: "Mohd Imran",
         image: "../Assets/Profile pics/imran.jpg",
         speciality: "All Rounder",
@@ -224,9 +224,9 @@ export const Players = [
         
     },
     {
-        id: 1,
+        id: 19,
         name: "Akbar",
-        image: "../Assets/Profile pics/dummy.png",
+        image: "../Assets/Profile pics/akbar.jpg",
         speciality: "All Rounder",
         instagram: "https://www.instagram.com/minhaj.mak/",
         facebook: "https://www.facebook.com/minhaj.a.khan.14",
@@ -236,6 +236,19 @@ export const Players = [
         email: "minhaj.space@gmail.com",
         // imageLink : "https://scontent.fknu1-2.fna.fbcdn.net/v/t1.6435-9/60230459_105528484017425_3311607952028205056_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Gp9yBSjB-roAX_CvyOl&_nc_ht=scontent.fknu1-2.fna&oh=00_AT9vG0zgz8oBrg8BeWv3lVtgLznxNCG8oBmSjoi6Vp9-lA&oe=62B40EEB"
         
+    },
+
+     {
+        id: 20,
+        name: "Arif bhai",
+        image: "../Assets/Profile pics/dummy.png",
+        speciality: "Batsman",
+        instagram: "#",
+        facebook: "#",
+        twitter: "#",
+        phone: "#",
+        isActive:true,
+        email: "dummyemail@gmail.com"
     },
 
 
