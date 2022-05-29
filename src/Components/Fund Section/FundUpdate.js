@@ -30,28 +30,28 @@ import Individualrecoed from '../individualRecord';
 
  const initialStateMatchData = {
         teamName:"",
-        date:"",
-        tossResult:"",
+        date: "",
+        tossResult:"Win",
         matchResult:"",
-        matchCost:"",
+        matchCost:"200",
         opponentScore:"",
-        opponentOver:"",
+        opponentOver:"8",
         annihilatorScore:"",
-        annihilatorOver:"",
+        annihilatorOver:"8",
     }
 
     const initaiStateMom = {
         ballPlayed:"",
         category:"",
         fours: "",
-        overBowled: "",
+        overBowled: "3",
         playerName: "",
         runGiven: "",
         runScored: "",
         sixes: "",
-        wicketTaken: "", 
+        wicketTaken: 0, 
         status:"approved",
-        notOut:"",
+        notOut:false,
     }
 
 
@@ -153,7 +153,8 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                 <input type="date" name="date" id="date" autoComplete="off"
                                     value={user.date}
                                     onChange={handleInputs}
-                                    placeholder="Date" />
+                                    placeholder="Date" 
+                                    />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="tossResult">
@@ -308,6 +309,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                                 variant="outlined"
                                                 label="Out / Not"
                                                 name="notOut"
+                                                defaultValue={false}
                                                 select
                                             >
                                                 <MenuItem value="false">Out</MenuItem>
