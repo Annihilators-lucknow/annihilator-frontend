@@ -44,7 +44,7 @@ import Individualrecoed from '../individualRecord';
         ballPlayed:"",
         category:"",
         fours: "",
-        overBowled: "3",
+        overBowled: "",
         playerName: "",
         runGiven: "",
         runScored: "",
