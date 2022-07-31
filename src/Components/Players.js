@@ -250,6 +250,18 @@ export const Players = [
         isActive:true,
         email: "dummyemail@gmail.com"
     },
+     {
+        id: 21,
+        name: "Salman",
+        image: "../Assets/Profile pics/dummy.png",
+        speciality: "Batsman",
+        instagram: "#",
+        facebook: "#",
+        twitter: "#",
+        phone: "#",
+        isActive:true,
+        email: "dummyemail@gmail.com"
+    },
 
 
 ]
