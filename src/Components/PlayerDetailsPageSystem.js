@@ -1,23 +1,62 @@
-import React, { useState } from 'react'
-import Fade from 'react-reveal/Fade';
-import winlogo from "../backgrounds/teamlogo2.png";
-import moment from 'moment';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+import React,{useEffect,useState} from 'react'
+import { useParams } from 'react-router-dom'
+import { getAllCricketMatch } from '../Store/Actions/cricket.action'
+ import Loader from './Loader'
+ import { useDispatch,useSelector } from 'react-redux';
+ import { Players } from "./Players"
+ import _ from 'lodash'
+ import CareerRecords from './CareerRecords';
+ import { Carousel } from "react-responsive-carousel";
 import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
 import duckImg from '../backgrounds/duck.svg'
-import CareerRecords from './CareerRecords';
-import { Players } from './Players';
-import _ from 'lodash'
-
+import moment from 'moment';
+import Fade from 'react-reveal/Fade';
 
 function add(accumulator, a) {
     return accumulator + a;
     }
 
 
-const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}) => {
+
+
+
+const PlayerDetailsPageSystem = () => {
+    const isLoading = useSelector((state) => state.cricketReducer.isLoading)
+    const { playerName} = useParams()
+    const dispatch = useDispatch()
+    const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
+    const tempPlayersRecord = tempAllMatch?.map((item)=>( item.individualrecord))
+    const tempResult = [...new Set(tempPlayersRecord?.flat())]
+    const [playerData, setPlayerData] = useState(Players.filter(x => x.playerName?.toLowerCase() === playerName?.toLowerCase()));
+     const [playerRecords,setPlayerRecords] = useState(tempPlayersRecord ? tempPlayersRecord.filter(x => x.playerName === playerName) :[])
+    const [momData,setMomData] = useState(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerName) : [])
+
+
+    useEffect(()=>{
+     dispatch(getAllCricketMatch())
+     setPlayerData(Object.assign({} ,Players.filter(x => x.name?.toLowerCase() === playerName?.toLowerCase())[0]))
+    
+   },[])
+
+
+    const toggleTab = (index) => {
+        setToggleState(index);
+    }
+    function detectMob() {
+        return (window.innerWidth <= 800);
+    }
+
+   
+
+
+   useEffect(()=>{
+      setMomData(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName?.toLowerCase() === playerName.toLowerCase()) : [])
+      setPlayerRecords(tempResult?.filter(x => x.playerName?.toLowerCase() === playerName.toLowerCase()))
+   },[playerData,tempAllMatch])
+
+   console.log("playersData===",playerRecords ,"momData==",momData ,"playerData===",playerData)
+
     const totalRuns = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value)).reduce(add, 0)
     const totalInnings = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).length
     const strikeRate = Math.round(totalRuns /  (playerRecords?.map(player => parseInt(player.ballPlayed)).filter(value => !Number.isNaN(value)).reduce(add, 0)) * 100  ) 
@@ -42,45 +81,24 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bestBatingPerformanceObj = playerRecords?.filter(x => x.runScored == bestBatingScore)
     const bestBating = Object.assign({},_.orderBy(bestBatingPerformanceObj, ['runScored'],['dsc'])[0])
     const totalOverBowled  = Math.round(playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
-    const numbersOfDucks = playerRecords?.filter(player => player.runScored === "0" && player.notOut === "false").length
+    const numbersOfDucks = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value) && value === 0).length
     const numberOf30 = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).filter(x => x > 29).length
-
-  
-
-    
-
-   
-
-    
    
 
 
+   
+   
 
-
-
-    
-
-
-
-    const toggleTab = (index) => {
-        setToggleState(index);
-    }
-    function detectMob() {
-        return (window.innerWidth <= 800);
-    }
-
-
-    // console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
-
-    return (
-        <Fade up>
-            <div id="about" key={playerData.id} className="player-modal">
-                <form className="about-form" >
+    return <div className='details-page'>
+    {isLoading ? <Loader/> : 
+    <Fade up>
+     <div id="about-details" key={playerData.id} className="player-modal">
+                <form className="about-form-details" >
 
                     <div className="about-link">
-                        <div className="image">
+                         <div className="image">
                             <div className="profile-info">
-                                <img style={{borderRadius:"50%"}} src="/assets/Profiles Pics/idress.jpg" alt="profile pic" />
+                                <img style={{borderRadius:"50%",objectFit:"cover"}} src={ playerData.image} alt="profile pic" />
                             </div>
                         </div>
                         <div className="link-container">
@@ -100,7 +118,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <p>RANKING: <span>1/10</span></p>
                             </div>
 
-                            <button onClick={() => setShowModal(false)} className="btn cancel">Cancel</button>
+                            {/* <button  className="btn cancel">Cancel</button> */}
 
                         </div>
 
@@ -266,8 +284,9 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                     </div> 
                 </form>
             </div>
-        </Fade>
-    )
+            </Fade>
+            }
+     </div>
 }
 
-export default Modal
+export default PlayerDetailsPageSystem

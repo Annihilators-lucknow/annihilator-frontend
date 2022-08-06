@@ -1,5 +1,10 @@
-import React, { useState } from 'react'
-import Fade from 'react-reveal/Fade';
+import React,{useEffect,useState} from 'react'
+import { useLocation ,useParams } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import { getAllCricketMatch } from '../Store/Actions/cricket.action'
+import { Players } from "./Players"
+import Loader from './Loader'
+import _ from 'lodash'
 import winlogo from "../backgrounds/teamlogo2.png";
 import moment from 'moment';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,17 +13,23 @@ import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
 import duckImg from '../backgrounds/duck.svg'
 import CareerRecords from './CareerRecords';
-import { Players } from './Players';
-import _ from 'lodash'
-
 
 function add(accumulator, a) {
     return accumulator + a;
     }
 
 
-const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}) => {
-    const totalRuns = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value)).reduce(add, 0)
+const PlayerDetails = () => {
+        const {playerName} = useParams();
+        const dispatch = useDispatch()
+         const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches?.data)
+         const tempPlayersRecord = tempAllMatch?.map((item)=>( item.individualrecord))
+         const [momData,setMomData] = useState(tempAllMatch?.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerName))
+        const [playerRecords,setPlayerRecords] = useState(tempPlayersRecord?.filter(x => x.playerName === playerName))
+         const tempResult = [...new Set(tempPlayersRecord?.flat())]
+         const isLoading = useSelector((state) => state.cricketReducer.isLoading)
+         const [playerData, setPlayerData] = useState({});
+          const totalRuns = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value)).reduce(add, 0)
     const totalInnings = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).length
     const strikeRate = Math.round(totalRuns /  (playerRecords?.map(player => parseInt(player.ballPlayed)).filter(value => !Number.isNaN(value)).reduce(add, 0)) * 100  ) 
     const totalWicket = playerRecords?.map(player => parseInt(player.wicketTaken)).filter(value => !Number.isNaN(value)).reduce(add , 0)
@@ -29,11 +40,11 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const numberOf6Sixes = playerRecords?.map(player => parseInt(player.sixes)).filter(value => !Number.isNaN(value)).reduce(add,0)
     const [toggleState, setToggleState] = useState(1);
     const totalNotOutInnings = playerRecords?.filter(value => value.notOut ? value.notOut.includes("true") : "").length
-    const average = (totalRuns / (totalInnings -totalNotOutInnings)).toFixed(2)
+    const average = Math.round(totalRuns / (totalInnings -totalNotOutInnings) )
     const bowlingAverage =   Math.round(runGiven / totalWicket)
-    const bowlingEconomy  = (runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0)).toFixed(2)
+    const bowlingEconomy  = Math.round(runGiven / playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
     const tempbestBatingScore = playerRecords?.map(player => parseInt(player?.runScored)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
-    const bestBatingScore = tempbestBatingScore[tempbestBatingScore.length -1]
+    const bestBatingScore = tempbestBatingScore[tempbestBatingScore?.length -1]
     const tempWicketTaken =  playerRecords?.map(player => parseInt(player?.wicketTaken)).filter (value => !Number.isNaN(value)).sort((a,b) => a -b )
     const wicketTaken = tempWicketTaken[tempWicketTaken.length -1]
     const bowlingBestPerformance = playerRecords?.filter(x => x.wicketTaken == wicketTaken)
@@ -42,45 +53,41 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
     const bestBatingPerformanceObj = playerRecords?.filter(x => x.runScored == bestBatingScore)
     const bestBating = Object.assign({},_.orderBy(bestBatingPerformanceObj, ['runScored'],['dsc'])[0])
     const totalOverBowled  = Math.round(playerRecords?.map(player => parseInt(player.overBowled)).filter(value => !Number.isNaN(value)).reduce(add,0))
-    const numbersOfDucks = playerRecords?.filter(player => player.runScored === "0" && player.notOut === "false").length
+    const numbersOfDucks = playerRecords?.map(player => parseInt(player?.runScored?.replaceAll("*", ''))).filter(value => !Number.isNaN(value) && value === 0).length
     const numberOf30 = playerRecords?.map(player => parseInt(player.runScored)).filter(value => !Number.isNaN(value)).filter(x => x > 29).length
 
-  
-
-    
-
-   
-
-    
-   
-
-
-
-
-
-    
-
-
-
-    const toggleTab = (index) => {
+     const toggleTab = (index) => {
         setToggleState(index);
     }
     function detectMob() {
         return (window.innerWidth <= 800);
     }
 
+    console.log("tempbestBatingScore===",tempbestBatingScore  ,"tempbestBatingScore===",tempbestBatingScore)
 
-    // console.log("totalBalls===",strikeRate  , "totalWicket===",totalWicket ,"totalInningBowl===",totalInningBowl  ,"numberOf50===",numberOf50  ,"average===",average  , "bowlingAverage===",bowlingAverage ,"3===",numberOf3WicketTaken ,"numberOf6Sixes===",numberOf6Sixes ,"bowlingEconomy====",bowlingEconomy)
 
-    return (
-        <Fade up>
-            <div id="about" key={playerData.id} className="player-modal">
+        useEffect(()=>{
+         dispatch(getAllCricketMatch())
+        },[])
+
+      useEffect(()=>{
+      setMomData(tempAllMatch ? tempAllMatch.filter((item)=>item && item.ManofTheMatch && item.ManofTheMatch.playerName === playerName) : [])
+      setPlayerRecords(tempResult?.filter(x => x.playerName === playerName))
+      setPlayerData(Object.assign({} ,Players.filter((x)=>x.name === playerName) [0]))
+   },[tempAllMatch])
+
+
+   console.log("playerData===",playerData   ,"mom===",momData   , "playerRecords===",playerRecords)
+
+    return isLoading ? <Loader/> :
+          <>
+          <div id="about" key={playerData.id} className="player-modal">
                 <form className="about-form" >
 
                     <div className="about-link">
                         <div className="image">
                             <div className="profile-info">
-                                <img style={{borderRadius:"50%"}} src="/assets/Profiles Pics/idress.jpg" alt="profile pic" />
+                                <img style={{borderRadius:"50%"}} src={playerData.image} alt="profile pic" />
                             </div>
                         </div>
                         <div className="link-container">
@@ -100,7 +107,7 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                                 <p>RANKING: <span>1/10</span></p>
                             </div>
 
-                            <button onClick={() => setShowModal(false)} className="btn cancel">Cancel</button>
+                            {/* <button onClick={() => setShowModal(false)} className="btn cancel">Cancel</button> */}
 
                         </div>
 
@@ -266,8 +273,8 @@ const Modal = ({ setShowModal, playerData ,tempAllMatch ,momData ,playerRecords}
                     </div> 
                 </form>
             </div>
-        </Fade>
-    )
+           
+          </>
 }
 
-export default Modal
+export default PlayerDetails
