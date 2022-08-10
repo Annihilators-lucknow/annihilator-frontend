@@ -91,8 +91,8 @@ function PlayerRanking({allCricketMatch}) {
                  <Table stickyHeader aria-label="sticky table">
                 <TableHead>
                     <TableRow >
-                    <TableCell  style={{maxWidth:"20px",fontWeight:"600",color:"color: #06083b",zIndex:"1" , position: 'sticky',left: 0,background: 'white'}}>Ranking</TableCell>
                     <TableCell  style={{minWidth:"130px",fontWeight:"600",color:"color: #06083b",zIndex:"1" , position: 'sticky',left: 0,background: 'white'}}>Player Name</TableCell>
+                    <TableCell  style={{minWidth:"30px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Ranking</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Runs</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Ball taken</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>No of 6's</TableCell>
@@ -109,11 +109,12 @@ function PlayerRanking({allCricketMatch}) {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               style={{ background: 'white' }}
             >
-                <TableCell component="th" scope="row" style={{zIndex:"1" , position: 'sticky',left: 0,background: 'white',}}>
-                {index + 1}
-              </TableCell>
-              <TableCell component="th" scope="row" style={{zIndex:"1" , position: 'sticky',left: 0,background: 'white',}}>
+               
+              <TableCell component="th" scope="row" style={{zIndex:"0" , position: 'sticky',left: 0,background: 'white',}}>
                 {row.playerName}
+              </TableCell>
+               <TableCell>
+                {index + 1}
               </TableCell>
               <TableCell>{row.runScored} </TableCell>
               <TableCell>{row.ballPlayed}</TableCell>

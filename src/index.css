@@ -1032,7 +1032,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
   }
 }
 
@@ -1192,6 +1191,9 @@
 
   .rank {
     flex-direction: row;
+  }
+  .ranking-container{
+    width: 90% !important;
   }
 }
 

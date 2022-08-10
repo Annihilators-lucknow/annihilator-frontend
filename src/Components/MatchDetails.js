@@ -174,7 +174,7 @@ const MatchDetails = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               style={{ background: 'white' }}
             >
-              <TableCell component="th" scope="row" style={{zIndex:"1" , position: 'sticky',left: 0,background: 'white',}}>
+              <TableCell component="th" scope="row" style={{zIndex:"0" , position: 'sticky',left: 0,background: 'white',}}>
                 {row.playerName}
               </TableCell>
               <TableCell>{row.notOut === "true" ?  `${row.runScored}*` : row.runScored} </TableCell>
