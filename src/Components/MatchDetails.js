@@ -12,24 +12,58 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {displayConclusionText} from '../constant/utils'
 import {getMatchDetails} from '../Store/Actions/cricket.action'
+import plusIcon from '../backgrounds/addition.png'
+import FundUpdate from './Fund Section/FundUpdate'
+import { toast } from 'react-toastify';
+
 
 
 const MatchDetails = () => {
     const location = useLocation()
+    const [showModal,setShowModal] = useState(false)
     const dispatch = useDispatch()
     const {matchId} = useParams();
     const [MatchDetails , setMatchDetails] = useState(location.state.matchData)
+       const [scoreCard, setScoreCard] = useState(false);
      console.log(matchId)
     useEffect(()=>{
        setMatchDetails(location.state.matchData)
         // dispatch(getMatchDetails(matchId))
     },[location.state.matchData])
 
+
+    console.log("scoreCard===",scoreCard)
+
+
    
 
     const displayTitleText = () => {
         return <div  style={{fontSize:"24px"}}> <p>{`${MatchDetails.tossResult === "Lose"  ? MatchDetails.teamName : "Annihilator"} won the toss and choose to bat first`} </p></div>
     }
+
+
+     const onSaveClick = (data ,initaiStateMom ,setMomData) => {
+        const tempObject = Object.assign({},...data.individualrecord)
+        let tempData = ({...MatchDetails ,individualrecord: [...MatchDetails.individualrecord ] })
+        if(tempData.individualrecord.some(x => x?.playerName === tempObject?.playerName)){
+            toast.warning("Your date for this match is already exist please contact to admin")
+        } else {
+            tempData = ({...MatchDetails ,individualrecord: [...MatchDetails.individualrecord ,data.ManofTheMatch]})
+            console.log("tempData===",tempData)
+            //  const payload = {
+            //      data : tempData , 
+            //      successCallBack : () => {
+            //          setScoreCard(false)
+            //          setMomData(initaiStateMom)
+            //         }
+            //     }
+              
+                // dispatch(updatePlayersRecord(payload))
+
+         }
+    }    
+
+    console.log("MatchDetails===",MatchDetails)
 
   
 
@@ -104,7 +138,7 @@ const MatchDetails = () => {
               </TableCell>
               <TableCell>{row.overBowled}</TableCell>
               <TableCell>{row.runGiven}</TableCell>
-              <TableCell>{parseInt(row.runGiven / row.overBowled)}</TableCell>
+              <TableCell>{Number(row.runGiven / row.overBowled).toFixed(2)}</TableCell>
               <TableCell>{parseInt(row.wicketTaken)}</TableCell>
             </TableRow>
           ))}
@@ -163,6 +197,7 @@ const MatchDetails = () => {
                        
                         <div className="score-details flex-col">
                          {/* <div> <span style={{fontWeight:800}}>Pitch Report   </span>Not a lot of grass on this surface, looks like a belter. Looks like a good surface with a bit of moisture in it. Once the early moisture is gone, it'll be good for batting.</div> */}
+                          {/* <button className="btn edit-score mt-none"  onClick={() => setScoreCard(!scoreCard)} > <img className='inside-btn-img' src={plusIcon} />  Add Match Record</button> */}
                          <div className='d-flex'>  { displayTitleText()} </div>
                          {MatchDetails.tossResult === "Lose" ? renderOpponentBatingRecord() : renderAnnihilatorBatingRecord()}
                           {MatchDetails.tossResult === "Lose" ? renderAnnihilatorBowlingRecord() : null}
@@ -172,6 +207,8 @@ const MatchDetails = () => {
                         </div>
                         
                     </div>
+
+       <><FundUpdate setShowModal={setScoreCard} scoreCard={scoreCard} setScoreCard={setScoreCard} individualrecord={true} onSaveClick={onSaveClick} headers="Player's match record" radioText="individual record"/></>
 
      </>
 }

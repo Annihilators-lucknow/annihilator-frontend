@@ -7,7 +7,7 @@ import plusIcon from '../backgrounds/addition.png'
 import HistoryCard from './Historycard'
 import Loader from './Loader'
 import { useNavigate  } from "react-router-dom";
-
+import _ from 'lodash'
 
 
 
@@ -15,12 +15,16 @@ import { useNavigate  } from "react-router-dom";
 const MatchHistory = ({setShowModal}) => {
     const dispatch = useDispatch()
     const tempAllMatch = useSelector((state) => state.cricketReducer.allMatches.data)
+    const tempAllMatch1 = useSelector((state) => state.cricketReducer.cricketData)
+    const [allMatch ,setAllMatch] = useState(tempAllMatch)
     const  historyRecord = useSelector((state) => state.cricketReducer.allMatches.matchHistoy)
     const isLoading = useSelector((state)=>state.cricketReducer.isLoading)
     const [scoreCard, setScoreCard] = useState(false);
     const navigate = useNavigate()
+    const [ranking,setRanking] = useState([])
 
 
+    // console.log("tempAllMatch1===",tempAllMatch1)
     
       const onSaveClick = async (user) => {
         const payload = {
@@ -32,10 +36,13 @@ const MatchHistory = ({setShowModal}) => {
         dispatch(updateCricketMatchData(payload))
     }
 
-
     useEffect(()=>{
      dispatch(getAllCricketMatch())
     },[])
+
+    useEffect(()=>{
+     setAllMatch(tempAllMatch)
+    },[tempAllMatch])
 
 
       const onCardClick = (matchData) => {
@@ -59,8 +66,8 @@ const MatchHistory = ({setShowModal}) => {
                 <div className="result w-70">
                 <MatchCard allCricketMatch={tempAllMatch} setScoreCard={onCardClick}/>
                 </div>
-            <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} all={true} individualrecord={false} onSaveClick={onSaveClick}/>
-             <HistoryCard historyRecord={historyRecord}/>
+                <FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} all={true} individualrecord={false} onSaveClick={onSaveClick}/>
+                <HistoryCard historyRecord={historyRecord}/>
         </div>}
     </>
 }

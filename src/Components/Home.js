@@ -14,6 +14,7 @@ import FundUpdate from './Fund Section/FundUpdate'
 import plusIcon from '../backgrounds/addition.png'
 import { useNavigate  } from "react-router-dom";
 import { toast } from 'react-toastify';
+import PlayerRanking from './Ranking';
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
@@ -36,6 +37,8 @@ const Home = ({ setShowModal }) => {
         setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
 
+    console.log("cardItem===",cardItem)
+
       const onSaveClick = (data ,initaiStateMom ,setMomData) => {
         const tempObject = Object.assign({},...data.individualrecord)
         let tempData = ({...cardItem ,individualrecord: [...cardItem.individualrecord ] })
@@ -53,9 +56,6 @@ const Home = ({ setShowModal }) => {
                dispatch(updatePlayersRecord(payload))
 
          }
-     
-       
-        
     }      
     
     
@@ -93,7 +93,10 @@ const Home = ({ setShowModal }) => {
                     </div>
                 </div>
             </Fade>}
-            <><FundUpdate setShowModal={setShowModal} scoreCard={scoreCard} setScoreCard={setScoreCard} individualrecord={true} onSaveClick={onSaveClick} headers="Player's match record" radioText="individual record"/></>
+            <><FundUpdate setShowModal={setScoreCard} scoreCard={scoreCard} setScoreCard={setScoreCard} individualrecord={true} onSaveClick={onSaveClick} headers="Player's match record" radioText="individual record"/></>
+             <PlayerRanking
+             allCricketMatch={allCricketMatch}
+             />
 
             <div className="about-section">
                 <div className="about-container">
@@ -129,6 +132,8 @@ const Home = ({ setShowModal }) => {
                     </div></Fade>
                 </div>
             </div></Fade>
+
+           
 
             <div className="opponent-teams">
                 <h1>Our Opponent Teams</h1>
