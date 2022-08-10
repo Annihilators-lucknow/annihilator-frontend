@@ -6,7 +6,7 @@ import { Opponent } from "./Oppenent";
 import { FaQuoteLeft } from "react-icons/fa";
 import cricketbg from "../backgrounds/cricketbg.jpg";
 import { useSelector, useDispatch } from 'react-redux'
-import { getlatestMatch ,updatePlayersRecord} from '../Store/Actions/cricket.action'
+import { getlatestMatch ,updatePlayersRecord ,getAllCricketMatch} from '../Store/Actions/cricket.action'
 import MatchCard from './MatchCard';
 import Loader from './Loader'
 import Individualrecoed from './individualRecord';
@@ -18,11 +18,13 @@ import PlayerRanking from './Ranking';
 
 const Home = ({ setShowModal }) => {
     const dispatch = useDispatch()
+     const allMatch = useSelector((state) => state.cricketReducer.allMatches.data)
     const isMobile = useMediaQuery({ query: "(max-width: 750px)" });
     const tempAllMatch = useSelector((state) => state.cricketReducer.cricketData)
      const isLoading = useSelector((state) => state.cricketReducer.isLoading)
     const [scoreCard, setScoreCard] = useState(false);
     const [allCricketMatch, setAllCricketMatch] = useState(tempAllMatch);
+    const [allMatchs,setAllMatches] = useState(allMatch)
     const [cardItem , setCardItem] = useState("")
     const navigate = useNavigate()
 
@@ -31,13 +33,18 @@ const Home = ({ setShowModal }) => {
     useEffect(() => {
         setShowModal(false);
         dispatch(getlatestMatch())
+         dispatch(getAllCricketMatch())
     }, [setShowModal])
 
     useEffect(() => {
         setAllCricketMatch(tempAllMatch)
     }, [tempAllMatch])
 
-    console.log("cardItem===",cardItem)
+    useEffect(()=>{
+       setAllMatches(allMatch)
+    },[allMatch])
+
+   
 
       const onSaveClick = (data ,initaiStateMom ,setMomData) => {
         const tempObject = Object.assign({},...data.individualrecord)
@@ -94,9 +101,10 @@ const Home = ({ setShowModal }) => {
                 </div>
             </Fade>}
             <><FundUpdate setShowModal={setScoreCard} scoreCard={scoreCard} setScoreCard={setScoreCard} individualrecord={true} onSaveClick={onSaveClick} headers="Player's match record" radioText="individual record"/></>
-             <PlayerRanking
-             allCricketMatch={allCricketMatch}
-             />
+             {allMatchs && <PlayerRanking
+             allCricketMatch={allMatchs?.slice(0, 10)}
+             isLoading={isLoading}
+             />}
 
             <div className="about-section">
                 <div className="about-container">

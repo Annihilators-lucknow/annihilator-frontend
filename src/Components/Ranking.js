@@ -7,9 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Loader from './Loader'
 
 
-function PlayerRanking({allCricketMatch}) {
+function PlayerRanking({allCricketMatch,isLoading}) {
     function getRanking() {
         let result = []
         const finalRecord = []
@@ -82,9 +83,9 @@ function PlayerRanking({allCricketMatch}) {
 
       const playerData = getRanking()
 
-    //   console.log(playerData)
+      console.log(allCricketMatch)
 
-    return <div className='ranking-container'>
+    return !isLoading  ?  <div className='ranking-container'>
       <div style={{margin:"1rem 0.5rem"}}  className='text-800 mx-1'>Last 10 Batting Player's Record</div>
                 <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                  <TableContainer sx={{ maxHeight: 440 }}>
@@ -132,7 +133,7 @@ function PlayerRanking({allCricketMatch}) {
     </TableContainer>
     </Paper>
          
-    </div>
+    </div> : <Loader/>
 }
 
 export default  PlayerRanking
