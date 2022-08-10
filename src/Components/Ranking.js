@@ -82,7 +82,7 @@ function PlayerRanking({allCricketMatch}) {
 
       const playerData = getRanking()
 
-      console.log(playerData)
+    //   console.log(playerData)
 
     return <div className='ranking-container'>
       <div style={{margin:"1rem 0.5rem"}}  className='text-800 mx-1'>Last 10 Batting Player's Record</div>
@@ -95,6 +95,8 @@ function PlayerRanking({allCricketMatch}) {
                     <TableCell  style={{minWidth:"30px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Ranking</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Runs</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Ball taken</TableCell>
+                    <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>No of Ing's</TableCell>
+                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>No of Notout</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>No of 6's</TableCell>
                     <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Strike Rate</TableCell>
                      <TableCell style={{minWidth:"100px",fontWeight:"600",color:"color: #06083b",zIndex:"0"}}>Average</TableCell>
@@ -118,6 +120,8 @@ function PlayerRanking({allCricketMatch}) {
               </TableCell>
               <TableCell>{row.runScored} </TableCell>
               <TableCell>{row.ballPlayed}</TableCell>
+              <TableCell>{row.battingIng}</TableCell>
+               <TableCell>{row.notOutCount}</TableCell>
               <TableCell>{row.sixes}</TableCell>
               <TableCell>{parseInt(row.runScored / row.ballPlayed * 100)}</TableCell>
                <TableCell>{Math.round(row.runScored / (row.battingIng - row.notOutCount))}</TableCell>
