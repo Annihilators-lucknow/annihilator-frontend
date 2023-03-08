@@ -13,6 +13,8 @@ import batting from "../backgrounds/bating.png";
 import bowling from '../backgrounds/bowling.png';
 import duckImg from '../backgrounds/duck.svg'
 import CareerRecords from './CareerRecords';
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/swiper.min.css'
 
 function add(accumulator, a) {
     return accumulator + a;
@@ -60,6 +62,7 @@ const PlayerDetails = () => {
         setToggleState(index);
     }
     function detectMob() {
+        console.log("run")
         return (window.innerWidth <= 800);
     }
 
@@ -195,24 +198,21 @@ const PlayerDetails = () => {
                                     <div className="detail-field align-center">
                                         Nothing to Display
                                     </div>
-                                </> : <Carousel
-                                    showThumbs={true}
-                                    showStatus={false}
-                                    infiniteLoop={false}
-                                    emulateTouch={true}
-                                    // autoPlay
-                                    swipeScrollTolerance={5}
-                                    useKeyboardArrows
-                                    transitionTime={1000}
-                                    // axis="vertical"
-                                    // selectedItem={1}
-                                    width={detectMob() ? "95vw" : "30vw"}
-                                    centerMode={true}
-                                    centerSlidePercentage={detectMob() ? 100 : 50}
-                                >
+                                </> : <Swiper
+                                    slidesPerView={detectMob() ? 1 : 2}
+                                    spaceBetween={15}
+                                    cssMode={true}
+                                    navigation={true}
+                                    pagination={true}
+                                    mousewheel={true}
+                                    keyboard={true}
+                                    speed={500}
+                                    className="mySwiper"
+                                    >
                                     {momData && momData.map((momDataItem) => {
 
-                                        return <div className="last ml-unset" style={{ marginLeft: "0.5rem" }}>
+                                        return <SwiperSlide>
+                                        <div className="last ml-unset" style={{ marginLeft: "0.5rem" }}>
                                             <div>
                                                 <time>{moment(momDataItem.date).format('Do MMMM YYYY ')}</time>
                                             </div>
@@ -245,12 +245,11 @@ const PlayerDetails = () => {
                                                     </>
 
                                             }
-
-
                                         </div>
+                                        </SwiperSlide>
                                     })}
 
-                                </Carousel>}
+                                </Swiper>}
 
 
 

@@ -26,7 +26,7 @@ const CareerRecords = ({ momData, toggleState }) => {
           transitionTime={1000}
           // axis="vertical"
           // selectedItem={1}
-          width={detectMob() ? "95vw" : "30vw"}
+          width={detectMob() ? "95vw" : "60vw"}
           centerMode={true}
           centerSlidePercentage={detectMob() ? 100 : 50}
         >
