@@ -21,7 +21,7 @@ import {
 } from "../../constant/actiontype";
 import apiconfig from "../../constant/apiconfig";
 import { authHeader } from '../../constant/header'
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -63,13 +63,13 @@ export const updateCricketMatchData = (payload) => {
         headers: authHeader(),
       })
       dispatch({ type: UPDATE_CRICKET_RECORD_SUCCESS, payload: res.data.matchData });
-       toast.success("match record update successfully")
-      if(payload.successCallBack){
+      toast.success("match record update successfully")
+      if (payload.successCallBack) {
         payload.successCallBack()
       }
     } catch (err) {
       dispatch({ type: UPDATE_CRICKET_RECORD_FAILED, payload: err })
-        toast.warn("something went wrong")
+      toast.warn("something went wrong")
     }
   }
 }
@@ -114,14 +114,14 @@ export const updateFund = (payload) => {
       })
       dispatch({ type: UPDATE_FUND_BALANCE_SUCCESS, payload: res.data.data });
       toast.success("fund update successfully")
-      if(payload.successCallBack){
+      if (payload.successCallBack) {
         payload.successCallBack()
         getfundhistory()
         getFundBalance()
       }
     } catch (err) {
       dispatch({ type: UPDATE_FUND_BALANCE_FAILED, payload: err })
-        toast.warn("something went wrong")
+      toast.warn("something went wrong")
     }
   }
 }
@@ -136,13 +136,13 @@ export const updatePlayersRecord = (payload) => {
       })
       dispatch({ type: UPDATE_PLAYERS_RECORD_SUCCESS, payload: res.data.data });
       toast.success("fund update successfully")
-      if(payload.successCallBack){
+      if (payload.successCallBack) {
         payload.successCallBack()
         getlatestMatch()
       }
     } catch (err) {
       dispatch({ type: UPDATE_PLAYERS_RECORD_FAILED, payload: err })
-        toast.warn("something went wrong")
+      toast.warn("something went wrong")
     }
   }
 }
@@ -156,7 +156,6 @@ export const getMatchDetails = (id) => {
         headers: authHeader(),
       })
       dispatch({ type: FETCH_MATCH_DETAILS_SUCCESS, payload: res.data.data });
-      console.log("res==",res.data)
     } catch (err) {
       dispatch({ type: FETCH_MATCH_DETAILS_FAILDED, payload: err })
     }

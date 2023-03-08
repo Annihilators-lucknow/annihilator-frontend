@@ -20,39 +20,39 @@ import { makeStyles } from "@material-ui/core/styles";
 import signpic from "./signup.png";
 import Fade from 'react-reveal/Fade';
 import { updateCricketMatchData } from '../../Store/Actions/cricket.action';
-import { getFundBalance,getfundhistory } from '../../Store/Actions/cricket.action'
+import { getFundBalance, getfundhistory } from '../../Store/Actions/cricket.action'
 import { useSelector, useDispatch } from 'react-redux'
 import Switch from '@mui/material/Switch';
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./fund.css"
 import plusIcon from '../../backgrounds/addition.png'
 import Individualrecoed from '../individualRecord';
 
- const initialStateMatchData = {
-        teamName:"",
-        date:"",
-        tossResult:"",
-        matchResult:"",
-        matchCost:"",
-        opponentScore:"",
-        opponentOver:"",
-        annihilatorScore:"",
-        annihilatorOver:"",
-    }
+const initialStateMatchData = {
+    teamName: "",
+    date: "",
+    tossResult: "",
+    matchResult: "",
+    matchCost: "",
+    opponentScore: "",
+    opponentOver: "",
+    annihilatorScore: "",
+    annihilatorOver: "",
+}
 
-    const initaiStateMom = {
-        ballPlayed:"",
-        category:"",
-        fours: "",
-        overBowled: "",
-        playerName: "",
-        runGiven: "",
-        runScored: "",
-        sixes: "",
-        wicketTaken: "", 
-        status:"approved",
-        notOut:"",
-    }
+const initaiStateMom = {
+    ballPlayed: "",
+    category: "",
+    fours: "",
+    overBowled: "",
+    playerName: "",
+    runGiven: "",
+    runScored: "",
+    sixes: "",
+    wicketTaken: "",
+    status: "approved",
+    notOut: "",
+}
 
 
 const useStyles = makeStyles({
@@ -82,14 +82,14 @@ const useStyles = makeStyles({
     }
 });
 
-const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord ,onSaveClick ,headers ,radioText}) => {
+const FundUpdate = ({ setShowModal, scoreCard, setScoreCard, all, individualrecord, onSaveClick, headers, radioText }) => {
     const dispatch = useDispatch();
     const [showMom, setShowMom] = useState(false);
     const FundBalance = useSelector((state) => state.cricketReducer.fundBalance)
     const [user, setUser] = useState(initialStateMatchData);
-    const [momData ,setMomData] = useState(initaiStateMom)
-    const navigate = useNavigate ()
-    
+    const [momData, setMomData] = useState(initaiStateMom)
+    const navigate = useNavigate()
+
 
 
     const classes = useStyles();
@@ -99,33 +99,32 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
     }, [])
 
     const handleInputs = (e) => {
-        const {name,value} = e.target
-        setUser({ ...user, [name]: value }) 
+        const { name, value } = e.target
+        setUser({ ...user, [name]: value })
     }
 
     const handleMomInputs = (e) => {
-           const {name,value} = e.target
-           console.log("name===",name  , "value===",value)
-           setMomData({ ...momData, [name]: value }) 
+        const { name, value } = e.target
+        setMomData({ ...momData, [name]: value })
     }
 
     const PostData = async (e) => {
         e.preventDefault();
         user.ManofTheMatch = momData
         user.individualrecord = [momData]
-        onSaveClick(user ,initaiStateMom ,setMomData )
+        onSaveClick(user, initaiStateMom, setMomData)
 
     }
 
-    const displayRenderButton = () =>{
+    const displayRenderButton = () => {
         const label = { inputProps: { 'aria-label': 'Switch demo' } };
         return <>
-        <p style={{display:"inline"}}>{`Would you like to add ${radioText} ?`}</p>  <Switch onChange={()=>setShowMom(!showMom)} {...label} />
-       
+            <p style={{ display: "inline" }}>{`Would you like to add ${radioText} ?`}</p>  <Switch onChange={() => setShowMom(!showMom)} {...label} />
+
         </>
     }
 
- 
+
     return (
         <>
             {scoreCard && (<Fade up>
@@ -136,109 +135,109 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
 
                         <form method="POST" className="register-form" id="register-form">
                             {all && <>
-                           
-                            <div className="form-group">
-                                <label htmlFor="teamName">
-                                    <AiOutlineTeam />
-                                </label>
-                                <input type="text" name="teamName" id="teamName" autoComplete="off"
-                                    value={user.teamName}
-                                    onChange={handleInputs}
-                                    placeholder="Team Name" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="date">
-                                    <BsCalendar2Date />
-                                </label>
-                                <input type="date" name="date" id="date" autoComplete="off"
-                                    value={user.date}
-                                    onChange={handleInputs}
-                                    placeholder="Date" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="tossResult">
-                                    <GiCoinflip />
-                                </label>
-                                <TextField
-                                    className={classes.root}
-                                    value={user.tossResult}
-                                    onChange={handleInputs}
-                                    variant="outlined"
-                                    label="Toss Result"
-                                    name="tossResult"
-                                    select
-                                >
-                                    <MenuItem value="Win">Win</MenuItem>
-                                    <MenuItem value="Lose">Lose</MenuItem>
-                                </TextField>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="matchResult">
-                                    <MdSportsCricket />
-                                </label>
-                                <TextField
-                                    className={classes.root}
-                                    value={user.matchResult}
-                                    onChange={handleInputs}
-                                    variant="outlined"
-                                    label="Match Result"
-                                    name="matchResult"
-                                    select
-                                >
-                                    <MenuItem value="Win">Win</MenuItem>
-                                    <MenuItem value="Lose">Lose</MenuItem>
-                                </TextField>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="matchCost">
-                                    <BiRupee />
-                                </label>
-                                <input type="number" name="matchCost" id="matchCost" autoComplete="off"
-                                    value={user.matchCost}
-                                    onChange={handleInputs}
-                                    placeholder="Match Cost" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="opponentScore">
-                                    <GrScorecard />
-                                </label>
-                                <input type="text" name="opponentScore" id="opponentScore" autoComplete="off"
-                                    value={user.opponentScore}
-                                    onChange={handleInputs}
-                                    placeholder="Opponent's Score" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="opponentOver">
-                                    <IoTennisball />
-                                </label>
-                                <input type="number" name="opponentOver" id="opponentOver" autoComplete="off"
-                                    value={user.opponentOver}
-                                    onChange={handleInputs}
-                                    placeholder="Opponent's Over" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="annihilatorScore">
-                                    <GrScorecard />
-                                </label>
-                                <input type="text" name="annihilatorScore" id="annihilatorScore" autoComplete="off"
-                                    value={user.annihilatorScore}
-                                    onChange={handleInputs}
-                                    placeholder="Annihilator's Score" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="annihilatorOver">
-                                    <IoTennisballOutline />
-                                </label>
-                                <input type="number" name="annihilatorOver" id="annihilatorOver" autoComplete="off"
-                                    value={user.annihilatorOver}
-                                    onChange={handleInputs}
-                                    placeholder="Annihilator's over" />
-                            </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="teamName">
+                                        <AiOutlineTeam />
+                                    </label>
+                                    <input type="text" name="teamName" id="teamName" autoComplete="off"
+                                        value={user.teamName}
+                                        onChange={handleInputs}
+                                        placeholder="Team Name" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="date">
+                                        <BsCalendar2Date />
+                                    </label>
+                                    <input type="date" name="date" id="date" autoComplete="off"
+                                        value={user.date}
+                                        onChange={handleInputs}
+                                        placeholder="Date" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="tossResult">
+                                        <GiCoinflip />
+                                    </label>
+                                    <TextField
+                                        className={classes.root}
+                                        value={user.tossResult}
+                                        onChange={handleInputs}
+                                        variant="outlined"
+                                        label="Toss Result"
+                                        name="tossResult"
+                                        select
+                                    >
+                                        <MenuItem value="Win">Win</MenuItem>
+                                        <MenuItem value="Lose">Lose</MenuItem>
+                                    </TextField>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="matchResult">
+                                        <MdSportsCricket />
+                                    </label>
+                                    <TextField
+                                        className={classes.root}
+                                        value={user.matchResult}
+                                        onChange={handleInputs}
+                                        variant="outlined"
+                                        label="Match Result"
+                                        name="matchResult"
+                                        select
+                                    >
+                                        <MenuItem value="Win">Win</MenuItem>
+                                        <MenuItem value="Lose">Lose</MenuItem>
+                                    </TextField>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="matchCost">
+                                        <BiRupee />
+                                    </label>
+                                    <input type="number" name="matchCost" id="matchCost" autoComplete="off"
+                                        value={user.matchCost}
+                                        onChange={handleInputs}
+                                        placeholder="Match Cost" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="opponentScore">
+                                        <GrScorecard />
+                                    </label>
+                                    <input type="text" name="opponentScore" id="opponentScore" autoComplete="off"
+                                        value={user.opponentScore}
+                                        onChange={handleInputs}
+                                        placeholder="Opponent's Score" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="opponentOver">
+                                        <IoTennisball />
+                                    </label>
+                                    <input type="number" name="opponentOver" id="opponentOver" autoComplete="off"
+                                        value={user.opponentOver}
+                                        onChange={handleInputs}
+                                        placeholder="Opponent's Over" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="annihilatorScore">
+                                        <GrScorecard />
+                                    </label>
+                                    <input type="text" name="annihilatorScore" id="annihilatorScore" autoComplete="off"
+                                        value={user.annihilatorScore}
+                                        onChange={handleInputs}
+                                        placeholder="Annihilator's Score" />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="annihilatorOver">
+                                        <IoTennisballOutline />
+                                    </label>
+                                    <input type="number" name="annihilatorOver" id="annihilatorOver" autoComplete="off"
+                                        value={user.annihilatorOver}
+                                        onChange={handleInputs}
+                                        placeholder="Annihilator's over" />
+                                </div>
                             </>}
                             {displayRenderButton()}
-                            { showMom && <>
-                          
-                            <div className="form-group">
+                            {showMom && <>
+
+                                <div className="form-group">
                                     <label htmlFor="playerName">
                                         <IoPersonOutline />
                                     </label>
@@ -259,7 +258,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                         })}
                                     </TextField>
                                 </div>
-                                 <div className="form-group">
+                                <div className="form-group">
                                     <label htmlFor="category">
                                         <MdOutlineCategory />
                                     </label>
@@ -277,7 +276,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                         <MenuItem value="Both">Both</MenuItem>
                                     </TextField>
                                 </div>
-                                  {(momData.category === "Batting" || momData.category === "Both") && (
+                                {(momData.category === "Batting" || momData.category === "Both") && (
                                     <>
                                         <div className="form-group">
                                             <label htmlFor="runScored">
@@ -297,7 +296,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                                 onChange={handleMomInputs}
                                                 placeholder="Balls Played" />
                                         </div>
-                                                    <div className="form-group">
+                                        <div className="form-group">
                                             <label htmlFor="notOut">
                                                 <MdSportsCricket />
                                             </label>
@@ -314,7 +313,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                                 <MenuItem value="true">NotOut</MenuItem>
                                             </TextField>
                                         </div>
-                                         
+
                                         <div className="form-group">
                                             <label htmlFor="sixes">
                                                 <FaDiceSix />
@@ -335,7 +334,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
                                         </div>
                                     </>
                                 )}
-                                 {(momData.category === "Bowling" || momData.category === "Both") && (
+                                {(momData.category === "Bowling" || momData.category === "Both") && (
                                     <>
                                         <div className="form-group">
                                             <label htmlFor="overBowled">
@@ -367,7 +366,7 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
 
                                     </>
                                 )}
-                                </>}
+                            </>}
 
 
                         </form>
@@ -396,4 +395,4 @@ const FundUpdate = ({ setShowModal ,scoreCard,setScoreCard,all,individualrecord 
 
 export default FundUpdate
 
-FundUpdate.defaultProps = { headers: 'Score Card', radioText : "add Man of the match"}
+FundUpdate.defaultProps = { headers: 'Score Card', radioText: "add Man of the match" }
