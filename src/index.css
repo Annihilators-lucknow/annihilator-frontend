@@ -839,12 +839,14 @@
   background-color: rgb(240, 243, 243);
   border-radius: 16px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: -5rem;
 }
 
 .about-link {
-  display: flex;
+  height: 25%;
+  /* display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20px; */
 }
 
 .about-link a {
@@ -895,8 +897,8 @@
 .about-details {
   display: flex;
   flex-direction: column;
-  width: 470px;
-  height: 400px;
+  /* width: 470px; */
+  height: 75%;
 }
 
 .rank {
@@ -941,7 +943,8 @@
   flex-direction: column;
   margin-top: 40px;
   width: 380px;
-  height: 245px;
+  height: 50vh;
+  /* height: 245px; */
 }
 
 .timeline-navbar {
@@ -1037,8 +1040,26 @@
 
 @media only screen and (max-width: 1350px) {
   .about-details {
-    width: 400px;
+    /* width: 400px; */
   }
+
+  .about-form-details {
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: -3rem;
+    height: 80vh;
+
+    /* width: 65vw; */
+  }
+
+  .about-link {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 1px solid gray;
+    padding-right: 2rem;
+}
 
   .profile-info img {
     height: 175px;
@@ -1065,7 +1086,13 @@
     width: 65vw;
   }
   .about-form-details {
-    width: 65vw;
+    width: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: -3rem;
+    height: 80vh;
+
+    /* width: 65vw; */
   }
   
 }
@@ -1076,7 +1103,10 @@
   }
 
   .about-form-details {
-    width: 80vw;
+    width: 90vw;
+    height: 74vh;
+    margin-bottom: -10rem;
+    /* width: 80vw; */
   }
 }
 
@@ -1171,8 +1201,10 @@
   }
   .about-form-details {
     flex-direction: column;
-    height: 625px;
-    margin-bottom: 40px;
+    height: 85vh;
+    margin-bottom: -3rem;
+    /* margin-bottom: 40px; */
+    /* height: 625px; */
   }
 
   .image {
@@ -1183,10 +1215,12 @@
     flex-direction: row;
     justify-content: space-between;
     width: 400px;
+    border-bottom: 1px solid gray;
+    border-right: none;
   }
 
   .about-details {
-    margin-top: -40px;
+    margin-top: 0.5rem;
   }
 
   .rank {
@@ -1453,8 +1487,8 @@
   }
 
    .about-form-details {
-    justify-content: space-between;
-    height: 630px;
+    /* justify-content: space-between; */
+    /* height: 630px; */
   }
 
   .profile-info img {
@@ -1467,10 +1501,13 @@
     justify-content: space-around;
     align-items: center;
     width: 80vw;
+    border-bottom: 1px solid gray;
+    margin-top: 1rem;
+    /* width: 80vw; */
   }
 
   .about-details {
-    width: 80vw;
+    width: 85vw;
   }
 
   .cancel {
@@ -1552,7 +1589,10 @@
     height: 575px;
   }
   .about-form-details {
-    height: 575px;
+    width: 95vw;
+    height: 95vh;
+    margin-top: -2rem;
+    /* height: 575px; */
   }
 }
 
@@ -1899,6 +1939,8 @@
   align-items: center;
   width: 100%;
   height: 100vh;
+  background-color: #d9dada;
+  opacity: 0.5;
 }
 
 .swiper-button-prev,
